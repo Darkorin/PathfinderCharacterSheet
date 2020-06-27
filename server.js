@@ -44,7 +44,13 @@ app.get("/create", (req, res) =>{
 //
 // Character editor For testing only
 app.get("/stats", (req, res) =>{
-    res.render("stats", {race: db.races[0], classes: db.classes[0], feats: db.feats, skills: db.skills, spells: db.spells});
+    res.render("stats", {race: db.races[0], classes: db.classes[0], feats: db.feats, skills: db.skills, spells: db.spells.filter(spell => {
+        let spellUsable = false;
+        spell.levels.forEach(pfclass => {
+             if (pfclass.class === db.classes[0].name) spellUsable = true;
+        });
+        return spellUsable;
+    })});
 } )
 
 // Character editor
