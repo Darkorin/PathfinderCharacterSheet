@@ -74,305 +74,152 @@
                 <img src="https://via.placeholder.com/400x300?text=Hi+Kelli+!+Put+Image+here" alt=""
                     class="img-responsive tab-image-ex-gap" style="padding: 20px;">
             </div>
-            <div class="tab-pane" id="feats">
+            <div class="col-sm-8">
+                <br>
+                <h3>CHARACTER FEATS</h3>
+                <select class="custom-select">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <button class="featBtn greenButton" style="margin: 20px;">Add New Feat</button>
+                <br>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, asperiores, sequi
+                    inventore, mollitia facilis totam voluptas laudantium odio non delectus porro magnam
+                    molestias dolore. Accusamus sint perspiciatis quis iste dolorem! Lorem ipsum dolor, sit amet
+                    consectetur adipisicing elit. Autem labore rem, officia, sed eius earum, aliquam sequi
+                    corporis voluptas velit ex! Natus enim dicta fugiat velit dolorum, quos sint totam.
+                </p>
+            </div>
+        </div>
+        <div class="tab-pane" id="skills">
+            <div class="col-sm-4">
+                <img src="https://via.placeholder.com/400x300?text=Hi+Kelli+!+Put+Image+here" alt=""
+                    class="img-responsive tab-image-ex-gap" style="padding: 20px;">
+            </div>
+            <div class="col-sm-8">
+                <br>
+                <h3>CHARACTER SKILLS</h3>
+                <select class="custom-select">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <button class="skillBtn greenButton" style="margin: 20px;">Add New Skill</button>
+                <br>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, asperiores, sequi
+                    inventore, mollitia facilis totam voluptas laudantium odio non delectus porro magnam
+                    molestias dolore. Accusamus sint perspiciatis quis iste dolorem! Lorem ipsum dolor, sit amet
+                    consectetur adipisicing elit. Autem labore rem, officia, sed eius earum, aliquam sequi
+                    corporis voluptas velit ex! Natus enim dicta fugiat velit dolorum, quos sint totam.
+                </p>
+            </div>
+        </div>
+        <div class="tab-pane" id="items">
+            <div class="col-sm-6">
+                <h1>Current Items:</h1>
+                <div class="createdNotes"></div>
+
+
+            </div>
+            <div class="col-sm-6">
+                <br>
+                <h3>CHARACTER ITEMS</h3>
+
+                <div class="noteContainer">
+
+                    <button class="createButton greenButton">Add New Item</button>
+
+                    <div class="noteCreator hide">
+                        <input class="noteTitle" type="text" placeholder="Item Name" />
+                        <textarea class="noteBody" placeholder="Description"></textarea>
+
+                        <button class="saveButton  greenButton">Save</button>
+                        <button class="cancelButton">Delete</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="tab-pane" id="spells">
+            <div class="col-sm-6">
+                <h1>Current Spells:</h1>
+                <div class="createdNotesSpell"></div>
+
+
+            </div>
+            <div class="col-sm-6">
+                <br>
+                <h3>CHARACTER SPELLS</h3>
+
+                <div class="noteContainerSpell">
+
+                    <button class="createButtonSpell greenButton">Add New Spell</button>
+
+                    <div class="noteCreatorSpell hide">
+                        <input class="noteTitleSpell" type="text" placeholder="Spell Name" />
+                        <textarea class="noteBodySpell" placeholder="Description"></textarea>
+
+                        <button class="saveButtonSpell  greenButton">Save</button>
+                        <button class="cancelButtonSpell">Delete</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="charSheet">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-9">
+                <br>
+                <h3>CHARACTER SHEET</h3>
+
+                <div class="range-slider">
+                    <h2>HP Tracker</h2>
+                    <input class="range-slider__range" type="range" value="45" min="0" max="50">
+                    <span class="range-slider__value">20</span>
+                </div>
+                <h2>Spell Tracker</h2>
+                <br>
                 <div class="col-sm-4">
-                    <img src="https://via.placeholder.com/400x300?text=Hi+Kelli+!+Put+Image+here" alt=""
-                        class="img-responsive tab-image-ex-gap" style="padding: 20px;">
-                </div>
-                <div class="col-sm-8">
-                    <br>
-                    <h3>CHARACTER FEATS</h3>
-                    <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <h3>UNUSED</h3>
+
+                    <select id="sbOne" multiple="multiple">
+                        <option value="1">Wind</option>
+                        <option value="2">Water</option>
+                        <option value="3">Earth</option>
+                        <option value="4">Fire</option>
+                        <option value="5">Heart</option>
                     </select>
-                    <button class="featBtn greenButton" style="margin: 20px;">Add New Feat</button>
-                    <br>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, asperiores, sequi
-                        inventore, mollitia facilis totam voluptas laudantium odio non delectus porro magnam
-                        molestias dolore. Accusamus sint perspiciatis quis iste dolorem! Lorem ipsum dolor, sit amet
-                        consectetur adipisicing elit. Autem labore rem, officia, sed eius earum, aliquam sequi
-                        corporis voluptas velit ex! Natus enim dicta fugiat velit dolorum, quos sint totam.
-                    </p>
+                    <input type="button" id="left" value="<" />
+                    <input type="button" id="right" value=">" />
                 </div>
-            </div>
-            <div class="tab-pane" id="skills">
                 <div class="col-sm-4">
-                    <img src="https://via.placeholder.com/400x300?text=Hi+Kelli+!+Put+Image+here" alt=""
-                        class="img-responsive tab-image-ex-gap" style="padding: 20px;">
-                </div>
-                <div class="col-sm-8">
-                    <br>
-                    <h3>CHARACTER SKILLS</h3>
-                    <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <h3>USED</h3>
+                    <select id="sbTwo" multiple="multiple">
+
+                        <option value="6">Captian</option>
+                        <option value="7">Planet</option>
                     </select>
-                    <button class="skillBtn greenButton" style="margin: 20px;">Add New Skill</button>
-                    <br>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, asperiores, sequi
-                        inventore, mollitia facilis totam voluptas laudantium odio non delectus porro magnam
-                        molestias dolore. Accusamus sint perspiciatis quis iste dolorem! Lorem ipsum dolor, sit amet
-                        consectetur adipisicing elit. Autem labore rem, officia, sed eius earum, aliquam sequi
-                        corporis voluptas velit ex! Natus enim dicta fugiat velit dolorum, quos sint totam.
-                    </p>
+
+                    <input type="button" id="leftall" value="<<" />
+                    <input type="button" id="rightall" value=">>" />
                 </div>
-            </div>
-            <div class="tab-pane" id="items">
-                <div class="col-sm-6">
-                    <h1>Current Items:</h1>
-                    <div class="createdNotes"></div>
+                <br>
 
-
-                </div>
-                <div class="col-sm-6">
-                    <br>
-                    <h3>CHARACTER ITEMS</h3>
-
-                    <div class="noteContainer">
-
-                        <button class="createButton greenButton">Add New Item</button>
-
-                        <div class="noteCreator hide">
-                            <input class="noteTitle" type="text" placeholder="Item Name" />
-                            <textarea class="noteBody" placeholder="Description"></textarea>
-
-                            <button class="saveButton  greenButton">Save</button>
-                            <button class="cancelButton">Delete</button>
-                        </div>
-
-                    </div>
-                </div>
             </div>
 
-
-
-            <div class="tab-pane" id="spells">
-                <div class="col-sm-6">
-                    <h1>Current Spells:</h1>
-                    <div class="createdNotesSpell"></div>
-
-
-                </div>
-                <div class="col-sm-6">
-                    <br>
-                    <h3>CHARACTER SPELLS</h3>
-
-                    <div class="noteContainerSpell">
-
-                        <button class="createButtonSpell greenButton">Add New Spell</button>
-
-                        <div class="noteCreatorSpell hide">
-                            <input class="noteTitleSpell" type="text" placeholder="Spell Name" />
-                            <textarea class="noteBodySpell" placeholder="Description"></textarea>
-
-                            <button class="saveButtonSpell  greenButton">Save</button>
-                            <button class="cancelButtonSpell">Delete</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="charSheet">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-9">
-                    <br>
-                    <h3>CHARACTER SHEET</h3>
-
-                    <div class="range-slider">
-                        <h2>HP Tracker</h2>
-                        <input class="range-slider__range" type="range" value="45" min="0" max="50">
-                        <span class="range-slider__value">20</span>
-                    </div>
-                    <h2>Spell Tracker</h2>
-                    <br>
-                    <div class="col-sm-4">
-                        <h3>UNUSED</h3>
-
-                        <select id="sbOne" multiple="multiple">
-                            <option value="1">Wind</option>
-                            <option value="2">Water</option>
-                            <option value="3">Earth</option>
-                            <option value="4">Fire</option>
-                            <option value="5">Heart</option>
-                        </select>
-                        <input type="button" id="left" value="<" />
-                        <input type="button" id="right" value=">" />
-                    </div>
-                    <div class="col-sm-4">
-                        <h3>USED</h3>
-                        <select id="sbTwo" multiple="multiple">
-
-                            <option value="6">Captian</option>
-                            <option value="7">Planet</option>
-                        </select>
-
-                        <input type="button" id="leftall" value="<<" />
-                        <input type="button" id="rightall" value=">>" />
-                    </div>
-                    <br>
-
-                </div>
-
-            </div>
         </div>
     </div>
 </div>
+</div>
 
 </div>
 
-
 <!-- Javascript -->
-<script>
 
-    //   -------- Range Slider ----------
-
-    var rangeSlider = function () {
-        var slider = $('.range-slider'),
-            range = $('.range-slider__range'),
-            value = $('.range-slider__value');
-
-        slider.each(function () {
-
-            value.each(function () {
-                var value = $(this).prev().attr('value');
-                $(this).html(value);
-            });
-
-            range.on('input', function () {
-                $(this).next(value).html(this.value);
-            });
-        });
-    };
-
-    rangeSlider();
-
-
-    //-------- USER INPUT NOTES ----------
-    var createButton = document.querySelector('.createButton, .createButtonSpell');
-    var noteCreator = document.querySelector('.noteCreator, .noteCreatorSpell');
-    var noteTitle = document.querySelector('.noteTitle, .noteTitleSpell');
-    var noteBody = document.querySelector('.noteBody, .noteBodySpell');
-    var saveButton = document.querySelector('.saveButton, .saveButtonSpell');
-    var cancelButton = document.querySelector('.cancelButton, .cancelButtonSpell');
-
-    var createdNotes = document.querySelector('.createdNotes, .createdNotesSpell');
-    var savedNotesDB = [];
-
-    let idCounter = -1;
-    let i = -1;
-
-    //Fade in, fade out
-    function fadeIn(el) {
-        el.classList.add('show');
-        el.classList.remove('hide');
-    }
-    function fadeOut(el) {
-        el.classList.add('hide');
-        el.classList.remove('show');
-    }
-
-    //Show and hide Note Creator
-    createButton.addEventListener('click', () => {
-        if (noteCreator.className.indexOf('hide') !== -1) {
-            fadeIn(noteCreator);
-        } else {
-            fadeOut(noteCreator);
-        }
-    });
-
-    //Cancel Button
-    cancelButton.addEventListener('click', () => {
-        noteTitle.value = '';
-        noteBody.value = '';
-        fadeOut(noteCreator);
-    });
-
-    //Reset Editor
-    function resetEditor() {
-        noteTitle.value = '';
-        noteBody.value = '';
-        fadeOut(noteCreator);
-    }
-
-    //Object printer
-    function printObject(elementToCreate, className, dbContent, placeLocation) {
-        let printBody = document.createElement(elementToCreate);
-        printBody.className = className;
-        printBody.innerHTML = dbContent;
-        if (printBody.className === 'savedNote') {
-            idCounter += 1;
-            i += 1;
-            printBody.id = 'n' + idCounter;
-        };
-        document.querySelector(placeLocation).appendChild(printBody);
-    };
-
-    //Create new note
-    saveButton.addEventListener('click', () => {
-        let noteContent = {
-            title: '',
-            body: ''
-        }
-
-        //Push content to the DB
-        noteContent.title = noteTitle.value;
-        noteContent.body = noteBody.value;
-        savedNotesDB.push(noteContent);
-
-        if (noteContent.title !== '' || noteContent.body !== '') {
-            //Print content
-            printObject('div', 'savedNote', '', '.createdNotes');
-            printObject('h2', 'savedNoteTitle', savedNotesDB[i].title, '.savedNote:last-child');
-            printObject('p', 'savedNoteBody', savedNotesDB[i].body, '.savedNote:last-child');
-
-            let printDelete = document.createElement('a');
-            printDelete.innerHTML = 'delete';
-            printDelete.className = 'deleteButton';
-            printDelete.onclick = function () {
-                let childToDelete = document.getElementById('n' + idCounter);
-                createdNotes.removeChild(childToDelete);
-                idCounter -= 1;
-            };
-            document.querySelector('.savedNote:last-child').appendChild(printDelete);
-
-            resetEditor();
-        } else {
-            resetEditor();
-            savedNotesDB.pop();
-        }
-    });
-
-
-    //-------- SPELL TRACKER  ----------
-    $(function () {
-        function moveItems(origin, dest) {
-            $(origin).find(':selected').appendTo(dest);
-        }
-
-        function moveAllItems(origin, dest) {
-            $(origin).children().appendTo(dest);
-        }
-
-        $('#left').click(function () {
-            moveItems('#sbTwo', '#sbOne');
-        });
-
-        $('#right').on('click', function () {
-            moveItems('#sbOne', '#sbTwo');
-        });
-
-        $('#leftall').on('click', function () {
-            moveAllItems('#sbTwo', '#sbOne');
-        });
-
-        $('#rightall').on('click', function () {
-            moveAllItems('#sbOne', '#sbTwo');
-        });
-    });
-
-</script>
+<script type="text/javascript" src="../scripts/script.js"></script>
