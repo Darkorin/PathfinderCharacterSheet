@@ -1,6 +1,8 @@
 .jumbotron {
     background-image: url('../images/map.png');
-    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     font-family: 'Audiowide', cursive;
     opacity: .7;
     color: white;
@@ -10,12 +12,16 @@
     display:flex;
     justify-content: center;
     align-items: center;
+   
  
   }
 
   footer {
     background-image: url('../images/map.png');
     background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff6d3;
     height: 20%;
     Width: 100%;
     bottom: 0;
@@ -25,8 +31,13 @@
   }
 
 body{
-	font-family: 'Lato', sans-serif;
-}
+  font-family: 'Lato', sans-serif;
+  background-size: contain;
+    background-image: url(../images/map-background.jpg);
+    background-position: center;
+    background-repeat: repeat;
+  }
+
 
 
 .service-section .service-tab{
@@ -46,7 +57,7 @@ body{
 }
 
 .service-section .service-tab li a{
-	background-color: #69868e;
+	background-color: #99a28f;
 	padding: 40px;
 	border-radius: 0;
 	margin-right: 0;
@@ -58,7 +69,7 @@ body{
 	background-color: rgb(rgb(255, 255, 255), green, blue);
 	border-width: 5px 0 0 0;
 	border-style: solid;
-	border-color: #ed145b;
+	border-color: #bebd9f;
 }
 .service-section .service-tab li a i{
 	width: 67px;
@@ -75,10 +86,10 @@ body{
 }
 .service-section .service-tab li.active a i, .service-section .service-tab li a:hover i{
 	background-color: #fff200;
-	color: #131720;
+	color: #bebd9f;
 }
 .service-section .service-tab li a h3{
-	color: #b4bccf;
+	color: #dbd0a1;
 	line-height: 20px;
 	font-weight: 700;
 }
@@ -87,7 +98,7 @@ body{
 }
 .service-section .service-tab li a p{
 	line-height: 20px;
-	color: #03194b;
+	color: #bebd9f;
 }
 .service-section .service-tab li.active a p, .service-section .service-tab li a:hover p{
 	color: rgb(84, 37, 37);
@@ -98,7 +109,7 @@ body{
 
 }
 .service-section .service-tab-content p{
-	color: #b4bccf;
+	color: saddlebrown;
 	font-size: 16px;
 	line-height: 26px;
 }
@@ -119,10 +130,6 @@ body{
   box-sizing: border-box;
 } */
 
-body {
-  font-family: sans-serif;
-  /* padding: 60px 20px; */
-}
 /* @media (min-width: 600px) {
   body {
     padding: 60px;
@@ -131,9 +138,6 @@ body {
 
 .range-slider {
   margin: 60px 0 0 0%;
-}
-
-.range-slider {
   width: 100%;
 }
 
@@ -142,7 +146,7 @@ body {
   width: calc(100% - (73px));
   height: 10px;
   border-radius: 5px;
-  background: #d7dcdf;
+  background: #bebd9f;
   outline: none;
   padding: 0;
   margin: 0;
@@ -152,33 +156,34 @@ body {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #2c3e50;
+  background: url(../images/dice.png);
   cursor: pointer;
-  transition: background 0.15s ease-in-out;
+  /* transition: background 0.15s ease-in-out; */
 }
 .range-slider__range::-webkit-slider-thumb:hover {
-  background: #1abc9c;
+  background: url(../images/dice.png);
 }
 .range-slider__range:active::-webkit-slider-thumb {
-  background: #1abc9c;
+  background: url(../images/dice.png);
 }
 .range-slider__range::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border: 0;
-  border-radius: 50%;
-  background: #2c3e50;
+  /* border-radius: 50%;
+  background: #2c3e50; */
+  background: url(../images/dice.png);
   cursor: pointer;
-  transition: background 0.15s ease-in-out;
+  /* transition: background 0.15s ease-in-out; */
 }
 .range-slider__range::-moz-range-thumb:hover {
-  background: #1abc9c;
+  background: url(../images/dice.png);
 }
 .range-slider__range:active::-moz-range-thumb {
-  background: #1abc9c;
+  background: url(../images/dice.png);
 }
 .range-slider__range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1abc9c;
+  background: url(../images/dice.png);
 }
 
 .range-slider__value {
@@ -189,7 +194,7 @@ body {
   line-height: 20px;
   text-align: center;
   border-radius: 3px;
-  background: #2c3e50;
+  background: #99a28f;
   padding: 5px 10px;
   margin-left: 8px;
 }
@@ -200,7 +205,7 @@ body {
   width: 0;
   height: 0;
   border-top: 7px solid transparent;
-  border-right: 7px solid #2c3e50;
+  border-right: 7px solid #99a28f;
   border-bottom: 7px solid transparent;
   content: "";
 }
@@ -265,20 +270,21 @@ button {
 .greenButton {
     /* margin: 20px 0 20px 0; */
 
-    background: #39DEAB;
+    background: #99a28f;
     /* padding: 15px 25px 15px 25px; */
     border-radius: 100px;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 15px;
     text-align: centered;
-    color: white;
+    color: #fff6d3;
     cursor: pointer;
     transition: 0.2s all;
+    margin-bottom: 20px;
 }
 .greenButton:hover {
-    background: #39DEAB;
-    box-shadow: 0 10px 20px #a8ffe4;
+    background: #99a28f;
+    box-shadow: 0 10px 20px #d2dfc4;
 }
 .noteTitle {
     margin-top: 10px;   
@@ -336,7 +342,7 @@ button {
 }
 
 #sbOne, #sbTwo {
-    color: seagreen;
+    color: #99a28f;
     min-width: 300px;
     min-height: 200px;
     padding: 30px;

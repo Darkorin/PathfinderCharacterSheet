@@ -1,6 +1,8 @@
 .jumbotron {
     background-image: url("../images/map.png");
-    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     font-family: 'Audiowide', cursive;
     opacity: .7;
     color: white;
@@ -12,6 +14,19 @@
     align-items: center;
  
   }
+
+  .knockout {
+    background: white;
+    color: red;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    font-size: 80px;
+    font-family: arial, helvetica;
+    width: 600px;
+    /* margin: 50px auto; */
+    text-align: center;
+  }
  
    #subtitle {
      font-size:40px
@@ -19,12 +34,18 @@
  
   body {
      
-     background-size: contain;
+    background-size: contain;
+    background-image: url(../images/map-background.jpg);
+    background-position: center;
+    background-repeat: repeat;
    }
  
  footer {
    background-image: url('../images/map.png');
    background-position: bottom;
+   background-size: cover;
+   background-repeat: no-repeat;
+   color: #fff6d3;
    height: 20%;
    Width: 100%;
    bottom: 0;
@@ -73,7 +94,7 @@
    font-family: "Roboto";
    font-weight: 400;
    font-size: 24px;
-   color: #354052;
+   color: #818f72;
    line-height: 30px;
    bottom: 40%;
    text-shadow: none;
@@ -83,12 +104,13 @@
    font-family: "Roboto";
    font-weight: 700;
    font-size: 20px;
-   color: #354052;
+   color: #818f72;
    line-height: 30px;
    margin-top: 40px;
  }
  /* carousel-height-control */
  .testimonial-style .carousel-inner > .item {
+   background: rgba(255, 255, 255, 0.5);
    padding-top: auto;
    padding-bottom: auto;
    height: 380px;
@@ -105,10 +127,10 @@
    text-shadow: none;
  }
  .testimonial-style .carousel-control {
-   color: #354052;
+   color: #818f72;
  }
  .testimonial-style .carousel-control:hover {
-   color: #354052;
+   color: #818f72;
    text-decoration: none;
    transition: background-color 1s ease;
  }
@@ -120,8 +142,8 @@
    transition: background 1s cubic-bezier(0.22, 0.61, 0.36, 1);
  }
  .testimonial-style .carousel-indicators li {
-   border: 2px solid #354052;
-   background-color: #354052;
+   border: 2px solid #818f72;
+   background-color: #818f72;
  }
  /* Textimonial CSS Code End */
  
@@ -141,9 +163,6 @@
  }
  .range-slider {
    margin: 60px 0 0 0%;
- }
- 
- .range-slider {
    width: 100%;
  }
  
@@ -152,43 +171,44 @@
    width: calc(100% - (73px));
    height: 10px;
    border-radius: 5px;
-   background: #d7dcdf;
+   background: #bebd9f;
    outline: none;
    padding: 0;
    margin: 0;
  }
  .range-slider__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
    appearance: none;
    width: 20px;
    height: 20px;
-   border-radius: 50%;
-   background: #2c3e50;
+   /* border-radius: 50%; */
+   background: url(../images/dice.png);
    cursor: pointer;
-   transition: background 0.15s ease-in-out;
+   /* transition: background 0.15s ease-in-out; */
  }
  .range-slider__range::-webkit-slider-thumb:hover {
-   background: #1abc9c;
+  background: url(../images/dice.png);
  }
  .range-slider__range:active::-webkit-slider-thumb {
-   background: #1abc9c;
+  background: url(../images/dice.png);
  }
  .range-slider__range::-moz-range-thumb {
    width: 20px;
    height: 20px;
-   border: 0;
-   border-radius: 50%;
-   background: #2c3e50;
+   /* border: 0;
+   border-radius: 50%; */
+   background: url(../images/dice.png);
    cursor: pointer;
-   transition: background 0.15s ease-in-out;
+   /* transition: background 0.15s ease-in-out; */
  }
  .range-slider__range::-moz-range-thumb:hover {
-   background: #1abc9c;
+  background: url(../images/dice.png);
  }
  .range-slider__range:active::-moz-range-thumb {
-   background: #1abc9c;
+  background: url(../images/dice.png);
  }
  .range-slider__range:focus::-webkit-slider-thumb {
-   box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1abc9c;
+  background: url(../images/dice.png);
  }
  
  .range-slider__value {
@@ -199,7 +219,7 @@
    line-height: 20px;
    text-align: center;
    border-radius: 3px;
-   background: #2c3e50;
+   background: #99a28f;
    padding: 5px 10px;
    margin-left: 8px;
  }
@@ -210,7 +230,7 @@
    width: 0;
    height: 0;
    border-top: 7px solid transparent;
-   border-right: 7px solid #2c3e50;
+   border-right: 7px solid #99a28f;
    border-bottom: 7px solid transparent;
    content: "";
  }
@@ -234,5 +254,83 @@
    top:50%; 
    left:45%;
  }
- 
+ .btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btn-info2 {
+  color: #ffffff;
+  /* background-color: #99a28f;
+  border-color: #bebd9f; */
+  background-color: #99a28f;
+  border-color: #bebd9f;
+
+}
+.btn-info2:focus,
+.btn-info2.focus {
+  color: #ffffff;
+  background-color: #b7c5a7;
+  border-color: #a09f85;
+
+}
+.btn-info2:hover {
+  color: #ffffff;
+  background-color: #b7c5a7;
+  border-color: #818f72;
+}
+.btn-info2:active,
+.btn-info2.active,
+.open > .dropdown-toggle.btn-info2 {
+  color: #ffffff;
+  background-color: #b7c5a7;
+  background-image: none;
+  border-color: #818f72;
+}
+.btn-info2:active:hover,
+.btn-info2.active:hover,
+.open > .dropdown-toggle.btn-info2:hover,
+.btn-info2:active:focus,
+.btn-info2.active:focus,
+.open > .dropdown-toggle.btn-info2:focus,
+.btn-info2:active.focus,
+.btn-info2.active.focus,
+.open > .dropdown-toggle.btn-info2.focus {
+  color: #ffffff;
+  background-color: #818f72;
+  border-color: #a09f85;
+}
+.btn-info2.disabled:hover,
+.btn-info2[disabled]:hover,
+fieldset[disabled] .btn-info2:hover,
+.btn-info2.disabled:focus,
+.btn-info2[disabled]:focus,
+fieldset[disabled] .btn-info2:focus,
+.btn-info2.disabled.focus,
+.btn-info2[disabled].focus,
+fieldset[disabled] .btn-info2.focus {
+  background-color: #99a28f;
+  border-color: #bebd9f;
+}
+.btn-info2 .badge {
+  color: #99a28f;
+  background-color: #ffffff;
+}
  
