@@ -1,7 +1,7 @@
 <!-------------------BODY -------------------->
 <!-- Carousel #1 -->
 <h1>CHOOSE YOUR RACE</h1>
-<hr>
+
 
 <body class="carousel-bg">
   <!-- Carousel Image -->
@@ -51,9 +51,9 @@
 
 
   <!-- Carousel #2 -->
-  <hr>
+
   <h1>CHOOSE YOUR CLASS</h1>
-  <hr>
+
 
   <body class="carousel-bg2">
     <!-- Carousel Image -->
@@ -105,9 +105,9 @@
   </body>
 
   <!-- Ability Range Sliders -->
-  <hr>
+
   <h1>SET YOUR ABILITY SCORE</h1>
-  <hr>
+
   <div class="ability-score">
     <div class="range-slider">
       <h2>Strength</h2>
@@ -175,11 +175,38 @@
   </script>
 
   <br>
-  <hr>
+
   <a href="editor">
-    <button type="button" class="btn btn-success">CREATE CHARACTER
+    <button type="button" class="btn btn-info2" style="margin-bottom: 20px;">CREATE CHARACTER
     </button>
   </a>
-  <hr>
 
-  <script type="text/javascript" src="../scripts/index.js"></script>
+
+  <script>
+    //  ----------CAROUSELS -----------------
+
+    $(document).ready(function () {
+      $("#myCarousel").on("slide.bs.carousel", function (e) {
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 3;
+        var totalItems = $(".carousel-item").length;
+
+        if (idx >= totalItems - (itemsPerSlide - 1)) {
+          var it = itemsPerSlide - (totalItems - idx);
+          for (var i = 0; i < it; i++) {
+            // append slides to end
+            if (e.direction == "left") {
+              $(".carousel-item")
+                .eq(i)
+                .appendTo(".carousel-inner");
+            } else {
+              $(".carousel-item")
+                .eq(0)
+                .appendTo($(this).find(".carousel-inner"));
+            }
+          }
+        }
+      });
+    });
+  </script>
