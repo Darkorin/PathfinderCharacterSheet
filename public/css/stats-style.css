@@ -33,7 +33,7 @@
 body{
   font-family: 'Lato', sans-serif;
   background-size: contain;
-    background-image: url(../images/map-background.jpg);
+    background-image: url('../images/map-background.jpg');
     background-position: center;
     background-repeat: repeat;
   }
@@ -156,15 +156,15 @@ body{
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: url(../images/dice.png);
+  background: url('../images/dice.png');
   cursor: pointer;
   /* transition: background 0.15s ease-in-out; */
 }
 .range-slider__range::-webkit-slider-thumb:hover {
-  background: url(../images/dice.png);
+  background: url('../images/dice.png');
 }
 .range-slider__range:active::-webkit-slider-thumb {
-  background: url(../images/dice.png);
+  background: url('../images/dice.png');
 }
 .range-slider__range::-moz-range-thumb {
   width: 20px;
@@ -172,18 +172,18 @@ body{
   border: 0;
   /* border-radius: 50%;
   background: #2c3e50; */
-  background: url(../images/dice.png);
+  background: url('../images/dice.png');
   cursor: pointer;
   /* transition: background 0.15s ease-in-out; */
 }
 .range-slider__range::-moz-range-thumb:hover {
-  background: url(../images/dice.png);
+  background: url('../images/dice.png');
 }
 .range-slider__range:active::-moz-range-thumb {
-  background: url(../images/dice.png);
+  background: url('../images/dice.png');
 }
 .range-slider__range:focus::-webkit-slider-thumb {
-  background: url(../images/dice.png);
+  background: url('../images/dice.png');
 }
 
 .range-slider__value {
