@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 8080;
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+app.use(express.static('public'))
 
 // Creates an empty db object to import ot from our json file
 const db = {
@@ -38,13 +39,13 @@ const importDB = () => {
 
 // Character Initialization Page Route
 app.get("/create", (req, res) =>{
-    res.render("index", {races: db.races, classes: db.classes});
+    res.render("index", {index: true, races: db.races, classes: db.classes});
 } )
 
 //
 // Character editor For testing only
 app.get("/stats", (req, res) =>{
-    res.render("stats", {race: db.races[0], classes: db.classes[0], feats: db.feats, skills: db.skills, spells: db.spells.filter(spell => {
+    res.render("stats", {index: false,race: db.races[0], classes: db.classes[0], feats: db.feats, skills: db.skills, spells: db.spells.filter(spell => {
         let spellUsable = false;
         spell.levels.forEach(pfclass => {
              if (pfclass.class === db.classes[0].name) spellUsable = true;

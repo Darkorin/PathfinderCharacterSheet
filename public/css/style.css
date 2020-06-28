@@ -1,5 +1,5 @@
 .jumbotron {
-    background-image: url('https://external-preview.redd.it/HTa8zeKg0QlKFhoAMwstlcT3dDZqfkswEEoBe-v03f4.png?width=960&crop=smart&auto=webp&s=4929bbd8e66cd455416eb6d3be344a2ccc08ebcf');
+    background-image: url("../images/map.png");
     background-repeat: repeat;
     font-family: 'Audiowide', cursive;
     opacity: .7;
@@ -23,7 +23,7 @@
    }
  
  footer {
-   background-image: url('https://external-preview.redd.it/HTa8zeKg0QlKFhoAMwstlcT3dDZqfkswEEoBe-v03f4.png?width=960&crop=smart&auto=webp&s=4929bbd8e66cd455416eb6d3be344a2ccc08ebcf');
+   background-image: url('../images/map.png');
    background-position: bottom;
    height: 20%;
    Width: 100%;
