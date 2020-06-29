@@ -9,36 +9,36 @@
                 <li role="presentation" class="active">
                     <a href="#traits" role="tab" data-toggle="tab">
                         <h3>TRAITS</h3>
-                        <p><img src="../images/person.png"></p>
+                        <p><img src="./images/person.png"></p>
                     </a>
                 </li>
                 <li role="presentation">
                     <a href="#feats" role="tab" data-toggle="tab">
                         <h3>FEATS</h3>
-                        <p><img src="../images/trophy.png"></p>
+                        <p><img src="./images/trophy.png"></p>
                     </a>
                 </li>
                 <li role="presentation">
                     <a href="#skills" role="tab" data-toggle="tab">
                         <h3>SKILLS</h3>
-                        <p><img src="../images/anvil.png"></p>
+                        <p><img src="./images/anvil.png"></p>
                     </a>
                 </li>
                 <li role="presentation">
                     <a href="#items" role="tab" data-toggle="tab">
                         <h3>ITEMS</h3>
-                        <p><img src="../images/sword.png"></p>
+                        <p><img src="./images/sword.png"></p>
                     </a>
                 </li>
                 <li role="presentation">
                     <a href="#spells" role="tab" data-toggle="tab">
                         <h3>SPELLS</h3>
-                        <p><img src="../images/magic.png"></p>
+                        <p><img src="./images/magic.png"></p>
                     </a>
                 <li role="presentation">
                     <a href="#charSheet" role="tab" data-toggle="tab">
                         <h3>Overview</h3>
-                        <p><img src="../images/heart.png"></p>
+                        <p><img src="./images/heart.png"></p>
                     </a>
                 </li>
                 </li>
@@ -52,8 +52,8 @@
             <div class="tab-content service-tab-content">
                 <div class="tab-pane active" id="traits">
                     <div class="col-sm-4">
-                        <img src="https://via.placeholder.com/400x300?text=Hi+Kelli+!+Put+Image+here" alt=""
-                            class="img-responsive tab-image-ex-gap" style="padding: 20px;">
+                        <img src="./images/stats-image1.jpg" alt="" class="img-responsive tab-image-ex-gap"
+                            style="padding: 20px;">
                     </div>
                     <div class="col-sm-8">
                         <br>
@@ -70,33 +70,62 @@
                 </div>
         </container>
         <div class="tab-pane" id="feats">
-            <div class="col-sm-4">
-                <img src="https://via.placeholder.com/400x300?text=Hi+Kelli+!+Put+Image+here" alt=""
-                    class="img-responsive tab-image-ex-gap" style="padding: 20px;">
-            </div>
-            <div class="col-sm-8">
+            {{!-- <div class="col-sm-4">
+                <img src="./images/stats-image2.jpg" alt="" class="img-responsive tab-image-ex-gap"
+                    style="padding: 20px;">
+            </div> --}}
+            <div class="col-sm-12">
                 <br>
-                <h3>CHARACTER FEATS</h3>
-                <select class="custom-select">
+                <h3 style="text-align: center;">CHARACTER FEATS</h3>
+                {{!-- <select class="custom-select">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
                 <button class="featBtn greenButton" style="margin: 20px;">Add New Feat</button>
+                <br> --}}
                 <br>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, asperiores, sequi
-                    inventore, mollitia facilis totam voluptas laudantium odio non delectus porro magnam
-                    molestias dolore. Accusamus sint perspiciatis quis iste dolorem! Lorem ipsum dolor, sit amet
-                    consectetur adipisicing elit. Autem labore rem, officia, sed eius earum, aliquam sequi
-                    corporis voluptas velit ex! Natus enim dicta fugiat velit dolorum, quos sint totam.
-                </p>
+                <div class="col-sm-4">
+                    <h3>Known</h3>
+
+                    <select id="sbOne" multiple="multiple">
+                        <option value="1">Wind</option>
+                        <option value="2">Water</option>
+                        <option value="3">Earth</option>
+                        <option value="4">Fire</option>
+                        <option value="5">Heart</option>
+                    </select>
+                    <br>
+                    <input type="button" id="left" value="<" />
+                    <input type="button" id="right" value=">" />
+                </div>
+                <div class="col-sm-4">
+                    <h3>Available</h3>
+                    <select id="sbTwo" multiple="multiple">
+
+                        <option value="6">Captian</option>
+                        <option value="7">Planet</option>
+                    </select>
+<br>
+                    <input type="button" id="leftall" value="<<" />
+                    <input type="button" id="rightall" value=">>" />
+                </div>
+                <br>
+                <div class="col-sm-4">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, asperiores, sequi
+                        inventore, mollitia facilis totam voluptas laudantium odio non delectus porro magnam
+                        molestias dolore. Accusamus sint perspiciatis quis iste dolorem! Lorem ipsum dolor, sit amet
+                        consectetur adipisicing elit. Autem labore rem, officia, sed eius earum, aliquam sequi
+                        corporis voluptas velit ex! Natus enim dicta fugiat velit dolorum, quos sint totam.
+                    </p>
+                </div>
             </div>
         </div>
         <div class="tab-pane" id="skills">
             <div class="col-sm-4">
-                <img src="https://via.placeholder.com/400x300?text=Hi+Kelli+!+Put+Image+here" alt=""
-                    class="img-responsive tab-image-ex-gap" style="padding: 20px;">
+                <img src="./images/stats-image3.jpg" alt="" class="img-responsive tab-image-ex-gap"
+                    style="padding: 20px;">
             </div>
             <div class="col-sm-8">
                 <br>
