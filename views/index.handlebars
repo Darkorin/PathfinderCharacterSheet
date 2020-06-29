@@ -1,246 +1,308 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/style.css">
-    <script src="script.js"></script>
-
-    <!-- Latest compiled and minified CSS & JS -->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-  <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-   
-
-    <title>Pathfinder Character Select</title>
-
-</head>
 <body>
-    <!----------------- Jumbotron ------------------->
-    <section id="home" class="jumbotron  jumbotron-fluid" style = "text-align: center;">
-        <div class="container">
-          <img class="logo" src="https://www.firstcomicsnews.com/wp-content/uploads/2016/09/Pathfinder-Logo-600x257.png" alt="logo">
-            <!-- <div class="knockout">PATHFINDER</div>
-            <div class="knockout" id="subtitle">Character Builder</div> -->
-        </div>
-      </section>
+   
+ <!-------------------BODY -------------------->
 
-      <!-------------------BODY -------------------->
-      <!-- Carousel #1 -->
-      <h1>CHOOSE YOUR RACE</h1>
-      <hr>
-
-      <body class="carousel-bg">
-        <!-- Carousel Image -->
-        <div>
-          <img src="https://image.winudf.com/v2/image1/Y29tLmFuZHJvaWRib2subXlmaXJzdHJlc291cmNldGVzdGVyYXBwX2ljb25fMTU2NzAxMjk5Ml8wMzE/icon.png?w=170&fakeurl=1" class="img-responsive quote-image">
-        </div>
-        <!-- Carousel Start below -->
-        <div id="carousel1" class="carousel slide testimonial-style" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#carousel1" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel1" data-slide-to="1"></li>
-            <li data-target="#carousel1" data-slide-to="2"></li>
-          </ol>
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner">
-            <div class="item active">
-              <div class="carousel-caption testimonial-caption-style">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-                <p class="testimonial-authors">Dwarf</p>
-              </div>
-            </div>
-            <div class="item">
-              <div class="carousel-caption testimonial-caption-style">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-                <p class="testimonial-authors">Human</p>
-              </div>
-            </div>
-            <div class="item">
-              <div class="carousel-caption testimonial-caption-style">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-                <p class="testimonial-authors">Elf</p>
-              </div>
-            </div>
-          </div>
-          
-          <a class="left carousel-control" href="#carousel1" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
-          <a class="right carousel-control" href="#carousel1" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
-        </div>
-      
-      
-        <!-- Carousel #2 -->
-        <hr>
-        <h1>CHOOSE YOUR CLASS</h1>
-        <hr>
-      
-          <body class="carousel-bg2">
-        <!-- Carousel Image -->
-        <div>
-          <img src="https://image.winudf.com/v2/image1/Y29tLmFuZHJvaWRib2subXlmaXJzdHJlc291cmNldGVzdGVyYXBwX2ljb25fMTU2NzAxMjk5Ml8wMzE/icon.png?w=170&fakeurl=1" class="img-responsive quote-image">
-        </div>
-        <!-- Carousel Start below -->
-        <div id="carousel2" class="carousel slide testimonial-style" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#carousel2" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel2" data-slide-to="1"></li>
-            <li data-target="#carousel2" data-slide-to="2"></li>
-          </ol>
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner">
-            <div class="item active">
-              <div class="carousel-caption testimonial-caption-style">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-                <p class="testimonial-authors">Wizard</p>
-              </div>
-            </div>
-            <div class="item">
-              <div class="carousel-caption testimonial-caption-style">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-                <p class="testimonial-authors">Rouge</p>
-              </div>
-            </div>
-            <div class="item">
-              <div class="carousel-caption testimonial-caption-style">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-                <p class="testimonial-authors">Monk</p>
-              </div>
-            </div>
-          </div>
-      
-          <!-- Controls -->
-      
-          <a class="left carousel-control" href="#carousel2" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
-          <a class="right carousel-control" href="#carousel2" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
-        </div>
-      </body>
-          
-      <!-- Ability Range Sliders -->
-      <hr>
-      <h1>SET YOUR ABILITY SCORE</h1>
-      <hr>
+<div class="row">
+  <div class="col-sm-6">
+    <!-- Ability Range Sliders -->
+<!-- <hr> -->
+<h1>SET YOUR ABILITY SCORE</h1>
+<!-- <hr> -->
 <div class="ability-score">
-      <div class="range-slider"><h2>Strength</h2>
-        <input class="range-slider__range" type="range" value="45" min="0" max="50">
-        <span class="range-slider__value">20</span>
-      </div>
-      
-      
-      <div class="range-slider">
-        <h2>Dexterity</h2>
-        <input class="range-slider__range" type="range" value="25" min="0" max="50" step="5">
-        <span class="range-slider__value">0</span>
-      </div>
-      
-      
-      <div class="range-slider">
-        <h2>Constitution</h2>
-        <input class="range-slider__range" type="range" value="0" min="0" max="50">
-        <span class="range-slider__value">0</span>
-      </div> 
-      
-      
-      <div class="range-slider">
-        <h2>Intelligence</h2>
-        <input class="range-slider__range" type="range" value="0" min="0" max="50">
-        <span class="range-slider__value">0</span>
-      </div> 
-      
-      
-      <div class="range-slider">
-        <h2>Wisdom</h2>
-        <input class="range-slider__range" type="range" value="0" min="0" max="50">
-        <span class="range-slider__value">0</span>
-      </div> 
-      
-      
-      <div class="range-slider">
-        <h2>Charisma</h2>
-        <input class="range-slider__range" type="range" value="0" min="0" max="50">
-        <span class="range-slider__value">0</span>
-      </div>
+<div class="range-slider"><h2>Strength</h2>
+  <input class="range-slider__range" type="range" value="45" min="0" max="50">
+  <span id="strength" class="range-slider__value">20</span>
+</div>
+
+
+<div class="range-slider">
+  <h2>Dexterity</h2>
+  <input class="range-slider__range" type="range" value="25" min="0" max="50" step="5">
+  <span id="dexterity" class="range-slider__value">0</span>
+</div>
+
+
+<div class="range-slider">
+  <h2>Constitution</h2>
+  <input class="range-slider__range" type="range" value="0" min="0" max="50">
+  <span id="constitution" class="range-slider__value">0</span>
+</div> 
+
+
+<div class="range-slider">
+  <h2>Intelligence</h2>
+  <input class="range-slider__range" type="range" value="0" min="0" max="50">
+  <span id="intelligence" class="range-slider__value">0</span>
+</div> 
+
+
+<div class="range-slider">
+  <h2>Wisdom</h2>
+  <input class="range-slider__range" type="range" value="0" min="0" max="50">
+  <span id= "wisdom" class="range-slider__value">0</span>
+</div> 
+
+
+<div class="range-slider">
+  <h2>Charisma</h2>
+  <input class="range-slider__range" type="range" value="0" min="0" max="50">
+  <span id="charisma" class="range-slider__value">0</span>
+</div>
+</div>
+</div>
+
+
+<!-- Carousel #1 -->
+<div class="col-sm-6">
+<h1>CHOOSE YOUR RACE</h1>
+
+<body class="carousel-bg">
+<!-- Carousel Image -->
+<div>
+<img
+src="https://image.winudf.com/v2/image1/Y29tLmFuZHJvaWRib2subXlmaXJzdHJlc291cmNldGVzdGVyYXBwX2ljb25fMTU2NzAxMjk5Ml8wMzE/icon.png?w=170&fakeurl=1"
+class="img-responsive quote-image">
+</div>
+<!-- Carousel Start below -->
+<div id="carousel1" class="carousel slide testimonial-style" data-ride="carousel">
+<!-- Indicators -->
+<ol class="carousel-indicators">
+<li data-target="#carousel1" data-slide-to="0" class="active"></li>
+<li data-target="#carousel1" data-slide-to="1"></li>
+<li data-target="#carousel1" data-slide-to="2"></li>
+<li data-target="#carousel1" data-slide-to="3"></li>
+<li data-target="#carousel1" data-slide-to="4"></li>
+<li data-target="#carousel1" data-slide-to="5"></li>
+<li data-target="#carousel1" data-slide-to="6"></li>
+</ol>
+<!-- Wrapper for slides -->
+<div class="carousel-inner">
+<div id="dwarf" class="item active">
+  <div class="carousel-caption testimonial-caption-style">
+    <img src="public/images/sword.png" class="img-responsive quote-image">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+    <p class="testimonial-authors">Dwarf</p>
+  </div>
+</div>
+<div id="human" class="item">
+  <img src=" " class="img-responsive quote-image">
+  <div class="carousel-caption testimonial-caption-style">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+    <p class="testimonial-authors">Human</p>
+  </div>
+</div>
+<div id="elf" class="item">
+  <div class="carousel-caption testimonial-caption-style">
+    <img src=" " class="img-responsive quote-image">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+    <p class="testimonial-authors">Elf</p>
+  </div>
+</div>
+  <div id="halfling" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Halfling</p>
     </div>
+</div>
+<div id="gnome" class="item">
+  <img src=" " class="img-responsive quote-image">
+  <div class="carousel-caption testimonial-caption-style">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+    <p class="testimonial-authors">Gnome</p>
+  </div>
+</div>
+<div id="halfElf" class="item">
+  <img src=" " class="img-responsive quote-image">
+  <div class="carousel-caption testimonial-caption-style">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+    <p class="testimonial-authors">Half-Elf</p>
+  </div>
+</div>
+<div id="halfOrc" class="item">
+  <img src=" " class="img-responsive quote-image">
+  <div class="carousel-caption testimonial-caption-style">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+    <p class="testimonial-authors">Half-Orc</p>
+  </div>
+</div>
 
-      <script>
-        var rangeSlider = function(){
-          var slider = $('.range-slider'),
-              range = $('.range-slider__range'),
-              value = $('.range-slider__value');
-            
-          slider.each(function(){
-        
-            value.each(function(){
-              var value = $(this).prev().attr('value');
-              $(this).html(value);
-            });
-        
-            range.on('input', function(){
-              $(this).next(value).html(this.value);
-            });
-          });
-        };
-        
-        rangeSlider();
 
-      </script>
+<a class="left carousel-control" href="#carousel1" data-slide="prev"> <span
+  class="glyphicon glyphicon-chevron-left"></span> </a>
+<a class="right carousel-control" href="#carousel1" data-slide="next"> <span
+  class="glyphicon glyphicon-chevron-right"></span> </a>
 
-      <br>
-      <hr>
-      <a href="stats.html">
-      <button type="button" class="btn btn-success">CREATE CHARACTER  
-      </button>
-    </a>
-      <hr>
+</div>
+</div>
+</div>
 
-    <!---------------------- Footer ---------------------->
-      <footer class="footer">
-        <div class="container-fluid">
-            
-                <br>
-              <h5>This site is Under Construction</h5>
-              <p> Pathfinder Character Sheet Builder :"This [website, character sheet, or whatever it is] uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This [website, character sheet, or whatever it is] is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit paizo.com/communityuse. For more information about Paizo Inc. and Paizo products, please visit paizo.com." </p>
-              <i class="fa fa-facebook"> </i>
-              <i class="fa fa-twitter"> </i>
-              <i class="fa fa-google"> </i>
-              <br>
-              
-            </div>
-      <hr>
-      
-      </div>
-      </footer>
+<!-- Carousel #2 -->
+<div class="row">
+<div class="col-sm-6">
+  <br>
+  <h1>CHOOSE YOUR CLASS</h1>
 
-<script>
-//  ----------CAROUSELS -----------------
+<body class="carousel-bg2">
 
-$(document).ready(function() {
-    $("#myCarousel").on("slide.bs.carousel", function(e) {
-      var $e = $(e.relatedTarget);
-      var idx = $e.index();
-      var itemsPerSlide = 3;
-      var totalItems = $(".carousel-item").length;
-  
-      if (idx >= totalItems - (itemsPerSlide - 1)) {
-        var it = itemsPerSlide - (totalItems - idx);
-        for (var i = 0; i < it; i++) {
-          // append slides to end
-          if (e.direction == "left") {
-            $(".carousel-item")
-              .eq(i)
-              .appendTo(".carousel-inner");
-          } else {
-            $(".carousel-item")
-              .eq(0)
-              .appendTo($(this).find(".carousel-inner"));
+<!-- Carousel Start below -->
+<div id="carousel2" class="carousel slide testimonial-style" data-ride="carousel">
+<!-- Indicators -->
+<ol class="carousel-indicators">
+  <li data-target="#carousel2" data-slide-to="0" class="active"></li>
+  <li data-target="#carousel2" data-slide-to="1"></li>
+  <li data-target="#carousel2" data-slide-to="2"></li>
+  <li data-target="#carousel2" data-slide-to="3"></li>
+  <li data-target="#carousel2" data-slide-to="4"></li>
+  <li data-target="#carousel2" data-slide-to="5"></li>
+  <li data-target="#carousel2" data-slide-to="6"></li>
+  <li data-target="#carousel2" data-slide-to="7"></li>
+  <li data-target="#carousel2" data-slide-to="8"></li>
+  <li data-target="#carousel2" data-slide-to="9"></li>
+  <li data-target="#carousel2" data-slide-to="10"></li>
+</ol>
+<!-- Wrapper for slides -->
+<div class="carousel-inner">
+  <div id="wizard" class="item active">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Wizard</p>
+    </div>
+  </div>
+  <div id="rouge" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Rouge</p>
+    </div>
+  </div>
+  <div id="monk" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Monk</p>
+    </div>
+  </div>
+  <div id="barbarian" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Barbarian</p>
+    </div>
+  </div>
+  <div id="bard" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">bard</p>
+    </div>
+  </div>
+  <div id="cleric" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Cleric</p>
+    </div>
+  </div>
+  <div id="druid" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Druid</p>
+    </div>
+  </div>
+  <div id="fighter" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Fighter</p>
+    </div>
+  </div>
+  <div id="paladin" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Paladin</p>
+    </div>
+  </div>
+  <div id="ranger" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Ranger</p>
+    </div>
+  </div>
+  <div id="sorcerer" class="item">
+    <img src=" " class="img-responsive quote-image">
+    <div class="carousel-caption testimonial-caption-style">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <p class="testimonial-authors">Sorcerer</p>
+    </div>
+  </div>
+</div>
+
+<!-- Controls -->
+
+<a class="left carousel-control" href="#carousel2" data-slide="prev"> <span
+    class="glyphicon glyphicon-chevron-left"></span> </a>
+<a class="right carousel-control" href="#carousel2" data-slide="next"> <span
+    class="glyphicon glyphicon-chevron-right"></span> </a>
+</div>
+</body>
+</div>
+</div>
+<br>
+
+<a href="editor">
+<button type="button" class="btn btn-info2" style="margin-bottom: 30px;">CREATE CHARACTER
+</button>
+</a>
+
+
+  <script>
+    //  ----------CAROUSELS Script-----------------
+
+    $(document).ready(function () {
+      $("#myCarousel").on("slide.bs.carousel", function (e) {
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 3;
+        var totalItems = $(".carousel-item").length;
+
+        if (idx >= totalItems - (itemsPerSlide - 1)) {
+          var it = itemsPerSlide - (totalItems - idx);
+          for (var i = 0; i < it; i++) {
+            // append slides to end
+            if (e.direction == "left") {
+              $(".carousel-item")
+                .eq(i)
+                .appendTo(".carousel-inner");
+            } else {
+              $(".carousel-item")
+                .eq(0)
+                .appendTo($(this).find(".carousel-inner"));
+            }
           }
         }
-      }
+      });
     });
-  });
-    </script>
-
-</body>
-</html>
+  </script>

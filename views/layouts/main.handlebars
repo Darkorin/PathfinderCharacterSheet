@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    {{#if index}} <link rel="stylesheet" href="../css/style.css"> {{else}}
+    <link rel="stylesheet" href="../css/stats-style.css">{{/if}}
+
+    <title>Pathfinder Character Sheet</title>
+
+</head>
+
+<body>
+    <!--------------------- Jumbotron ------------------->
+    <section id="home" class="jumbotron  jumbotron-fluid" style="text-align: center;">
+        <div class="container">
+            <a href="/create"><img class="logo"
+                src="../images/pathfinder-Logo.png" alt="logo"></a>
+            <!-- <div class="knockout">PATHFINDER</div>
+            <div class="knockout" id="subtitle">Character Builder</div> -->
+        </div>
+    </section>
+
+    {{{body}}}
+
+
+    <!---------------------- Footer ---------------------->
+    <footer class="footer">
+        <div class="container-fluid" style="margin: 10px">
+
+            <br>
+            <h5>This site is Under Construction</h5>
+            <p> Pathfinder Character Sheet Builder :"This [website, character sheet, or whatever it is] uses trademarks
+                and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are
+                expressly prohibited from charging you to use or access this content. This [website, character sheet, or
+                whatever it is] is not published, endorsed, or specifically approved by Paizo Inc. For more information
+                about Paizo's Community Use Policy, please visit paizo.com/communityuse. For more information about
+                Paizo Inc. and Paizo products, please visit paizo.com." </p>
+            <i class="fa fa-facebook"> </i>
+            <i class="fa fa-twitter"> </i>
+            <i class="fa fa-google"> </i>
+            <br>
+
+        </div>
+        <hr>
+
+        </div>
+    </footer>
+</body>
+
+</html>
