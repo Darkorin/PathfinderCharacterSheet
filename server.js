@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 8080;
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.use(express.static('/app/public'))
+app.use(express.static('./app/public'))
 
 // Handlebars Helper for calculating various functions
 Handlebars.registerHelper("calcMod", function (baseScore, tempMod) {
