@@ -92,7 +92,7 @@
 
                     <select id="feats1" multiple>
                         {{#each char.knownFeats}}
-                            <option value="{{featName}}">{{featName}}</option>
+                        <option value="{{featName}}">{{featName}}</option>
                         {{/each}}
                     </select>
                     <br>
@@ -103,9 +103,9 @@
                     <h3>Available</h3>
                     <select id="feats2" multiple>
                         {{#each feats}}
-                                {{#unless (isKnown name charId)}}
-                                    <option value="{{name}}">{{name}}</option>
-                                {{/unless}}
+                        {{#unless (isKnown name charId)}}
+                        <option value="{{name}}">{{name}}</option>
+                        {{/unless}}
                         {{/each}}
                     </select>
                 </div>
@@ -206,14 +206,14 @@
                     <input type="text" id="charName" placeholder="Character Name" value={{char.descriptive.name}} />
                     <br>
                     <label for="charAlignment">Alignment</label>
-                    <input type="text" id="charAlignment" placeholder="LG" value={{char.descriptive.alignment}} maxlength="2"
-                        style="width: 30px" />
+                    <input type="text" id="charAlignment" placeholder="LG" value={{char.descriptive.alignment}}
+                        maxlength="2" style="width: 30px" />
                     <label for="charHeight">Height</label>
-                    <input type="text" id="charHeight" placeholder="5'10&quot;" value="{{char.descriptive.height}}&quot;"
-                        maxlength="10" style="width: 50px" />
+                    <input type="text" id="charHeight" placeholder="5'10&quot;"
+                        value="{{char.descriptive.height}}&quot;" maxlength="10" style="width: 50px" />
                     <label for="charWeight">Weight</label>
-                    <input type="text" id="charWeight" placeholder="150lb" value={{char.descriptive.weight}} maxlength="6"
-                        style="width: 50px" />
+                    <input type="text" id="charWeight" placeholder="150lb" value={{char.descriptive.weight}}
+                        maxlength="6" style="width: 50px" />
                     <label for="charHair">Hair</label>
                     <input type="text" id="charHair" placeholder="Black" value={{char.descriptive.hair}}
                         style="width: 60px" />
@@ -243,7 +243,7 @@
                     </div>
                     <div class="row">
                         <label for="XP">Exp: </label>
-                        <input type="number" value="{{char.exp}}"/>
+                        <input type="number" value="{{char.exp}}" />
                     </div>
                     <div class="row">
                         <h4>Money:</h4>
@@ -255,12 +255,12 @@
                     <div class="row">
                         <br></br>
                         <h3>
-                            Initiative: <input type="number" value={{add (calcMod char.scores.dex.value char.scores.dex.temp) char.initTemp 0 0 0}}
+                            Initiative: <input type="number"
+                                value={{add (calcMod char.scores.dex.value char.scores.dex.temp) char.initTemp 0 0 0}}
                                 style="width: 40px;" /> =
-                                <input type="number" value={{calcMod char.scores.dex.value char.scores.dex.temp}}
+                            <input type="number" value={{calcMod char.scores.dex.value char.scores.dex.temp}}
                                 style="width: 40px;" /> +
-                                <input type="number" value={{char.initTemp}}
-                                style="width: 40px;" /></h3>
+                            <input type="number" value={{char.initTemp}} style="width: 40px;" /></h3>
                     </div>
                 </div>
                 <div class="col-sm-1"></div>
@@ -268,7 +268,8 @@
                     <div class="row">
                         <h4>Race: {{char.raceName}}</h4>
                         <h4>Class: {{char.class.name}}</h4>
-                        <h4>Level: <input type="text" id="level" placeholder="1" value={{char.level}} style="width: 40px;" />
+                        <h4>Level: <input type="text" id="level" placeholder="1" value={{char.level}}
+                                style="width: 40px;" />
                         </h4>
                     </div>
                     <div class="row">
@@ -308,7 +309,8 @@
                                     value={{add 10 0 (calcMod char.scores.dex.value char.scores.dex.temp) char.ac.natural char.ac.misc}}
                                     style="width: 60px;" /></h3>
                             <h3>Flat-Footed AC: <input type="number" name="total"
-                                    value={{add 10 char.ac.armor 0 char.ac.natural char.ac.misc}} style="width: 60px;" /></h3>
+                                    value={{add 10 char.ac.armor 0 char.ac.natural char.ac.misc}}
+                                    style="width: 60px;" /></h3>
                         </div>
 
                         <!-- Total = Base + Ability Mod + Misc-->
@@ -349,7 +351,8 @@
                         <div class="col-sm-4 text-left">
                             <!-- Total = Base Attack Bonus(BaB) + Str Mod -->
                             <h4>CMB:
-                                <input type="number" value={{add char.bab (calcMod char.scores.str.value char.scores.str.temp) 0 0 0}}
+                                <input type="number"
+                                    value={{add char.bab (calcMod char.scores.str.value char.scores.str.temp) 0 0 0}}
                                     style="width: 50px;" /> =
                                 <input type="number" value={{char.bab}} style="width: 50px;" /> +
                                 <input type="number" value={{calcMod char.scores.str.value char.scores.str.temp}}
@@ -382,10 +385,45 @@
                         <textarea id="notes" placeholder="notes" style="height: 100px;">{{char.notes}}</textarea>
                     </div>
                 </div>
-            </div>
 
+
+<div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Melee:</h3>
+                        <input class="form-control" type="text" id="weaponName" placeholder="weapon name">
+                        <input class="form-control" type="number" id="attackBonus" placeholder="attack bonus">
+                        <input class="form-control" type="number" id="damage" placeholder="damage">
+                        <input class="form-control" type="number" id="critical" placeholder="critical">
+                        <input class="form-control" type="text" id="type" placeholder="type">
+                        <br>
+                        <button class="saveButton  greenButton">Add Melee</button>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <h3>Ranged:</h3>
+                        <input class="form-control" type="text" id="weaponName" placeholder="weapon name">
+                        <input class="form-control" type="number" id="attackBonus" placeholder="attack bonus">
+                        <input class="form-control" type="number" id="damage" placeholder="damage">
+                        <input class="form-control" type="number" id="critical" placeholder="critical">
+                        <input class="form-control" type="text" id="type" placeholder="type">
+                        <input class="form-control" type="text" id="ammo" placeholder="ammo">
+                        <br>
+                        <button class="saveButton  greenButton">Add Ranged</button>
+                    </div>
+
+                </div>
+                </div>
+
+
+
+
+            </div>
         </div>
     </div>
+
+</div>
+</div>
 </div>
 </div>
 
