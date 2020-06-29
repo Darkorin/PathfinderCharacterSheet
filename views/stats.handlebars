@@ -90,11 +90,9 @@
                     <h3>Known</h3>
 
                     <select id="sbOne" multiple="multiple">
-                        <option value="1">Wind</option>
-                        <option value="2">Water</option>
-                        <option value="3">Earth</option>
-                        <option value="4">Fire</option>
-                        <option value="5">Heart</option>
+                        {{#each knownFeats}}
+                            <option value="{{featName}}">{{featName}}</option>
+                        {{/each}}
                     </select>
                     <br>
                     <input type="button" id="left" value="<" />
@@ -103,13 +101,12 @@
                 <div class="col-sm-4">
                     <h3>Available</h3>
                     <select id="sbTwo" multiple="multiple">
-
-                        <option value="6">Captian</option>
-                        <option value="7">Planet</option>
+                        {{#each feats}}
+                                {{#unless (isKnown name charId)}}
+                                    <option value="{{name}}">{{name}}</option>
+                                {{/unless}}
+                        {{/each}}
                     </select>
-                    <br>
-                    <input type="button" id="leftall" value="<<" />
-                    <input type="button" id="rightall" value=">>" />
                 </div>
                 <br>
                 <div class="col-sm-4">

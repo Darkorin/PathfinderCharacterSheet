@@ -16,13 +16,24 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static('public'))
 
-// Handlebars Helper for calculating stat mods
+// Handlebars Helper for calculating various functions
 Handlebars.registerHelper("calcMod", function (baseScore, tempMod) {
     return -Math.ceil((10 - (baseScore + tempMod)) / 2);
 });
 
 Handlebars.registerHelper("add", function (val1, val2, val3, val4, val5) {
     return val1 + val2 + val3 + val4 + val5;
+});
+
+Handlebars.registerHelper("isKnown", function (featName, charId) {
+    let isKnown = false;
+    const knownFeats = [
+        { featName: "Acrobatic" }
+    ];
+    knownFeats.forEach(feat => {
+        if (featName === feat.featName) isKnown = true;
+    })
+    return isKnown;
 });
 
 // Creates an empty db object to import to from our json file
@@ -55,11 +66,11 @@ app.get("/create", (req, res) => {
 //
 // Character editor For testing only
 app.get("/stats", (req, res) => {
-    
+
     let racePlural = db.races[0].name;
     let raceTraitsURL = db.racialTraits[0][0].url;
     let index = raceTraitsURL.search(racePlural);
-    let race = raceTraitsURL.substring(index+racePlural.length+1, raceTraitsURL.search(' Racial') +1);
+    let race = raceTraitsURL.substring(index + racePlural.length + 1, raceTraitsURL.search(' Racial') + 1);
 
     res.render("stats", {
         //Page
@@ -78,13 +89,14 @@ app.get("/stats", (req, res) => {
         }),
 
         //Character export
+        charId: 0,
         descriptive: {
-        name: "Darkorin",
-        alignment: "CN",
-        height: "5'8",
-        weight: "150lb",
-        hair: "black",
-        eyes: "blue"
+            name: "Darkorin",
+            alignment: "CN",
+            height: "5'8",
+            weight: "150lb",
+            hair: "black",
+            eyes: "blue"
         },
         level: 1,
         raceName: race,
@@ -96,6 +108,9 @@ app.get("/stats", (req, res) => {
             wis: { score: "WIS", value: 14, temp: 1 },
             cha: { score: "CHA", value: 8, temp: -4 }
         },
+        knownFeats: [
+            { featName: "Acrobatic" }
+        ],
         hp: 30,
         initTemp: 3,
         money: {
@@ -110,9 +125,9 @@ app.get("/stats", (req, res) => {
             misc: 1
         },
         saves: {
-            will: {base: 1, temp: 0, score: "wis"},
-            fort: {base: 1, temp: 0, score: "con"},
-            ref: {base: 1, temp: 0, score: "dex"}
+            will: { base: 1, temp: 0, score: "wis" },
+            fort: { base: 1, temp: 0, score: "con" },
+            ref: { base: 1, temp: 0, score: "dex" }
         },
         bab: 1,
         spRes: "0",
