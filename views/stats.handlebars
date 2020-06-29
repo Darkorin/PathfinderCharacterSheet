@@ -173,45 +173,116 @@
             </div>
         </div>
         <div class="tab-pane" id="charSheet">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-9">
-                <br>
-                <h3>CHARACTER SHEET</h3>
-
-                <div class="range-slider">
-                    <h2>HP Tracker</h2>
-                    <input class="range-slider__range" type="range" value="45" min="0" max="50">
-                    <span class="range-slider__value">20</span>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 text-center">
+                    <br>
+                    <h3>CHARACTER SHEET</h3>
                 </div>
-                <h2>Spell Tracker</h2>
-                <br>
-                <div class="col-sm-4">
-                    <h3>UNUSED</h3>
-
-                    <select id="sbOne" multiple="multiple">
-                        <option value="1">Wind</option>
-                        <option value="2">Water</option>
-                        <option value="3">Earth</option>
-                        <option value="4">Fire</option>
-                        <option value="5">Heart</option>
-                    </select>
-                    <input type="button" id="left" value="<" />
-                    <input type="button" id="right" value=">" />
-                </div>
-                <div class="col-sm-4">
-                    <h3>USED</h3>
-                    <select id="sbTwo" multiple="multiple">
-
-                        <option value="6">Captian</option>
-                        <option value="7">Planet</option>
-                    </select>
-
-                    <input type="button" id="leftall" value="<<" />
-                    <input type="button" id="rightall" value=">>" />
-                </div>
-                <br>
-
             </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 text-center">
+                    <label for="#charName">Name</label>
+                    <input type="text" id="charName" placeholder="Character Name" value={{descriptive.name}} />
+                    <br>
+                    <label for="charAlignment">Alignment</label>
+                    <input type="text" id="charAlignment" placeholder="LG" value={{descriptive.alignment}} maxlength="2"
+                        style="width: 30px" />
+                    <label for="charHeight">Height</label>
+                    <input type="text" id="charHeight" placeholder="5'10&quot;" value="{{descriptive.height}}&quot;"
+                        maxlength="10" style="width: 50px" />
+                    <label for="charWeight">Weight</label>
+                    <input type="text" id="charWeight" placeholder="150lb" value={{descriptive.weight}} maxlength="6"
+                        style="width: 50px" />
+                    <label for="charHair">Hair</label>
+                    <input type="text" id="charHair" placeholder="Black" value={{descriptive.hair}}
+                        style="width: 60px" />
+                    <label for="charEyes">Eyes</label>
+                    <input type="text" id="charEyes" placeholder="Blue" value={{descriptive.eyes}}
+                        style="width: 60px" />
+                </div>
+            </div>
+            <div class="row">
+                <br><br>
+                <div class="col-sm-3 text-right">
+                    <h3>Ability Scores</h3>
+                    <p>Name Score Mod Temp</p>
+                    {{#each scores}}
+                    {{> overview/ability-score-block score=score value=value temp=temp}}
+                    {{/each}}
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="range-slider">
+                            <h4>HP</h4>
+                            <input class="range-slider__range" type="range" value="30" min="-{{scores.con.value}}"
+                                max="{{hp}}">
+                            <span class="range-slider__value">30</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="XP">Exp: </label>
+                        <input type="number" />
+                    </div>
+                    <div class="row">
+                        <h4>Money:</h4>
+                        {{> overview/money type="C" amount=money.c}}
+                        {{> overview/money type="S" amount=money.s}}
+                        {{> overview/money type="G" amount=money.g}}
+                        {{> overview/money type="G" amount=money.p}}
+                    </div>
+                    <div class="row">
+                        <label for="init">Initiative: </label>
+                        <input type="number" value={{calcMod scores.dex.value scores.dex.temp}} style="width: 40px;" />
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <h4>Race: {{raceName}}</h4>
+                        <h4>Class: {{class.name}}</h4>
+                        <h4>Level: <input type="text" id="level" placeholder="1" value={{level}} style="width: 40px;" />
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4>Speeds:</h4>
+                        {{> overview/speeds type="Base"}}
+                        {{> overview/speeds type="Armor"}}
+                        {{> overview/speeds type="Fly"}}
+                        {{> overview/speeds type="Swim"}}
+                        {{> overview/speeds type="Climb"}}
+                    </div>
+                </div>
+            </div>
+            <h2>Spell Tracker</h2>
+            <br>
+            <div class="col-sm-4">
+                <h3>UNUSED</h3>
+
+                <select id="sbOne" multiple="multiple">
+                    <option value="1">Wind</option>
+                    <option value="2">Water</option>
+                    <option value="3">Earth</option>
+                    <option value="4">Fire</option>
+                    <option value="5">Heart</option>
+                </select>
+                <input type="button" id="left" value="<" />
+                <input type="button" id="right" value=">" />
+            </div>
+            <div class="col-sm-4">
+                <h3>USED</h3>
+                <select id="sbTwo" multiple="multiple">
+
+                    <option value="6">Captian</option>
+                    <option value="7">Planet</option>
+                </select>
+
+                <input type="button" id="leftall" value="<<" />
+                <input type="button" id="rightall" value=">>" />
+            </div>
+            <br>
 
         </div>
     </div>
@@ -220,6 +291,4 @@
 
 </div>
 
-<!-- Javascript -->
-
-<script type="text/javascript" src="../scripts/script.js"></script>
+<script src="../scripts/script.js"></script>
