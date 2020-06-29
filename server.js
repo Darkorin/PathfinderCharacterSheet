@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 8080;
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.use(express.static('public'))
+app.use(express.static('/app/public'))
 
 // Handlebars Helper for calculating various functions
 Handlebars.registerHelper("calcMod", function (baseScore, tempMod) {
@@ -48,7 +48,7 @@ const db = {
 
 // Function to import the db.
 const importDB = () => {
-    fs.readFile("./data/pfdb.json", "utf8", (err, content) => {
+    fs.readFile("./app/data/pfdb.json", "utf8", (err, content) => {
         if (err) throw err;
         content = JSON.parse(content);
         const index = ["feats", "racialTraits", "races", "skills", "classes", "spells"];
@@ -144,7 +144,6 @@ app.get("/api/feats/:featName", (req, res) => {
     db.feats.forEach(feat => {
         if (feat.name === req.params.featName) return res.json(feat);
     })
-    // return res.json(false);
 })
 
 // Imports the DB
