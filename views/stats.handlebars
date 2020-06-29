@@ -86,10 +86,11 @@
                 <button class="featBtn greenButton" style="margin: 20px;">Add New Feat</button>
                 <br> --}}
                 <br>
-                <div class="col-sm-4">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
                     <h3>Known</h3>
 
-                    <select id="sbOne" multiple="multiple">
+                    <select id="feats1" multiple>
                         {{#each knownFeats}}
                             <option value="{{featName}}">{{featName}}</option>
                         {{/each}}
@@ -98,9 +99,9 @@
                     <input type="button" id="left" value="<" />
                     <input type="button" id="right" value=">" />
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <h3>Available</h3>
-                    <select id="sbTwo" multiple="multiple">
+                    <select id="feats2" multiple>
                         {{#each feats}}
                                 {{#unless (isKnown name charId)}}
                                     <option value="{{name}}">{{name}}</option>
@@ -110,12 +111,8 @@
                 </div>
                 <br>
                 <div class="col-sm-4">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, asperiores, sequi
-                        inventore, mollitia facilis totam voluptas laudantium odio non delectus porro magnam
-                        molestias dolore. Accusamus sint perspiciatis quis iste dolorem! Lorem ipsum dolor, sit amet
-                        consectetur adipisicing elit. Autem labore rem, officia, sed eius earum, aliquam sequi
-                        corporis voluptas velit ex! Natus enim dicta fugiat velit dolorum, quos sint totam.
-                    </p>
+                    <h3 id="featDisplayName"></h3>
+                    <div id="featDisplay"></div>
                 </div>
             </div>
         </div>

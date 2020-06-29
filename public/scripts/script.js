@@ -200,125 +200,57 @@ saveButton.addEventListener('click', () => {
 });
 
 
-//-------- SPELL TRACKER  ----------
+//-------- List Functions  ----------
 $(function () {
   function moveItems(origin, dest) {
     $(origin).find(':selected').appendTo(dest);
   }
 
-  function moveAllItems(origin, dest) {
-    $(origin).children().appendTo(dest);
+  // function moveAllItems(origin, dest) {
+  //   $(origin).children().appendTo(dest);
+  // }
+
+  function displayFeat(origin) {
+    $('#featDisplay').empty();
+    let listName = ($(origin).find(':selected').val());
+    $.get(`/api/feats/${listName}`).then(res => {
+      $('#featDisplayName').text(res.name);
+      for(let i = 0; i < res.sections.length; i++) {
+        if(res.sections[i].name === 'Prerequisites') {
+          $('#featDisplay').append(`<h4>${res.sections[i].name}: ${res.sections[i].description}</h4>`);
+        } else {
+          $('#featDisplay').append(`<h4>${res.sections[i].name}:</h4>`).append(`${res.sections[i].body}`); 
+        }
+      }
+    })
   }
 
-  $('#left').click(function () {
-    moveItems('#sbTwo', '#sbOne');
-  });
+  function displayTrait(origin, dest, source) {
+    $(`${dest}`).empty();
+    let listName = ($(origin).find(':selected').val());
+    $.get(`/api/${source}/${listName}`).then(res => {
+      $(`${dest}Name`).text(res.name);
+      for(let i = 0; i < res.sections.length; i++) {
+        if(res.sections[i].name === 'Prerequisites') {
+          $(`${dest}`).append(`<h4>${res.sections[i].name}: ${res.sections[i].description}</h4>`);
+        } else {
+          $(`${dest}`).append(`<h4>${res.sections[i].name}:</h4>`).append(`${res.sections[i].body}`); 
+        }
+      }
+    })
+  }
 
-  $('#right').on('click', function () {
-    moveItems('#sbOne', '#sbTwo');
-  });
+  $('#feats1').click(function() {displayFeat('#feats1', '#featDisplay')});
+  $('#feats2').click(function() {displayFeat('#feats2', '#featDisplay')});
 
-  $('#leftall').on('click', function () {
-    moveAllItems('#sbTwo', '#sbOne');
-  });
+  $('#left').click(function() {moveItems('#feats2', '#feats1')});
+  $('#right').click(function() {moveItems('#feats1', '#feats2')});
 
-  $('#rightall').on('click', function () {
-    moveAllItems('#sbOne', '#sbTwo');
-  });
+  // $('#leftall').on('click', function () {
+  //   moveAllItems('#sbTwo', '#sbOne');
+  // });
+
+  // $('#rightall').on('click', function () {
+  //   moveAllItems('#sbOne', '#sbTwo');
+  // });
 });
-// User Adding stats
-
-// const createButton = document.querySelector('.createButton');
-// const noteCreator = document.querySelector('.noteCreator');
-
-// const noteTitle = document.querySelector('.noteTitle');
-// const noteBody = document.querySelector('.noteBody');
-// const saveButton = document.querySelector('.saveButton');
-// const cancelButton = document.querySelector('.cancelButton');
-
-// const createdNotes = document.querySelector('.createdNotes');
-// const savedNotesDB = [];
-
-// let idCounter = -1;
-// let i = -1;
-
-// //Fade in, fade out
-// function fadeIn(el){
-//     el.classList.add('show');
-//     el.classList.remove('hide');  
-// }
-// function fadeOut(el){
-//     el.classList.add('hide');
-//     el.classList.remove('show');  
-// }
-
-// //Show and hide Note Creator
-// createButton.addEventListener('click', () => {
-//     if ( noteCreator.className.indexOf('hide') !== -1 ) {
-//         fadeIn(noteCreator);
-//     } else {
-//         fadeOut(noteCreator);
-//     }
-// });
-
-// //Cancel Button
-// cancelButton.addEventListener('click', () => {
-//     noteTitle.value = '';
-//     noteBody.value = '';
-//     fadeOut(noteCreator);
-// });
-
-// //Reset Editor
-// function resetEditor() {
-//     noteTitle.value = '';
-//     noteBody.value = '';
-//     fadeOut(noteCreator);
-// }
-
-// //Object printer
-// function printObject(elementToCreate, className, dbContent, placeLocation) {
-//     let printBody = document.createElement(elementToCreate);
-//     printBody.className = className;
-//     printBody.innerHTML = dbContent;
-//     if ( printBody.className === 'savedNote' ) {
-//         idCounter += 1;
-//         i += 1;
-//         printBody.id = 'n' + idCounter;
-//     };
-//     document.querySelector(placeLocation).appendChild(printBody);            
-// };
-
-// //Create new note
-// saveButton.addEventListener('click', () => {
-//     let noteContent = {
-//         title: '',
-//         body: ''
-//     }
-
-//     //Push content to the DB
-//     noteContent.title = noteTitle.value;
-//     noteContent.body = noteBody.value;
-//     savedNotesDB.push(noteContent);
-
-//     if ( noteContent.title !== '' || noteContent.body !== '' ) {
-//         //Print content
-//         printObject('div', 'savedNote', '', '.createdNotes');
-//         printObject('h2', 'savedNoteTitle', savedNotesDB[i].title, '.savedNote:last-child');
-//         printObject('p', 'savedNoteBody', savedNotesDB[i].body, '.savedNote:last-child');
-
-//         let printDelete = document.createElement('a');
-//         printDelete.innerHTML = 'törlés';
-//         printDelete.className = 'deleteButton';
-//         printDelete.onclick = function () {
-//             let childToDelete = document.getElementById('n' + idCounter );
-//             createdNotes.removeChild(childToDelete);
-//             idCounter -= 1;
-//         };
-//         document.querySelector('.savedNote:last-child').appendChild(printDelete);
-
-//         resetEditor();
-//     } else {
-//         resetEditor();
-//         savedNotesDB.pop();
-//     }
-// });

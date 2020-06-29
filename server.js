@@ -140,6 +140,13 @@ app.get("/editor/:charId?", (req, res) => {
     res.render("stats", { race: db.races[0], classes: db.classes[0], feats: db.feats, skills: db.skills, spells: db.spells });
 })
 
+app.get("/api/feats/:featName", (req, res) => {
+    db.feats.forEach(feat => {
+        if (feat.name === req.params.featName) return res.json(feat);
+    })
+    // return res.json(false);
+})
+
 // Imports the DB
 importDB();
 
