@@ -4,12 +4,7 @@ var Sequelize = require("sequelize");
 var sequelize = new Sequelize("pfdb", "root", "rootroot", {
   host: "localhost",
   port: 3306,
-  dialect: "mysql",
-  pool: {
-    max: 50,
-    min: 0,
-    idle: 10000
-  }
+  dialect: "mysql"
 });
 
 // Exports the connection for other files to use
