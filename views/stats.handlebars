@@ -107,7 +107,7 @@
                         <option value="6">Captian</option>
                         <option value="7">Planet</option>
                     </select>
-<br>
+                    <br>
                     <input type="button" id="leftall" value="<<" />
                     <input type="button" id="rightall" value=">>" />
                 </div>
@@ -263,8 +263,14 @@
                         {{> overview/money type="G" amount=money.p}}
                     </div>
                     <div class="row">
-                        <label for="init">Initiative: </label>
-                        <input type="number" value={{calcMod scores.dex.value scores.dex.temp}} style="width: 40px;" />
+                        <br></br>
+                        <h3>
+                            Initiative: <input type="number" value={{add (calcMod scores.dex.value scores.dex.temp) initTemp 0 0 0}}
+                                style="width: 40px;" /> =
+                                <input type="number" value={{calcMod scores.dex.value scores.dex.temp}}
+                                style="width: 40px;" /> +
+                                <input type="number" value={{initTemp}}
+                                style="width: 40px;" /></h3>
                     </div>
                 </div>
                 <div class="col-sm-1"></div>
@@ -285,33 +291,108 @@
                     </div>
                 </div>
             </div>
-            <h2>Spell Tracker</h2>
-            <br>
-            <div class="col-sm-4">
-                <h3>UNUSED</h3>
+            <div class="row">
+                <div class="col-sm-7 text-right">
+                    <div class="row">
+                        <h3>Armor Class:
+                            <input type="number" name="total"
+                                value={{add 10 ac.armor (calcMod scores.dex.value scores.dex.temp) ac.natural ac.misc}}
+                                style="width: 60px;" />= 10 +
+                            <input type="number" value={{ac.armor}} style="width: 60px;" /> +
+                            <input type="number" value={{calcMod scores.dex.value scores.dex.temp}}
+                                style="width: 60px;" />+
+                            <input type="number" value={{ac.natural}} style="width: 60px;" /> +
+                            <input type="number" value={{ac.misc}} style="width: 60px;" />
 
-                <select id="sbOne" multiple="multiple">
-                    <option value="1">Wind</option>
-                    <option value="2">Water</option>
-                    <option value="3">Earth</option>
-                    <option value="4">Fire</option>
-                    <option value="5">Heart</option>
-                </select>
-                <input type="button" id="left" value="<" />
-                <input type="button" id="right" value=">" />
+                            <!-- Figure out how to label those input boxes in a way that looks nice 
+                            My idea for layout is:
+                            AC:  ___ = 10 + ___ + ___ + ___ + ___
+                                Total      Armor  Dex Natural Misc
+                            But I can't for the life of me figure out how to set it up like that in CSS-->
+                        </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8 text-right">
+                            <br><br>
+                            <h3>Touch AC: <input type="number" name="total"
+                                    value={{add 10 0 (calcMod scores.dex.value scores.dex.temp) ac.natural ac.misc}}
+                                    style="width: 60px;" /></h3>
+                            <h3>Flat-Footed AC: <input type="number" name="total"
+                                    value={{add 10 ac.armor 0 ac.natural ac.misc}} style="width: 60px;" /></h3>
+                        </div>
+
+                        <!-- Total = Base + Ability Mod + Misc-->
+                        <div class="col-sm-4 text-right">
+                            <h2>Saving Throws: </h2>
+                            <h4>Fortitude:
+                                <input type="number"
+                                    value={{add saves.fort.base (calcMod scores.con.value scores.con.temp) saves.fort.temp 0 0}}
+                                    style="width: 50px;" /> =
+                                <input type="number" value={{saves.fort.base}} style="width: 50px;" /> +
+                                <input type="number" value={{calcMod scores.con.value scores.con.temp}}
+                                    style="width: 50px;" /> +
+                                <input type="number" value={{saves.fort.temp}} style="width: 50px;" /></h4>
+                            <h4>Reflex:
+                                <input type="number"
+                                    value={{add saves.ref.base (calcMod scores.dex.value scores.dex.temp) saves.ref.temp 0 0}}
+                                    style="width: 50px;" /> =
+                                <input type="number" value={{saves.ref.base}} style="width: 50px;" /> +
+                                <input type="number" value={{calcMod scores.dex.value scores.dex.temp}}
+                                    style="width: 50px;" /> +
+                                <input type="number" value={{saves.ref.temp}} style="width: 50px;" /></h4>
+                            <h4>Will:
+                                <input type="number"
+                                    value={{add saves.will.base (calcMod scores.wis.value scores.wis.temp) saves.will.temp 0 0}}
+                                    style="width: 50px;" /> =
+                                <input type="number" value={{saves.will.base}} style="width: 50px;" /> +
+                                <input type="number" value={{calcMod scores.wis.value scores.wis.temp}}
+                                    style="width: 50px;" /> +
+                                <input type="number" value={{saves.will.temp}} style="width: 50px;" /></h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <h3>Base Attack Bonus: <input type="number" value={{bab}} style="width: 50px;" /></h3>
+                            <h3>Spell Resistance: <input type="text" value={{spRes}} style="width: 50px;" /></h3>
+                        </div>
+                        <div class="col-sm-4 text-left">
+                            <!-- Total = Base Attack Bonus(BaB) + Str Mod -->
+                            <h4>CMB:
+                                <input type="number" value={{add bab (calcMod scores.str.value scores.str.temp) 0 0 0}}
+                                    style="width: 50px;" /> =
+                                <input type="number" value={{bab}} style="width: 50px;" /> +
+                                <input type="number" value={{calcMod scores.str.value scores.str.temp}}
+                                    style="width: 50px;" />
+                                <!-- Total = Base Attack Bonus(BaB) + Str Mod + Dex Mod + 10 -->
+                                <h4>CMD:
+                                    <input type="number"
+                                        value={{add bab (calcMod scores.str.value scores.str.temp) (calcMod scores.dex.value scores.dex.temp) 10 0}}
+                                        style="width: 50px;" /> =
+                                    <input type="number" value={{bab}} style="width: 50px;" /> +
+                                    <input type="number" value={{calcMod scores.str.value scores.str.temp}}
+                                        style="width: 50px;" /> +
+                                    <input type="number" value={{calcMod scores.dex.value scores.dex.temp}}
+                                        style="width: 50px;" />+ 10</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <h4>Languages:</h4>
+                        <select id="languageBlock" multiple="multiple">
+                            {{#each languages}}
+                            <option value="{{@index}}" style="width: 100px;">{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="row">
+                        <h4>Notes: </h4>
+                        <textarea id="notes" placeholder="notes" style="height: 100px;"></textarea>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-4">
-                <h3>USED</h3>
-                <select id="sbTwo" multiple="multiple">
-
-                    <option value="6">Captian</option>
-                    <option value="7">Planet</option>
-                </select>
-
-                <input type="button" id="leftall" value="<<" />
-                <input type="button" id="rightall" value=">>" />
-            </div>
-            <br>
 
         </div>
     </div>

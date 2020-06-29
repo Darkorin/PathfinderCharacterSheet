@@ -21,6 +21,10 @@ Handlebars.registerHelper("calcMod", function (baseScore, tempMod) {
     return -Math.ceil((10 - (baseScore + tempMod)) / 2);
 });
 
+Handlebars.registerHelper("add", function (val1, val2, val3, val4, val5) {
+    return val1 + val2 + val3 + val4 + val5;
+});
+
 // Creates an empty db object to import to from our json file
 const db = {
     feats: [],
@@ -93,12 +97,26 @@ app.get("/stats", (req, res) => {
             cha: { score: "CHA", value: 8, temp: -4 }
         },
         hp: 30,
+        initTemp: 3,
         money: {
             c: 70,
             s: 51,
             g: 31,
             p: 10
-        }
+        },
+        ac: {
+            armor: 7,
+            natural: 2,
+            misc: 1
+        },
+        saves: {
+            will: {base: 1, temp: 0, score: "wis"},
+            fort: {base: 1, temp: 0, score: "con"},
+            ref: {base: 1, temp: 0, score: "dex"}
+        },
+        bab: 1,
+        spRes: "0",
+        languages: ["common", "draconic", "dwarven"]
     });
 })
 
