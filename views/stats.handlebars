@@ -91,7 +91,7 @@
                     <h3>Known</h3>
 
                     <select id="feats1" multiple>
-                        {{#each knownFeats}}
+                        {{#each char.knownFeats}}
                             <option value="{{featName}}">{{featName}}</option>
                         {{/each}}
                     </select>
@@ -207,22 +207,22 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-10 text-center">
                     <label for="#charName">Name</label>
-                    <input type="text" id="charName" placeholder="Character Name" value={{descriptive.name}} />
+                    <input type="text" id="charName" placeholder="Character Name" value={{char.descriptive.name}} />
                     <br>
                     <label for="charAlignment">Alignment</label>
-                    <input type="text" id="charAlignment" placeholder="LG" value={{descriptive.alignment}} maxlength="2"
+                    <input type="text" id="charAlignment" placeholder="LG" value={{char.descriptive.alignment}} maxlength="2"
                         style="width: 30px" />
                     <label for="charHeight">Height</label>
-                    <input type="text" id="charHeight" placeholder="5'10&quot;" value="{{descriptive.height}}&quot;"
+                    <input type="text" id="charHeight" placeholder="5'10&quot;" value="{{char.descriptive.height}}&quot;"
                         maxlength="10" style="width: 50px" />
                     <label for="charWeight">Weight</label>
-                    <input type="text" id="charWeight" placeholder="150lb" value={{descriptive.weight}} maxlength="6"
+                    <input type="text" id="charWeight" placeholder="150lb" value={{char.descriptive.weight}} maxlength="6"
                         style="width: 50px" />
                     <label for="charHair">Hair</label>
-                    <input type="text" id="charHair" placeholder="Black" value={{descriptive.hair}}
+                    <input type="text" id="charHair" placeholder="Black" value={{char.descriptive.hair}}
                         style="width: 60px" />
                     <label for="charEyes">Eyes</label>
-                    <input type="text" id="charEyes" placeholder="Blue" value={{descriptive.eyes}}
+                    <input type="text" id="charEyes" placeholder="Blue" value={{char.descriptive.eyes}}
                         style="width: 60px" />
                 </div>
             </div>
@@ -231,7 +231,7 @@
                 <div class="col-sm-3 text-right">
                     <h3>Ability Scores</h3>
                     <p>Name Score Mod Temp</p>
-                    {{#each scores}}
+                    {{#each char.scores}}
                     {{> overview/ability-score-block score=score value=value temp=temp}}
                     {{/each}}
                 </div>
@@ -240,39 +240,39 @@
                     <div class="row">
                         <div class="range-slider">
                             <h4>HP</h4>
-                            <input class="range-slider__range" type="range" value="30" min="-{{scores.con.value}}"
-                                max="{{hp}}">
+                            <input class="range-slider__range" type="range" value="30" min="-{{char.scores.con.value}}"
+                                max="{{char.hp}}">
                             <span class="range-slider__value">30</span>
                         </div>
                     </div>
                     <div class="row">
-                        <label for="XP">Exp: </label>
+                        <label for="XP">Exp: {{char.exp}}</label>
                         <input type="number" />
                     </div>
                     <div class="row">
                         <h4>Money:</h4>
-                        {{> overview/money type="C" amount=money.c}}
-                        {{> overview/money type="S" amount=money.s}}
-                        {{> overview/money type="G" amount=money.g}}
-                        {{> overview/money type="G" amount=money.p}}
+                        {{> overview/money type="C" amount=char.money.c}}
+                        {{> overview/money type="S" amount=char.money.s}}
+                        {{> overview/money type="G" amount=char.money.g}}
+                        {{> overview/money type="G" amount=char.money.p}}
                     </div>
                     <div class="row">
                         <br></br>
                         <h3>
-                            Initiative: <input type="number" value={{add (calcMod scores.dex.value scores.dex.temp) initTemp 0 0 0}}
+                            Initiative: <input type="number" value={{add (calcMod char.scores.dex.value char.scores.dex.temp) char.initTemp 0 0 0}}
                                 style="width: 40px;" /> =
-                                <input type="number" value={{calcMod scores.dex.value scores.dex.temp}}
+                                <input type="number" value={{calcMod char.scores.dex.value char.scores.dex.temp}}
                                 style="width: 40px;" /> +
-                                <input type="number" value={{initTemp}}
+                                <input type="number" value={{char.initTemp}}
                                 style="width: 40px;" /></h3>
                     </div>
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-3">
                     <div class="row">
-                        <h4>Race: {{raceName}}</h4>
-                        <h4>Class: {{class.name}}</h4>
-                        <h4>Level: <input type="text" id="level" placeholder="1" value={{level}} style="width: 40px;" />
+                        <h4>Race: {{char.raceName}}</h4>
+                        <h4>Class: {{char.class.name}}</h4>
+                        <h4>Level: <input type="text" id="level" placeholder="1" value={{char.level}} style="width: 40px;" />
                         </h4>
                     </div>
                     <div class="row">
@@ -290,13 +290,13 @@
                     <div class="row">
                         <h3>Armor Class:
                             <input type="number" name="total"
-                                value={{add 10 ac.armor (calcMod scores.dex.value scores.dex.temp) ac.natural ac.misc}}
+                                value={{add 10 char.ac.armor (calcMod char.scores.dex.value char.scores.dex.temp) char.ac.natural char.ac.misc}}
                                 style="width: 60px;" />= 10 +
-                            <input type="number" value={{ac.armor}} style="width: 60px;" /> +
-                            <input type="number" value={{calcMod scores.dex.value scores.dex.temp}}
+                            <input type="number" value={{char.ac.armor}} style="width: 60px;" /> +
+                            <input type="number" value={{calcMod char.scores.dex.value char.scores.dex.temp}}
                                 style="width: 60px;" />+
-                            <input type="number" value={{ac.natural}} style="width: 60px;" /> +
-                            <input type="number" value={{ac.misc}} style="width: 60px;" />
+                            <input type="number" value={{char.ac.natural}} style="width: 60px;" /> +
+                            <input type="number" value={{char.ac.misc}} style="width: 60px;" />
 
                             <!-- Figure out how to label those input boxes in a way that looks nice 
                             My idea for layout is:
@@ -309,10 +309,10 @@
                         <div class="col-sm-8 text-right">
                             <br><br>
                             <h3>Touch AC: <input type="number" name="total"
-                                    value={{add 10 0 (calcMod scores.dex.value scores.dex.temp) ac.natural ac.misc}}
+                                    value={{add 10 0 (calcMod char.scores.dex.value char.scores.dex.temp) char.ac.natural char.ac.misc}}
                                     style="width: 60px;" /></h3>
                             <h3>Flat-Footed AC: <input type="number" name="total"
-                                    value={{add 10 ac.armor 0 ac.natural ac.misc}} style="width: 60px;" /></h3>
+                                    value={{add 10 char.ac.armor 0 char.ac.natural char.ac.misc}} style="width: 60px;" /></h3>
                         </div>
 
                         <!-- Total = Base + Ability Mod + Misc-->
@@ -320,53 +320,53 @@
                             <h2>Saving Throws: </h2>
                             <h4>Fortitude:
                                 <input type="number"
-                                    value={{add saves.fort.base (calcMod scores.con.value scores.con.temp) saves.fort.temp 0 0}}
+                                    value={{add char.saves.fort.base (calcMod char.scores.con.value char.scores.con.temp) char.saves.fort.temp 0 0}}
                                     style="width: 50px;" /> =
-                                <input type="number" value={{saves.fort.base}} style="width: 50px;" /> +
-                                <input type="number" value={{calcMod scores.con.value scores.con.temp}}
+                                <input type="number" value={{char.saves.fort.base}} style="width: 50px;" /> +
+                                <input type="number" value={{calcMod char.scores.con.value char.scores.con.temp}}
                                     style="width: 50px;" /> +
-                                <input type="number" value={{saves.fort.temp}} style="width: 50px;" /></h4>
+                                <input type="number" value={{char.saves.fort.temp}} style="width: 50px;" /></h4>
                             <h4>Reflex:
                                 <input type="number"
-                                    value={{add saves.ref.base (calcMod scores.dex.value scores.dex.temp) saves.ref.temp 0 0}}
+                                    value={{add char.saves.ref.base (calcMod char.scores.dex.value char.scores.dex.temp) char.saves.ref.temp 0 0}}
                                     style="width: 50px;" /> =
-                                <input type="number" value={{saves.ref.base}} style="width: 50px;" /> +
-                                <input type="number" value={{calcMod scores.dex.value scores.dex.temp}}
+                                <input type="number" value={{char.saves.ref.base}} style="width: 50px;" /> +
+                                <input type="number" value={{calcMod char.scores.dex.value char.scores.dex.temp}}
                                     style="width: 50px;" /> +
-                                <input type="number" value={{saves.ref.temp}} style="width: 50px;" /></h4>
+                                <input type="number" value={{char.saves.ref.temp}} style="width: 50px;" /></h4>
                             <h4>Will:
                                 <input type="number"
-                                    value={{add saves.will.base (calcMod scores.wis.value scores.wis.temp) saves.will.temp 0 0}}
+                                    value={{add char.saves.will.base (calcMod char.scores.wis.value char.scores.wis.temp) char.saves.will.temp 0 0}}
                                     style="width: 50px;" /> =
-                                <input type="number" value={{saves.will.base}} style="width: 50px;" /> +
-                                <input type="number" value={{calcMod scores.wis.value scores.wis.temp}}
+                                <input type="number" value={{char.saves.will.base}} style="width: 50px;" /> +
+                                <input type="number" value={{calcMod char.scores.wis.value char.scores.wis.temp}}
                                     style="width: 50px;" /> +
-                                <input type="number" value={{saves.will.temp}} style="width: 50px;" /></h4>
+                                <input type="number" value={{char.saves.will.temp}} style="width: 50px;" /></h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
-                            <h3>Base Attack Bonus: <input type="number" value={{bab}} style="width: 50px;" /></h3>
-                            <h3>Spell Resistance: <input type="text" value={{spRes}} style="width: 50px;" /></h3>
+                            <h3>Base Attack Bonus: <input type="number" value={{char.bab}} style="width: 50px;" /></h3>
+                            <h3>Spell Resistance: <input type="text" value={{char.spRes}} style="width: 50px;" /></h3>
                         </div>
                         <div class="col-sm-4 text-left">
                             <!-- Total = Base Attack Bonus(BaB) + Str Mod -->
                             <h4>CMB:
-                                <input type="number" value={{add bab (calcMod scores.str.value scores.str.temp) 0 0 0}}
+                                <input type="number" value={{add char.bab (calcMod char.scores.str.value char.scores.str.temp) 0 0 0}}
                                     style="width: 50px;" /> =
-                                <input type="number" value={{bab}} style="width: 50px;" /> +
-                                <input type="number" value={{calcMod scores.str.value scores.str.temp}}
+                                <input type="number" value={{char.bab}} style="width: 50px;" /> +
+                                <input type="number" value={{calcMod char.scores.str.value char.scores.str.temp}}
                                     style="width: 50px;" />
                                 <!-- Total = Base Attack Bonus(BaB) + Str Mod + Dex Mod + 10 -->
                                 <h4>CMD:
                                     <input type="number"
-                                        value={{add bab (calcMod scores.str.value scores.str.temp) (calcMod scores.dex.value scores.dex.temp) 10 0}}
+                                        value={{add char.bab (calcMod char.scores.str.value char.scores.str.temp) (calcMod char.scores.dex.value char.scores.dex.temp) 10 0}}
                                         style="width: 50px;" /> =
-                                    <input type="number" value={{bab}} style="width: 50px;" /> +
-                                    <input type="number" value={{calcMod scores.str.value scores.str.temp}}
+                                    <input type="number" value={{char.bab}} style="width: 50px;" /> +
+                                    <input type="number" value={{calcMod char.scores.str.value char.scores.str.temp}}
                                         style="width: 50px;" /> +
-                                    <input type="number" value={{calcMod scores.dex.value scores.dex.temp}}
+                                    <input type="number" value={{calcMod char.scores.dex.value char.scores.dex.temp}}
                                         style="width: 50px;" />+ 10</h4>
                         </div>
                     </div>
@@ -376,14 +376,14 @@
                     <div class="row">
                         <h4>Languages:</h4>
                         <select id="languageBlock" multiple="multiple">
-                            {{#each languages}}
+                            {{#each char.languages}}
                             <option value="{{@index}}" style="width: 100px;">{{this}}</option>
                             {{/each}}
                         </select>
                     </div>
                     <div class="row">
                         <h4>Notes: </h4>
-                        <textarea id="notes" placeholder="notes" style="height: 100px;"></textarea>
+                        <textarea id="notes" placeholder="notes" style="height: 100px;">{{char.notes}}</textarea>
                     </div>
                 </div>
             </div>

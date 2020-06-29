@@ -3,6 +3,7 @@ const fs = require('fs');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars');
+const Character = require('./app/models/character.js');
 
 // Create an instance of the express app.
 const app = express();
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 8080;
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static('./app/public'))
+
 
 // Handlebars Helper for calculating various functions
 Handlebars.registerHelper("calcMod", function (baseScore, tempMod) {
@@ -66,30 +68,14 @@ app.get("/create", (req, res) => {
 //
 // Character editor For testing only
 app.get("/stats", (req, res) => {
-
+    //Renders Dummy character
     let racePlural = db.races[0].name;
     let raceTraitsURL = db.racialTraits[0][0].url;
     let index = raceTraitsURL.search(racePlural);
-    let race = raceTraitsURL.substring(index + racePlural.length + 1, raceTraitsURL.search(' Racial') + 1);
+    let race = raceTraitsURL.substring(index + racePlural.length + 1, raceTraitsURL.search(' Racial'));
 
-    res.render("stats", {
-        //Page
-        index: false,
-        //DB export
-        race: db.races[0],
-        class: db.classes[0],
-        feats: db.feats,
-        skills: db.skills,
-        spells: db.spells.filter(spell => {
-            let spellUsable = false;
-            spell.levels.forEach(pfclass => {
-                if (pfclass.class === db.classes[0].name) spellUsable = true;
-            });
-            return spellUsable;
-        }),
-
-        //Character export
-        charId: 0,
+    //Character export
+    const dummy = {
         descriptive: {
             name: "Darkorin",
             alignment: "CN",
@@ -99,7 +85,17 @@ app.get("/stats", (req, res) => {
             eyes: "blue"
         },
         level: 1,
+        class: db.classes[0],
+        race: db.races[0],
         raceName: race,
+        exp: 1000,
+        spells: db.spells.filter(spell => {
+            let spellUsable = false;
+            spell.levels.forEach(pfclass => {
+                if (pfclass.class === db.classes[0].name) spellUsable = true;
+            });
+            return spellUsable;
+        }),
         scores: {
             str: { score: "STR", value: 18, temp: 2 },
             dex: { score: "DEX", value: 7, temp: 1 },
@@ -131,8 +127,24 @@ app.get("/stats", (req, res) => {
         },
         bab: 1,
         spRes: "0",
-        languages: ["common", "draconic", "dwarven"]
-    });
+        languages: ["common", "draconic", "dwarven"],
+        notes: "Nothing really matters, anyone can see, nothing really matters to me"
+    }
+    
+
+    Character.create({
+        data: dummy
+    }).then(results => {
+        res.render("stats", {
+            //Page
+            index: false,
+            //DB export
+            feats: db.feats,
+            skills: db.skills,
+            charId: results.id,
+            char: results.data
+        });
+    })
 })
 
 // Character editor
@@ -143,6 +155,11 @@ app.get("/editor/:charId?", (req, res) => {
 app.get("/api/feats/:featName", (req, res) => {
     db.feats.forEach(feat => {
         if (feat.name === req.params.featName) return res.json(feat);
+    })
+})
+
+app.post("/api/new", (req, res) => {
+    Character.create({
     })
 })
 
