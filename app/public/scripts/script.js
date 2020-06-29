@@ -157,11 +157,8 @@ function printObject(elementToCreate, className, dbContent, placeLocation) {
 };
 
 //Create new note
-saveButton.addEventListener('click', () => {
-  let noteContent = {
-    title: '',
-    body: ''
-  }
+function handleNote(note) {
+
 
   //Push content to the DB
   noteContent.title = noteTitle.value;
@@ -189,8 +186,19 @@ saveButton.addEventListener('click', () => {
     resetEditor();
     savedNotesDB.pop();
   }
-});
+}
 
+saveButton.addEventListener('click', () => {
+  handleNote({
+    title: '',
+    body: ''
+  });
+});
+$.get('/api/character/items').then(res => {
+  res.forEach(item => {
+
+  })
+})
 
 //-------- List Functions  ----------
 $(function () {
@@ -207,11 +215,11 @@ $(function () {
     let listName = ($(origin).find(':selected').val());
     $.get(`/api/feats/${listName}`).then(res => {
       $('#featDisplayName').text(res.name);
-      for(let i = 0; i < res.sections.length; i++) {
-        if(res.sections[i].name === 'Prerequisites') {
+      for (let i = 0; i < res.sections.length; i++) {
+        if (res.sections[i].name === 'Prerequisites') {
           $('#featDisplay').append(`<h4>${res.sections[i].name}: ${res.sections[i].description}</h4>`);
         } else {
-          $('#featDisplay').append(`<h4>${res.sections[i].name}:</h4>`).append(`${res.sections[i].body}`); 
+          $('#featDisplay').append(`<h4>${res.sections[i].name}:</h4>`).append(`${res.sections[i].body}`);
         }
       }
     })
@@ -222,21 +230,21 @@ $(function () {
     let listName = ($(origin).find(':selected').val());
     $.get(`/api/${source}/${listName}`).then(res => {
       $(`${dest}Name`).text(res.name);
-      for(let i = 0; i < res.sections.length; i++) {
-        if(res.sections[i].name === 'Prerequisites') {
+      for (let i = 0; i < res.sections.length; i++) {
+        if (res.sections[i].name === 'Prerequisites') {
           $(`${dest}`).append(`<h4>${res.sections[i].name}: ${res.sections[i].description}</h4>`);
         } else {
-          $(`${dest}`).append(`<h4>${res.sections[i].name}:</h4>`).append(`${res.sections[i].body}`); 
+          $(`${dest}`).append(`<h4>${res.sections[i].name}:</h4>`).append(`${res.sections[i].body}`);
         }
       }
     })
   }
 
-  $('#feats1').click(function() {displayFeat('#feats1', '#featDisplay')});
-  $('#feats2').click(function() {displayFeat('#feats2', '#featDisplay')});
+  $('#feats1').click(function () { displayFeat('#feats1', '#featDisplay') });
+  $('#feats2').click(function () { displayFeat('#feats2', '#featDisplay') });
 
-  $('#left').click(function() {moveItems('#feats2', '#feats1')});
-  $('#right').click(function() {moveItems('#feats1', '#feats2')});
+  $('#left').click(function () { moveItems('#feats2', '#feats1') });
+  $('#right').click(function () { moveItems('#feats1', '#feats2') });
 
   // $('#leftall').on('click', function () {
   //   moveAllItems('#sbTwo', '#sbOne');

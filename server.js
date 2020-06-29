@@ -28,14 +28,19 @@ Handlebars.registerHelper("add", function (val1, val2, val3, val4, val5) {
 });
 
 Handlebars.registerHelper("isKnown", function (featName, charId) {
-    let isKnown = false;
-    const knownFeats = [
-        { featName: "Acrobatic" }
-    ];
-    knownFeats.forEach(feat => {
-        if (featName === feat.featName) isKnown = true;
-    })
-    return isKnown;
+    Character.findOne({
+        where: {
+            id: charId
+        }
+    }).then(results => {
+        let isKnown = false;
+        results.knownFeats.forEach(feat => {
+            if (featName === feat.featName) isKnown = true;
+        })
+        return isKnown;
+    }).catch(err => {
+        if (err) throw err;
+    });
 });
 
 // Creates an empty db object to import to from our json file
@@ -65,9 +70,47 @@ app.get("/create", (req, res) => {
     res.render("index", { index: true, races: db.races, classes: db.classes });
 })
 
-//
-// Character editor For testing only
-app.get("/stats", (req, res) => {
+// Character editor
+app.get("/editor/:charId", (req, res) => {
+    Character.findOne({
+        where: {
+            id: req.params.charId
+        }
+    }).then(results => {
+        console.log(results);
+        res.render("stats", {
+            //Page
+            index: false,
+            //DB export
+            feats: db.feats,
+            skills: db.skills,
+            charId: results.id,
+            char: results.data
+        })
+    }).catch(err => {
+        res.status(401).json(err);
+    });
+})
+
+
+// API Routes
+app.get("/api/feats/:featName", (req, res) => {
+    db.feats.forEach(feat => {
+        if (feat.name === req.params.featName) return res.json(feat);
+    })
+})
+
+app.get("/api/:charId/:query", (req, res) => {
+
+})
+
+app.post("/api/new", (req, res) => {
+    Character.create({
+    })
+})
+
+// Creates a dummy character for testing
+const generateDummy = () => {
     //Renders Dummy character
     let racePlural = db.races[0].name;
     let raceTraitsURL = db.racialTraits[0][0].url;
@@ -126,46 +169,22 @@ app.get("/stats", (req, res) => {
             ref: { base: 1, temp: 0, score: "dex" }
         },
         items: [{
-            name: "Long Sword",
-            description: "Stabs people for 1d6 of damage" 
+            title: "Long Sword",
+            body: "Stabs people for 1d6 of damage"
         }],
         bab: 1,
         spRes: "0",
         languages: ["common", "draconic", "dwarven"],
         notes: "Nothing really matters, anyone can see, nothing really matters to me"
     }
-    
+
 
     Character.create({
         data: dummy
     }).then(results => {
-        res.render("stats", {
-            //Page
-            index: false,
-            //DB export
-            feats: db.feats,
-            skills: db.skills,
-            charId: results.id,
-            char: results.data
-        });
+        console.log(results);
     })
-})
-
-// Character editor
-app.get("/editor/:charId?", (req, res) => {
-    res.render("stats", { race: db.races[0], classes: db.classes[0], feats: db.feats, skills: db.skills, spells: db.spells });
-})
-
-app.get("/api/feats/:featName", (req, res) => {
-    db.feats.forEach(feat => {
-        if (feat.name === req.params.featName) return res.json(feat);
-    })
-})
-
-app.post("/api/new", (req, res) => {
-    Character.create({
-    })
-})
+}
 
 // Imports the DB
 importDB();
