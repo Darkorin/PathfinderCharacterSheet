@@ -110,7 +110,6 @@ const noteCreator = document.querySelector('.noteCreator, .noteCreatorSpell');
 const noteTitle = document.querySelector('.noteTitle, .noteTitleSpell');
 const noteBody = document.querySelector('.noteBody, .noteBodySpell');
 const saveButton = document.querySelector('.saveButton, .saveButtonSpell');
-const cancelButton = document.querySelector('.cancelButton, .cancelButtonSpell');
 
 const createdNotes = document.querySelector('.createdNotes, .createdNotesSpell');
 const savedNotesDB = [];
@@ -135,13 +134,6 @@ createButton.addEventListener('click', () => {
   } else {
     fadeOut(noteCreator);
   }
-});
-
-//Cancel Button
-cancelButton.addEventListener('click', () => {
-  noteTitle.value = '';
-  noteBody.value = '';
-  fadeOut(noteCreator);
 });
 
 //Reset Editor

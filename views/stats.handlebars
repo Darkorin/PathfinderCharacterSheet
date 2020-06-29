@@ -160,14 +160,11 @@
                         <textarea class="noteBody" placeholder="Description"></textarea>
 
                         <button class="saveButton  greenButton">Save</button>
-                        <button class="cancelButton">Delete</button>
                     </div>
 
                 </div>
             </div>
         </div>
-
-
 
         <div class="tab-pane" id="spells">
             <div class="col-sm-6">
@@ -189,7 +186,6 @@
                         <textarea class="noteBodySpell" placeholder="Description"></textarea>
 
                         <button class="saveButtonSpell  greenButton">Save</button>
-                        <button class="cancelButtonSpell">Delete</button>
                     </div>
 
                 </div>
@@ -246,8 +242,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label for="XP">Exp: {{char.exp}}</label>
-                        <input type="number" />
+                        <label for="XP">Exp: </label>
+                        <input type="number" value="{{char.exp}}"/>
                     </div>
                     <div class="row">
                         <h4>Money:</h4>

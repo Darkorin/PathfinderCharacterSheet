@@ -125,6 +125,10 @@ app.get("/stats", (req, res) => {
             fort: { base: 1, temp: 0, score: "con" },
             ref: { base: 1, temp: 0, score: "dex" }
         },
+        items: [{
+            name: "Long Sword",
+            description: "Stabs people for 1d6 of damage" 
+        }],
         bab: 1,
         spRes: "0",
         languages: ["common", "draconic", "dwarven"],
