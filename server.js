@@ -4,6 +4,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars');
 const Character = require('./app/models/character.js');
+const path = require('path');
 // const User = require('./app/models/user.js')
 
 // Create an instance of the express app.
@@ -17,7 +18,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: false }))
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.use(express.static('./app/public'))
+app.use(express.static(path.join(__dirname, 'app/public')));
 app.use(express.json());
 
 
@@ -54,7 +55,7 @@ const db = {
 
 // Function to import the db.
 const importDB = () => {
-    fs.readFile("./app/data/pfdb.json", "utf8", (err, content) => {
+    fs.readFile("app/data/pfdb.json", "utf8", (err, content) => {
         if (err) throw err;
         content = JSON.parse(content);
         const index = ["feats", "racialTraits", "races", "skills", "classes", "spells"];

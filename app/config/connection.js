@@ -7,7 +7,7 @@ var config = require(__dirname + '/config.json')[env];
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config.development)
+  var sequelize = new Sequelize(config.database, config.username, config.password, config)
 }
 
 // Exports the connection for other files to use
