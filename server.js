@@ -60,6 +60,11 @@ const importDB = () => {
     });
 }
 
+// Root Route Login
+app.get("/", (req,res) => {
+    res.render("login");
+})
+
 // Character Initialization Page Route
 app.get("/create", (req, res) => {
     res.render("index", { index: true, races: db.races, classes: db.classes });
