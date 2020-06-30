@@ -9,7 +9,6 @@
 <script>
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId());
-        // $.post('/login', profile.getId());
+        $.post('/login', profile.getId());
     }
 </script>
