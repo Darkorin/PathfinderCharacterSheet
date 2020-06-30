@@ -52,7 +52,7 @@
             <div class="tab-content service-tab-content">
                 <div class="tab-pane active" id="traits">
                     <div class="col-sm-4">
-                        <img src="./images/stats-image1.jpg" alt="" class="img-responsive tab-image-ex-gap"
+                        <img src="../images/stats-image1.jpg" alt="" class="img-responsive tab-image-ex-gap"
                             style="padding: 20px;">
                     </div>
                     <div class="col-sm-8">
@@ -92,7 +92,7 @@
 
                     <select id="feats1" multiple>
                         {{#each char.knownFeats}}
-                        <option value="{{featName}}">{{featName}}</option>
+                            <option value="{{featName}}">{{featName}}</option>
                         {{/each}}
                     </select>
                     <br>
@@ -103,9 +103,9 @@
                     <h3>Available</h3>
                     <select id="feats2" multiple>
                         {{#each feats}}
-                        {{#unless (isKnown name charId)}}
-                        <option value="{{name}}">{{name}}</option>
-                        {{/unless}}
+                            {{#unless (isKnown name ../char.knownFeats)}}
+                                <option value="{{name}}">{{name}}</option>
+                            {{/unless}}
                         {{/each}}
                     </select>
                 </div>
@@ -118,7 +118,7 @@
         </div>
         <div class="tab-pane" id="skills">
             <div class="col-sm-4">
-                <img src="./images/stats-image3.jpg" alt="" class="img-responsive tab-image-ex-gap"
+                <img src="../images/stats-image3.jpg" alt="" class="img-responsive tab-image-ex-gap"
                     style="padding: 20px;">
             </div>
             <div class="col-sm-8">
@@ -391,32 +391,32 @@
                 </div>
 
 
-<div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h3>Melee:</h3>
-                        <input class="form-control" type="text" id="weaponName" placeholder="weapon name">
-                        <input class="form-control" type="number" id="attackBonus" placeholder="attack bonus">
-                        <input class="form-control" type="number" id="damage" placeholder="damage">
-                        <input class="form-control" type="number" id="critical" placeholder="critical">
-                        <input class="form-control" type="text" id="type" placeholder="type">
-                        <br>
-                        <button class="saveButton  greenButton">Add Melee</button>
-                    </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3>Melee:</h3>
+                            <input class="form-control" type="text" id="weaponName" placeholder="weapon name">
+                            <input class="form-control" type="number" id="attackBonus" placeholder="attack bonus">
+                            <input class="form-control" type="number" id="damage" placeholder="damage">
+                            <input class="form-control" type="number" id="critical" placeholder="critical">
+                            <input class="form-control" type="text" id="type" placeholder="type">
+                            <br>
+                            <button class="saveButton  greenButton">Add Melee</button>
+                        </div>
 
-                    <div class="col-sm-6">
-                        <h3>Ranged:</h3>
-                        <input class="form-control" type="text" id="weaponName" placeholder="weapon name">
-                        <input class="form-control" type="number" id="attackBonus" placeholder="attack bonus">
-                        <input class="form-control" type="number" id="damage" placeholder="damage">
-                        <input class="form-control" type="number" id="critical" placeholder="critical">
-                        <input class="form-control" type="text" id="type" placeholder="type">
-                        <input class="form-control" type="text" id="ammo" placeholder="ammo">
-                        <br>
-                        <button class="saveButton  greenButton">Add Ranged</button>
-                    </div>
+                        <div class="col-sm-6">
+                            <h3>Ranged:</h3>
+                            <input class="form-control" type="text" id="weaponName" placeholder="weapon name">
+                            <input class="form-control" type="number" id="attackBonus" placeholder="attack bonus">
+                            <input class="form-control" type="number" id="damage" placeholder="damage">
+                            <input class="form-control" type="number" id="critical" placeholder="critical">
+                            <input class="form-control" type="text" id="type" placeholder="type">
+                            <input class="form-control" type="text" id="ammo" placeholder="ammo">
+                            <br>
+                            <button class="saveButton  greenButton">Add Ranged</button>
+                        </div>
 
-                </div>
+                    </div>
                 </div>
 
 

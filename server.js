@@ -27,20 +27,12 @@ Handlebars.registerHelper("add", function (val1, val2, val3, val4, val5) {
     return val1 + val2 + val3 + val4 + val5;
 });
 
-Handlebars.registerHelper("isKnown", function (featName, charId) {
-    Character.findOne({
-        where: {
-            id: charId
-        }
-    }).then(results => {
-        let isKnown = false;
-        results.knownFeats.forEach(feat => {
-            if (featName === feat.featName) isKnown = true;
-        })
-        return isKnown;
-    }).catch(err => {
-        if (err) throw err;
-    });
+Handlebars.registerHelper("isKnown", function (featName, knownFeats) {
+    let isKnown = false;
+    knownFeats.forEach(feat => {
+        if (featName === feat.featName) isKnown = true;
+    })
+    return isKnown;
 });
 
 // Creates an empty db object to import to from our json file
@@ -77,7 +69,6 @@ app.get("/editor/:charId", (req, res) => {
             id: req.params.charId
         }
     }).then(results => {
-        console.log(results);
         res.render("stats", {
             //Page
             index: false,
@@ -110,81 +101,81 @@ app.post("/api/new", (req, res) => {
 })
 
 // Creates a dummy character for testing
-const generateDummy = () => {
-    //Renders Dummy character
-    let racePlural = db.races[0].name;
-    let raceTraitsURL = db.racialTraits[0][0].url;
-    let index = raceTraitsURL.search(racePlural);
-    let race = raceTraitsURL.substring(index + racePlural.length + 1, raceTraitsURL.search(' Racial'));
+// const generateDummy = () => {
+//     //Renders Dummy character
+//     let racePlural = db.races[0].name;
+//     let raceTraitsURL = db.racialTraits[0][0].url;
+//     let index = raceTraitsURL.search(racePlural);
+//     let race = raceTraitsURL.substring(index + racePlural.length + 1, raceTraitsURL.search(' Racial'));
 
-    //Character export
-    const dummy = {
-        descriptive: {
-            name: "Darkorin",
-            alignment: "CN",
-            height: "5'8",
-            weight: "150lb",
-            hair: "black",
-            eyes: "blue"
-        },
-        level: 1,
-        class: db.classes[0],
-        race: db.races[0],
-        raceName: race,
-        exp: 1000,
-        spells: db.spells.filter(spell => {
-            let spellUsable = false;
-            spell.levels.forEach(pfclass => {
-                if (pfclass.class === db.classes[0].name) spellUsable = true;
-            });
-            return spellUsable;
-        }),
-        scores: {
-            str: { score: "STR", value: 18, temp: 2 },
-            dex: { score: "DEX", value: 7, temp: 1 },
-            con: { score: "CON", value: 5, temp: 2 },
-            int: { score: "INT", value: 9, temp: 3 },
-            wis: { score: "WIS", value: 14, temp: 1 },
-            cha: { score: "CHA", value: 8, temp: -4 }
-        },
-        knownFeats: [
-            { featName: "Acrobatic" }
-        ],
-        hp: 30,
-        initTemp: 3,
-        money: {
-            c: 70,
-            s: 51,
-            g: 31,
-            p: 10
-        },
-        ac: {
-            armor: 7,
-            natural: 2,
-            misc: 1
-        },
-        saves: {
-            will: { base: 1, temp: 0, score: "wis" },
-            fort: { base: 1, temp: 0, score: "con" },
-            ref: { base: 1, temp: 0, score: "dex" }
-        },
-        items: [{
-            title: "Long Sword",
-            body: "Stabs people for 1d6 of damage"
-        }],
-        bab: 1,
-        spRes: "0",
-        languages: ["common", "draconic", "dwarven"],
-        notes: "Nothing really matters, anyone can see, nothing really matters to me"
-    }
-
-
-    Character.create({
-        data: dummy
-    }).then(results => {
-        console.log(results);
-    })
-}
+//     //Character export
+//     const dummy = {
+//         descriptive: {
+//             name: "Darkorin",
+//             alignment: "CN",
+//             height: "5'8",
+//             weight: "150lb",
+//             hair: "black",
+//             eyes: "blue"
+//         },
+//         level: 1,
+//         class: db.classes[0],
+//         race: db.races[0],
+//         raceName: race,
+//         exp: 1000,
+//         spells: db.spells.filter(spell => {
+//             let spellUsable = false;
+//             spell.levels.forEach(pfclass => {
+//                 if (pfclass.class === db.classes[0].name) spellUsable = true;
+//             });
+//             return spellUsable;
+//         }),
+//         scores: {
+//             str: { score: "STR", value: 18, temp: 2 },
+//             dex: { score: "DEX", value: 7, temp: 1 },
+//             con: { score: "CON", value: 5, temp: 2 },
+//             int: { score: "INT", value: 9, temp: 3 },
+//             wis: { score: "WIS", value: 14, temp: 1 },
+//             cha: { score: "CHA", value: 8, temp: -4 }
+//         },
+//         knownFeats: [
+//             { featName: "Acrobatic" }
+//         ],
+//         hp: 30,
+//         initTemp: 3,
+//         money: {
+//             c: 70,
+//             s: 51,
+//             g: 31,
+//             p: 10
+//         },
+//         ac: {
+//             armor: 7,
+//             natural: 2,
+//             misc: 1
+//         },
+//         saves: {
+//             will: { base: 1, temp: 0, score: "wis" },
+//             fort: { base: 1, temp: 0, score: "con" },
+//             ref: { base: 1, temp: 0, score: "dex" }
+//         },
+//         items: [{
+//             title: "Long Sword",
+//             body: "Stabs people for 1d6 of damage"
+//         }],
+//         bab: 1,
+//         spRes: "0",
+//         languages: ["common", "draconic", "dwarven"],
+//         notes: "Nothing really matters, anyone can see, nothing really matters to me"
+//     }
+//
+//
+//     Character.create({
+//         data: dummy
+//     }).then(results => {
+//         console.log(results);
+//     })
+// }
 
 // Imports the DB
 importDB();
