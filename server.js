@@ -6,7 +6,6 @@ const Handlebars = require('handlebars');
 const Character = require('./app/models/character.js');
 // const User = require('./app/models/user.js')
 
-
 // Create an instance of the express app.
 const app = express();
 
