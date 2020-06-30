@@ -181,7 +181,7 @@ $(document).ready(() => {
       printDelete.onclick = function () {
         let childToDelete = document.getElementById('n' + idCounter);
         createdNotes.removeChild(childToDelete);
-        savedNotesDB.pop();
+        savedNotesDB.splice(idCounter,1);
         $.post(`/api/${charId}/items`, JSON.stringify(savedNotesDB));
         idCounter -= 1;
       };
@@ -217,6 +217,13 @@ $(document).ready(() => {
   $(function () {
     function moveItems(origin, dest) {
       $(origin).find(':selected').appendTo(dest);
+      const featList = [];
+      const featNodes = $('#feats1').children().toArray();
+      //$('#feats1').children().forEach(feat => {
+      for(let i = 0; i < featNodes.length; i++) {
+        featList.push({featName: featNodes[i].text});
+      }
+      $.post(`/api/${charId}/knownFeats`, JSON.stringify(featList));
     }
 
     // function moveAllItems(origin, dest) {
