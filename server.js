@@ -57,9 +57,10 @@ const db = {
 const importDB = () => {
     fs.readFile("app/data/pfdb.json", "utf8", (err, content) => {
         console.log("error: ", err);
-        console.log("content: ", content);
+        
         if (err) throw err;
         content = JSON.parse(content);
+        console.log("content: ", content[5][75]);
         const index = ["feats", "racialTraits", "races", "skills", "classes", "spells"];
         for (let i = 0; i < content.length; i++) {
             db[index[i]] = content[i];
