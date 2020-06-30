@@ -181,6 +181,8 @@ $(document).ready(() => {
       printDelete.onclick = function () {
         let childToDelete = document.getElementById('n' + idCounter);
         createdNotes.removeChild(childToDelete);
+        savedNotesDB.pop();
+        $.post(`/api/${charId}/items`, JSON.stringify(savedNotesDB));
         idCounter -= 1;
       };
       document.querySelector('.savedNote:last-child').appendChild(printDelete);

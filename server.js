@@ -120,7 +120,6 @@ app.post("/api/:charId/:query", (req, res) => {
             {data: newData},
             {where: {id: req.params.charId}}
         )
-        console.log(char.data.items);
     })
 })
 
