@@ -8,7 +8,8 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script>
     function onSignIn(googleUser) {
-        var id_token = googleUser.getAuthResponse().id_token;
-        $.post('/login', id_token);
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId());
+        {{!-- $.post('/login', profile.getId()); --}}
     }
 </script>
