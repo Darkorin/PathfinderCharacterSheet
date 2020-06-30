@@ -56,6 +56,8 @@ const db = {
 // Function to import the db.
 const importDB = () => {
     fs.readFile("app/data/pfdb.json", "utf8", (err, content) => {
+        console.log("error: ", err);
+        console.log("content: ", content);
         if (err) throw err;
         content = JSON.parse(content);
         const index = ["feats", "racialTraits", "races", "skills", "classes", "spells"];
