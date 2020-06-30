@@ -55,12 +55,9 @@ const db = {
 
 // Function to import the db.
 const importDB = () => {
-    fs.readFile("app/data/pfdb.json", "utf8", (err, content) => {
-        console.log("error: ", err);
-        
+    fs.readFile("app/data/pfdb.json", "utf8", (err, content) => {  
         if (err) throw err;
         content = JSON.parse(content);
-        console.log("content: ", content[5][75]);
         const index = ["feats", "racialTraits", "races", "skills", "classes", "spells"];
         for (let i = 0; i < content.length; i++) {
             db[index[i]] = content[i];
@@ -131,10 +128,13 @@ app.get("/editor/:charId", (req, res) => {
 
 // API Routes
 app.get("/api/feats/:featName", (req, res) => {
-    console.log("hit",req.params.featName)
+    let featFound = false;
     db.feats.forEach(feat => {
-        if (feat.name === req.params.featName) return res.json(feat);
+        if (feat.name === req.params.featName) {
+            featFound = feat;
+        }
     })
+    res.json(featFound);
 })
 
 app.get("/api/traits/:traitName", (req, res) => {
@@ -176,8 +176,8 @@ app.post("/api/:charId/:query", (req, res) => {
 })
 
 app.post("/login", (req, res) => {
- console.log(req.body);
-
+    console.log(req.body);
+    res.end();
 })
 
 // Creates a dummy character for testing
