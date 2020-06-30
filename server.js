@@ -186,6 +186,7 @@ app.post("/login", (req, res) => {
         // If request specified a G Suite domain:
         // const domain = payload['hd'];
     }
+    console.log("verifying login")
     verify().catch(console.error);
 })
 
