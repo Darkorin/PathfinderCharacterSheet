@@ -231,7 +231,7 @@ app.post("/api/:charId/:query", (req, res) => {
     })
 })
 
-app.get("/login", (req, res) => {
+app.post("/login", (req, res) => {
     let id = JSON.parse(Object.keys(req.body)[0]);
     console.log(id);
     res.redirect('/create/' + id);
