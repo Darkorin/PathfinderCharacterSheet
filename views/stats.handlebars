@@ -51,22 +51,32 @@
         <container>
             <div class="tab-content service-tab-content">
                 <div class="tab-pane active" id="traits">
-                    <div class="col-sm-4">
-                        <img src="../images/stats-image1.jpg" alt="" class="img-responsive tab-image-ex-gap"
-                            style="padding: 20px;">
-                    </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-12 text-center">
                         <br>
-                        <h3>CHARACTER TRAITS</h3>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, asperiores, sequi
-                            inventore, mollitia facilis totam voluptas laudantium odio non delectus porro magnam
-                            molestias dolore. Accusamus sint perspiciatis quis iste dolorem! Lorem ipsum dolor, sit
-                            amet consectetur adipisicing elit. Autem labore rem, officia, sed eius earum, aliquam
-                            sequi corporis voluptas velit ex! Natus enim dicta fugiat velit dolorum, quos sint
-                            totam.
-                        </p>
+                        <h3>RACIAL TRAITS</h3>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-3">
+                            <img src="../images/stats-image1.jpg" alt="" class="img-responsive tab-image-ex-gap"
+                                style="padding: 20px;">
+                        </div>
+                        <div class="col-sm-3">
+                            <br>
+                            <select id="traits" multiple>
+                                {{#each char.traits}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-sm-4 text-left">
+                            <br>
+                            <h3 id="traitDisplayName"></h3>
+                            <div id="traitDisplay">
 
+                            </div>
+                        </div>
+                    </div>
                 </div>
         </container>
         <div class="tab-pane" id="feats">
@@ -92,7 +102,7 @@
 
                     <select id="feats1" multiple>
                         {{#each char.knownFeats}}
-                            <option value="{{featName}}">{{featName}}</option>
+                        <option value="{{featName}}">{{featName}}</option>
                         {{/each}}
                     </select>
                     <br>
@@ -103,9 +113,9 @@
                     <h3>Available</h3>
                     <select id="feats2" multiple>
                         {{#each feats}}
-                            {{#unless (isKnown name ../char.knownFeats)}}
-                                <option value="{{name}}">{{name}}</option>
-                            {{/unless}}
+                        {{#unless (isKnown name ../char.knownFeats)}}
+                        <option value="{{name}}">{{name}}</option>
+                        {{/unless}}
                         {{/each}}
                     </select>
                 </div>

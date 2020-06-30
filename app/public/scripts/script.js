@@ -238,23 +238,19 @@ $(document).ready(() => {
       })
     }
 
-    function displayTrait(origin, dest, source) {
-      $(`${dest}`).empty();
+    function displayTrait(origin) {
+      $('#traitDisplay').empty();
       let listName = ($(origin).find(':selected').val());
-      $.get(`/api/${source}/${listName}`).then(res => {
-        $(`${dest}Name`).text(res.name);
-        for (let i = 0; i < res.sections.length; i++) {
-          if (res.sections[i].name === 'Prerequisites') {
-            $(`${dest}`).append(`<h4>${res.sections[i].name}: ${res.sections[i].description}</h4>`);
-          } else {
-            $(`${dest}`).append(`<h4>${res.sections[i].name}:</h4>`).append(`${res.sections[i].body}`);
-          }
-        }
+      $.get(`/api/traits/${listName}`).then(res => {
+        $('#traitDisplayName').text(res.name);
+        $('#traitDisplay').append(res.body)
+        if (res.description != undefined) $('#traitDisplay').append(`description: ${res.description}`);
       })
     }
 
-    $('#feats1').click(function () { displayFeat('#feats1', '#featDisplay') });
-    $('#feats2').click(function () { displayFeat('#feats2', '#featDisplay') });
+    $('#feats1').on('click keyup',function () { displayFeat('#feats1') });
+    $('#feats2').on('click keyup',function () { displayFeat('#feats2') });
+    $('#traits').on('click keyup', function () { displayTrait('#traits') });
 
     $('#left').click(function () { moveItems('#feats2', '#feats1') });
     $('#right').click(function () { moveItems('#feats1', '#feats2') });

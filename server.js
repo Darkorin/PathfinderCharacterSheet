@@ -95,6 +95,16 @@ app.get("/api/feats/:featName", (req, res) => {
     })
 })
 
+app.get("/api/traits/:traitName", (req, res) => {
+    let traitFound = false;
+    db.racialTraits.forEach(race => {
+        race.forEach(trait => {
+            if (trait.name === req.params.traitName) traitFound = trait;
+        })
+    })
+    res.json(traitFound);
+})
+
 app.get("/api/:charId/:query", (req, res) => {
     Character.findOne({
         where: {
@@ -144,6 +154,7 @@ const generateDummy = () => {
         level: 1,
         class: db.classes[0],
         race: db.races[0],
+        traits: db.racialTraits[0],
         raceName: race,
         exp: 1000,
         spells: db.spells.filter(spell => {

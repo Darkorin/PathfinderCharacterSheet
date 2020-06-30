@@ -340,12 +340,16 @@ left:45%;
   color: white;
 }
 
-#feats1, #feats2 {
+select {
   color: #99a28f;
   min-width: 300px;
   min-height: 200px;
   padding: 30px;
   
+}
+
+#traits {
+  min-height: 300px;
 }
 
 h3{
