@@ -79,10 +79,14 @@ class="img-responsive quote-image">
 <div class="carousel-inner">
 <div id="dwarf" class="item active">
   <div class="carousel-caption testimonial-caption-style">
-    <img src="public/images/sword.png" class="img-responsive quote-image">
+    {{!-- <img src="" class="img-responsive quote-image"> --}}
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
       dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-    <p class="testimonial-authors">Dwarf</p>
+    <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="dwarfSelect">
+    <label class="form-check-label" for="dwarfSelect"></label>
+    <p class="testimonial-authors">Dwarf </p>
+  </div>
   </div>
 </div>
 <div id="human" class="item">
@@ -90,6 +94,8 @@ class="img-responsive quote-image">
   <div class="carousel-caption testimonial-caption-style">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
       dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <input type="checkbox" class="form-check-input" id="humanSelect">
+    <label class="form-check-label" for="humanSelect"></label>
     <p class="testimonial-authors">Human</p>
   </div>
 </div>
@@ -98,6 +104,8 @@ class="img-responsive quote-image">
     <img src=" " class="img-responsive quote-image">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
       dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <input type="checkbox" class="form-check-input" id="elfSelect">
+    <label class="form-check-label" for="elfSelect"></label>
     <p class="testimonial-authors">Elf</p>
   </div>
 </div>
@@ -106,6 +114,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="halflingSelect">
+    <label class="form-check-label" for="halflingSelect"></label>
       <p class="testimonial-authors">Halfling</p>
     </div>
 </div>
@@ -114,6 +124,8 @@ class="img-responsive quote-image">
   <div class="carousel-caption testimonial-caption-style">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
       dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <input type="checkbox" class="form-check-input" id="gnomeSelect">
+    <label class="form-check-label" for="gnomeSelect"></label>
     <p class="testimonial-authors">Gnome</p>
   </div>
 </div>
@@ -122,6 +134,8 @@ class="img-responsive quote-image">
   <div class="carousel-caption testimonial-caption-style">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
       dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <input type="checkbox" class="form-check-input" id="hElfselect">
+    <label class="form-check-label" for="hElfSelect"></label>
     <p class="testimonial-authors">Half-Elf</p>
   </div>
 </div>
@@ -130,17 +144,21 @@ class="img-responsive quote-image">
   <div class="carousel-caption testimonial-caption-style">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
       dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+      <input type="checkbox" class="form-check-input" id="hOrcSelect">
+    <label class="form-check-label" for="hOrcSelect"></label>
     <p class="testimonial-authors">Half-Orc</p>
   </div>
 </div>
-
+</div>
 
 <a class="left carousel-control" href="#carousel1" data-slide="prev"> <span
   class="glyphicon glyphicon-chevron-left"></span> </a>
+
 <a class="right carousel-control" href="#carousel1" data-slide="next"> <span
-  class="glyphicon glyphicon-chevron-right"></span> </a>
+    class="glyphicon glyphicon-chevron-right"></span> </a>
 
 </div>
+</body>
 </div>
 </div>
 
@@ -175,6 +193,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="wizardSelect">
+    <label class="form-check-label" for="wizardSelect"></label>
       <p class="testimonial-authors">Wizard</p>
     </div>
   </div>
@@ -183,6 +203,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="rougeSelect">
+    <label class="form-check-label" for="rougeSelect"></label>
       <p class="testimonial-authors">Rouge</p>
     </div>
   </div>
@@ -191,6 +213,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="monkSelect">
+    <label class="form-check-label" for="monkSelect"></label>
       <p class="testimonial-authors">Monk</p>
     </div>
   </div>
@@ -199,6 +223,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="barbarianSelect">
+    <label class="form-check-label" for="barbarianSelect"></label>
       <p class="testimonial-authors">Barbarian</p>
     </div>
   </div>
@@ -207,6 +233,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="bardSelect">
+    <label class="form-check-label" for="bardSelect"></label>
       <p class="testimonial-authors">bard</p>
     </div>
   </div>
@@ -215,6 +243,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="clericSelect">
+    <label class="form-check-label" for="clericSelect"></label>
       <p class="testimonial-authors">Cleric</p>
     </div>
   </div>
@@ -223,6 +253,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="druidSelect">
+    <label class="form-check-label" for="druidSelect"></label>
       <p class="testimonial-authors">Druid</p>
     </div>
   </div>
@@ -231,6 +263,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="fighterSelect">
+    <label class="form-check-label" for="fighterSelect"></label>
       <p class="testimonial-authors">Fighter</p>
     </div>
   </div>
@@ -239,6 +273,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="paladinSelect">
+    <label class="form-check-label" for="paladinSelect"></label>
       <p class="testimonial-authors">Paladin</p>
     </div>
   </div>
@@ -247,6 +283,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="rangerSelect">
+    <label class="form-check-label" for="rangerSelect"></label>
       <p class="testimonial-authors">Ranger</p>
     </div>
   </div>
@@ -255,6 +293,8 @@ class="img-responsive quote-image">
     <div class="carousel-caption testimonial-caption-style">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
+        <input type="checkbox" class="form-check-input" id="sorcererSelect">
+    <label class="form-check-label" for="sorcererSelect"></label>
       <p class="testimonial-authors">Sorcerer</p>
     </div>
   </div>
@@ -279,29 +319,6 @@ class="img-responsive quote-image">
 
 
   <script>
-  
-  //  ---------- Slider Script-----------------
-
-  var rangeSlider = function(){
-          var slider = $('.range-slider'),
-              range = $('.range-slider__range'),
-              value = $('.range-slider__value');
-            
-          slider.each(function(){
-        
-            value.each(function(){
-              var value = $(this).prev().attr('value');
-              $(this).html(value);
-            });
-        
-            range.on('input', function(){
-              $(this).next(value).html(this.value);
-            });
-          });
-        };
-        
-        rangeSlider();
-
     //  ----------CAROUSELS Script-----------------
 
     $(document).ready(function () {
