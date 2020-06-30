@@ -5,8 +5,6 @@ const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars');
 const Character = require('./app/models/character.js');
 // const User = require('./app/models/user.js')
-const { OAuth2Client } = require('google-auth-library');
-const client = new OAuth2Client(1029747393830 - kfqdq1b5d6tsuf1eo0m3jirl6ppeps6o.apps.googleusercontent.com);
 
 
 // Create an instance of the express app.
@@ -174,9 +172,11 @@ app.post("/api/:charId/:query", (req, res) => {
 })
 
 app.post("/login", (req, res) => {
+    const { OAuth2Client } = require('google-auth-library');
+    const client = new OAuth2Client(1029747393830 - kfqdq1b5d6tsuf1eo0m3jirl6ppeps6o.apps.googleusercontent.com);
     async function verify() {
         const ticket = await client.verifyIdToken({
-            idToken: req.body,
+            idToken: token,
             audience: 1029747393830 - kfqdq1b5d6tsuf1eo0m3jirl6ppeps6o.apps.googleusercontent.com,  // Specify the CLIENT_ID of the app that accesses the backend
             // Or, if multiple clients access the backend:
             //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
@@ -187,7 +187,6 @@ app.post("/login", (req, res) => {
         // If request specified a G Suite domain:
         // const domain = payload['hd'];
     }
-    console.log("verifying login")
     verify().catch(console.error);
 })
 
