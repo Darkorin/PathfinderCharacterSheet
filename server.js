@@ -79,18 +79,25 @@ app.get("/editor/:charId", (req, res) => {
         where: {
             id: req.params.charId
         }
-    }).then(results => {
+    }).then(char => {
         res.render("stats", {
             //Page
             index: false,
             //DB export
             feats: db.feats,
             skills: db.skills,
-            charId: results.id,
-            char: results.data
+            spellFilter: db.spells.filter(spell => {
+                let spellUsable = false;
+                spell.levels.forEach(pfclass => {
+                    if (pfclass.class === char.data.class) spellUsable = true;
+                });
+                return spellUsable;
+            }),    
+            charId: char.id,
+            char: char.data
         })
     }).catch(err => {
-        res.status(401).json(err);
+        res.redirect("/");
     });
 })
 
@@ -175,18 +182,10 @@ const generateDummy = () => {
             eyes: "blue"
         },
         level: 1,
-        class: db.classes[0],
-        race: db.races[0],
+        class: db.classes[0].name,
         traits: db.racialTraits[0],
         raceName: race,
         exp: 1000,
-        spells: db.spells.filter(spell => {
-            let spellUsable = false;
-            spell.levels.forEach(pfclass => {
-                if (pfclass.class === db.classes[0].name) spellUsable = true;
-            });
-            return spellUsable;
-        }),
         scores: {
             str: { score: "STR", value: 18, temp: 2 },
             dex: { score: "DEX", value: 7, temp: 1 },
