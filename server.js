@@ -4,6 +4,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars');
 const Character = require('./app/models/character.js');
+const { query } = require('express');
 
 // Create an instance of the express app.
 const app = express();
@@ -92,7 +93,15 @@ app.get("/api/feats/:featName", (req, res) => {
 })
 
 app.get("/api/:charId/:query", (req, res) => {
-
+    Character.findOne({
+        where: {
+            id: req.params.charId
+        }
+    }).then(result => {
+        return res.json(result.data[req.params.query]);
+    }).catch(err => {
+        res.status(401).json(err);
+    });
 })
 
 app.post("/api/new", (req, res) => {
@@ -168,8 +177,6 @@ app.post("/api/new", (req, res) => {
 //         languages: ["common", "draconic", "dwarven"],
 //         notes: "Nothing really matters, anyone can see, nothing really matters to me"
 //     }
-//
-//
 //     Character.create({
 //         data: dummy
 //     }).then(results => {

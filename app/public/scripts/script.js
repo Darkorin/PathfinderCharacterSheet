@@ -1,3 +1,11 @@
+//Gets the current character ID
+const getCharId = () => {
+  let url = window.location.href;
+  url = url.split('/');
+  return url[url.length-1];
+}
+
+const charId = getCharId();
 
 var mysrc = "dwarf.jpg";
 function changeImage() {
@@ -157,12 +165,7 @@ function printObject(elementToCreate, className, dbContent, placeLocation) {
 };
 
 //Create new note
-function handleNote(note) {
-
-
-  //Push content to the DB
-  noteContent.title = noteTitle.value;
-  noteContent.body = noteBody.value;
+function handleNote(noteContent) {
   savedNotesDB.push(noteContent);
 
   if (noteContent.title !== '' || noteContent.body !== '') {
@@ -189,14 +192,23 @@ function handleNote(note) {
 }
 
 saveButton.addEventListener('click', () => {
-  handleNote({
+  const noteContent = {
     title: '',
     body: ''
-  });
-});
-$.get('/api/character/items').then(res => {
-  res.forEach(item => {
+  }
+  //Push content to the DB
+  noteContent.title = noteTitle.value;
+  noteContent.body = noteBody.value;
 
+  handleNote(noteContent);
+  $.post(`/api/${charId}/items`, noteContent).then(res => {
+    return;
+  })
+});
+
+$.get(`/api/${charId}/items`).then(res => {
+  res.forEach(item => {
+    handleNote(item);
   })
 })
 
