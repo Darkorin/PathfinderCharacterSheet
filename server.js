@@ -232,7 +232,9 @@ app.post("/api/:charId/:query", (req, res) => {
 })
 
 app.post("/login", (req, res) => {
-    res.redirect('/create/' + JSON.parse(Object.keys(req.body)[0]));
+    let id = JSON.parse(Object.keys(req.body)[0]);
+    console.log(id);
+    res.redirect('/create/' + id);
 })
 
 // Creates a dummy character for testing
