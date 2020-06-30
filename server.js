@@ -127,6 +127,7 @@ app.get("/editor/:charId", (req, res) => {
 
 // API Routes
 app.get("/api/feats/:featName", (req, res) => {
+    console.log("hit",req.params.featName)
     db.feats.forEach(feat => {
         if (feat.name === req.params.featName) return res.json(feat);
     })
