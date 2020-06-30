@@ -92,8 +92,64 @@ app.get("/", (req, res) => {
 })
 
 // Character Initialization Page Route
-app.get("/create", (req, res) => {
-    res.render("index", { index: true, races: db.races, classes: db.classes });
+app.get("/create/:charId", (req, res) => {
+    Character.findOne({
+        where: {
+            id: req.params.charId
+        }
+    }).then(char => {
+        if (char === null) {
+            Character.create({
+                descriptive: {
+                    name: "",
+                    alignment: "",
+                    height: "",
+                    weight: "",
+                    hair: "",
+                    eyes: ""
+                },
+                level: 1,
+                class: "placeholder",
+                traits: [],
+                raceName: "placeholder",
+                exp: 0,
+                scores: {
+                    str: { score: "STR", value: 10, temp: 0 },
+                    dex: { score: "DEX", value: 10, temp: 0 },
+                    con: { score: "CON", value: 10, temp: 0 },
+                    int: { score: "INT", value: 10, temp: 0 },
+                    wis: { score: "WIS", value: 10, temp: 0 },
+                    cha: { score: "CHA", value: 10, temp: 0 }
+                },
+                knownFeats: [
+                ],
+                hp: 0,
+                initTemp: 0,
+                money: {
+                    c: 0,
+                    s: 0,
+                    g: 0,
+                    p: 0
+                },
+                ac: {
+                    armor: 0,
+                    natural: 0,
+                    misc: 0
+                },
+                saves: {
+                    will: { base: 0, temp: 0, score: "wis" },
+                    fort: { base: 0, temp: 0, score: "con" },
+                    ref: { base: 0, temp: 0, score: "dex" }
+                },
+                items: [],
+                bab: 0,
+                spRes: "0",
+                languages: [],
+                notes: ""
+            })
+        }
+        res.render("index", { index: true, races: db.races, classes: db.classes });
+    })
 })
 
 // Character editor
@@ -176,8 +232,7 @@ app.post("/api/:charId/:query", (req, res) => {
 })
 
 app.post("/login", (req, res) => {
-    console.log(req.body);
-    res.end();
+    res.redirect('/create/' + JSON.parse(Object.keys(req.body)[0]));
 })
 
 // Creates a dummy character for testing
