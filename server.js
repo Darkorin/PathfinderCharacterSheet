@@ -182,6 +182,7 @@ app.post("/login", (req, res) => {
         });
         const payload = ticket.getPayload();
         const userid = payload['sub'];
+        console.log(userid + "has logged in!")
         // If request specified a G Suite domain:
         // const domain = payload['hd'];
     }
