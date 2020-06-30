@@ -92,14 +92,16 @@ app.get("/", (req, res) => {
 })
 
 // Character Initialization Page Route
-app.get("/create/:charId", (req, res) => {
+app.get("/create", (req, res) => {
+    let id = JSON.parse(Object.keys(req.body)[0]);
+    console.log(id);
     Character.findOne({
         where: {
             id: req.params.charId
         }
     }).then(char => {
         if (char === null) {
-            Character.create({
+            let newChar = {
                 descriptive: {
                     name: "",
                     alignment: "",
@@ -146,6 +148,12 @@ app.get("/create/:charId", (req, res) => {
                 spRes: "0",
                 languages: [],
                 notes: ""
+            }
+            Character.create({
+                user: id,
+                data: newChar
+            }).then({
+
             })
         }
         res.render("index", { index: true, races: db.races, classes: db.classes });

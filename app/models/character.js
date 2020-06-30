@@ -5,6 +5,7 @@ sequelize.query
 
 // Creates a "Character" model that matches up with DB
 const Character = sequelize.define("character", {
+    user: Sequelize.INTEGER,
     data: Sequelize.JSON
 });
 
