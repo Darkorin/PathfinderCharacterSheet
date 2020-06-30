@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars');
 const Character = require('./app/models/character.js');
 // const User = require('./app/models/user.js')
-const {OAuth2Client} = require('google-auth-library');
+const { OAuth2Client } = require('google-auth-library');
 
 
 // Create an instance of the express app.
@@ -24,6 +24,10 @@ app.use(express.json());
 
 
 // Handlebars Helper for calculating various functions
+Handlebars.registerHelper("gt", function (val1, val2) {
+    return val1 > val2;
+});
+
 Handlebars.registerHelper("calcMod", function (baseScore, tempMod) {
     return -Math.ceil((10 - (baseScore + tempMod)) / 2);
 });
@@ -59,11 +63,32 @@ const importDB = () => {
         for (let i = 0; i < content.length; i++) {
             db[index[i]] = content[i];
         }
+        let raceNames = [];
+        db.races.forEach(race => {
+            const racePlural = race.name;
+            const findTraitsURL = () => {
+                let url;
+                db.racialTraits.forEach(traitRace => {
+                    if (traitRace[0].subtype === racePlural.toLowerCase()) {
+                        url = traitRace[0].url;
+                    }
+                })
+                return url;
+            }
+            const raceTraitsURL = findTraitsURL();
+            const index = raceTraitsURL.search(racePlural);
+            raceNames.push(raceTraitsURL.substring(index + racePlural.length + 1, raceTraitsURL.search(' Racial')));
+        })
+        db.races.forEach((race, i) => {
+            race.name = raceNames[i];
+        })
     });
+
+
 }
 
 // Root Route Login
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.render("login");
 })
 
@@ -92,7 +117,7 @@ app.get("/editor/:charId", (req, res) => {
                     if (pfclass.class === char.data.class) spellUsable = true;
                 });
                 return spellUsable;
-            }),    
+            }),
             charId: char.id,
             char: char.data
         })
@@ -141,8 +166,8 @@ app.post("/api/:charId/:query", (req, res) => {
         const newData = char.data;
         newData[`${req.params.query}`] = body;
         Character.update(
-            {data: newData},
-            {where: {id: req.params.charId}}
+            { data: newData },
+            { where: { id: req.params.charId } }
         )
     })
 })
@@ -151,7 +176,7 @@ app.post("/login", (req, res) => {
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: req.body,
-            audience: 1029747393830-kfqdq1b5d6tsuf1eo0m3jirl6ppeps6o.apps.googleusercontent.com,  // Specify the CLIENT_ID of the app that accesses the backend
+            audience: 1029747393830 - kfqdq1b5d6tsuf1eo0m3jirl6ppeps6o.apps.googleusercontent.com,  // Specify the CLIENT_ID of the app that accesses the backend
             // Or, if multiple clients access the backend:
             //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
         });
@@ -159,8 +184,8 @@ app.post("/login", (req, res) => {
         const userid = payload['sub'];
         // If request specified a G Suite domain:
         // const domain = payload['hd'];
-      }
-      verify().catch(console.error);
+    }
+    verify().catch(console.error);
 })
 
 // Creates a dummy character for testing

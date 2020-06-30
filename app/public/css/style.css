@@ -321,3 +321,7 @@ border-color: #bebd9f;
 color: #99a28f;
 background-color: #ffffff;
 }
+
+.carousel-body {
+   font-size: 12pt;
+}

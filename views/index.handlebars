@@ -1,348 +1,297 @@
 <body>
-   
- <!-------------------BODY -------------------->
 
-<div class="row">
-  <div class="col-sm-6">
-    <!-- Ability Range Sliders -->
-<!-- <hr> -->
-<h1>SET YOUR ABILITY SCORE</h1>
-<!-- <hr> -->
-<div class="ability-score">
-<div class="range-slider"><h2>Strength</h2>
-  <input class="range-slider__range" type="range" value="45" min="0" max="50">
-  <span id="strength" class="range-slider__value">20</span>
-</div>
+  <!-------------------BODY -------------------->
 
+  <div class="row">
+    <div class="col-sm-6">
+      <!-- Ability Range Sliders -->
+      <!-- <hr> -->
+      <h1>SET YOUR ABILITY SCORE</h1>
+      <!-- <hr> -->
+      <div class="ability-score">
 
-<div class="range-slider">
-  <h2>Dexterity</h2>
-  <input class="range-slider__range" type="range" value="25" min="0" max="50" step="5">
-  <span id="dexterity" class="range-slider__value">0</span>
-</div>
+        {{> index/scores score="Strength"}}
+        {{> index/scores score="Dexterity"}}
+        {{> index/scores score="Constitution"}}
+        {{> index/scores score="Intelligence"}}
+        {{> index/scores score="Wisdom"}}
+        {{> index/scores score="Charisma"}}
 
-
-<div class="range-slider">
-  <h2>Constitution</h2>
-  <input class="range-slider__range" type="range" value="0" min="0" max="50">
-  <span id="constitution" class="range-slider__value">0</span>
-</div> 
-
-
-<div class="range-slider">
-  <h2>Intelligence</h2>
-  <input class="range-slider__range" type="range" value="0" min="0" max="50">
-  <span id="intelligence" class="range-slider__value">0</span>
-</div> 
-
-
-<div class="range-slider">
-  <h2>Wisdom</h2>
-  <input class="range-slider__range" type="range" value="0" min="0" max="50">
-  <span id= "wisdom" class="range-slider__value">0</span>
-</div> 
-
-
-<div class="range-slider">
-  <h2>Charisma</h2>
-  <input class="range-slider__range" type="range" value="0" min="0" max="50">
-  <span id="charisma" class="range-slider__value">0</span>
-</div>
-</div>
-</div>
-
-
-<!-- Carousel #1 -->
-<div class="col-sm-6">
-<h1>CHOOSE YOUR RACE</h1>
-
-<body class="carousel-bg">
-<!-- Carousel Image -->
-<div>
-<img
-src="https://image.winudf.com/v2/image1/Y29tLmFuZHJvaWRib2subXlmaXJzdHJlc291cmNldGVzdGVyYXBwX2ljb25fMTU2NzAxMjk5Ml8wMzE/icon.png?w=170&fakeurl=1"
-class="img-responsive quote-image">
-</div>
-<!-- Carousel Start below -->
-<div id="carousel1" class="carousel slide testimonial-style" data-ride="carousel">
-<!-- Indicators -->
-<ol class="carousel-indicators">
-<li data-target="#carousel1" data-slide-to="0" class="active"></li>
-<li data-target="#carousel1" data-slide-to="1"></li>
-<li data-target="#carousel1" data-slide-to="2"></li>
-<li data-target="#carousel1" data-slide-to="3"></li>
-<li data-target="#carousel1" data-slide-to="4"></li>
-<li data-target="#carousel1" data-slide-to="5"></li>
-<li data-target="#carousel1" data-slide-to="6"></li>
-</ol>
-<!-- Wrapper for slides -->
-<div class="carousel-inner">
-<div id="dwarf" class="item active">
-  <div class="carousel-caption testimonial-caption-style">
-    {{!-- <img src="" class="img-responsive quote-image"> --}}
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-    <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="dwarfSelect">
-    <label class="form-check-label" for="dwarfSelect"></label>
-    <p class="testimonial-authors">Dwarf </p>
-  </div>
-  </div>
-</div>
-<div id="human" class="item">
-  <img src=" " class="img-responsive quote-image">
-  <div class="carousel-caption testimonial-caption-style">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-      <input type="checkbox" class="form-check-input" id="humanSelect">
-    <label class="form-check-label" for="humanSelect"></label>
-    <p class="testimonial-authors">Human</p>
-  </div>
-</div>
-<div id="elf" class="item">
-  <div class="carousel-caption testimonial-caption-style">
-    <img src=" " class="img-responsive quote-image">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-      <input type="checkbox" class="form-check-input" id="elfSelect">
-    <label class="form-check-label" for="elfSelect"></label>
-    <p class="testimonial-authors">Elf</p>
-  </div>
-</div>
-  <div id="halfling" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="halflingSelect">
-    <label class="form-check-label" for="halflingSelect"></label>
-      <p class="testimonial-authors">Halfling</p>
+      </div>
     </div>
-</div>
-<div id="gnome" class="item">
-  <img src=" " class="img-responsive quote-image">
-  <div class="carousel-caption testimonial-caption-style">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-      <input type="checkbox" class="form-check-input" id="gnomeSelect">
-    <label class="form-check-label" for="gnomeSelect"></label>
-    <p class="testimonial-authors">Gnome</p>
+
+
+    <!-- Carousel #1 -->
+    <div class="col-sm-6">
+      <div class="row">
+        <h1>CHOOSE YOUR RACE</h1>
+
+        <body class="carousel-bg">
+          <!-- Carousel Image -->
+          <div>
+            <img
+              src="https://image.winudf.com/v2/image1/Y29tLmFuZHJvaWRib2subXlmaXJzdHJlc291cmNldGVzdGVyYXBwX2ljb25fMTU2NzAxMjk5Ml8wMzE/icon.png?w=170&fakeurl=1"
+              class="img-responsive quote-image">
+          </div>
+          <!-- Carousel Start below -->
+          <div id="carousel1" class="carousel slide testimonial-style" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              {{#each races}}
+              <li data-target="#carousel1" data-slide-to="{{@index}}"></li>
+              {{/each}}
+
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+              <div id="dwarf" class="item active">
+                <div class="carousel-caption testimonial-caption-style">
+                  {{!-- <img src="" class="img-responsive quote-image"> --}}
+                  <p class="carousel-body">Dwarves are a stoic but stern race, ensconced in cities carved from the
+                    hearts of mountains and fiercely determined to repel the depredations of savage races like orcs and
+                    goblins. More than any other race, the dwarves have acquired a reputation as dour and humorless
+                    craftsmen of the earth. It could be said that dwarven history shapes the dark disposition of many
+                    dwarves, for they reside in
+                  <p class="testimonial-authors">Dwarf<br><input type="checkbox" class="form-check-input"
+                      id="dwarfSelect">
+                    <label class="form-check-label" for="dwarfSelect"></label></p>
+                </div>
+              </div>
+              <div id="human" class="item">
+                {{!-- <img src=" " class="img-responsive quote-image"> --}}
+                <div class="carousel-caption testimonial-caption-style">
+                  <p class="carousel-body">Humans possess exceptional drive and a great capacity to endure and expand,
+                    and as such are currently the dominant race in the world. Their empires and nations are vast,
+                    sprawling things, and the citizens of these societies carve names for themselves with the strength
+                    of their sword arms and the power of their spells.</p>
+                  <p class="testimonial-authors">Human<br><input type="checkbox" class="form-check-input"
+                      id="humanSelect">
+                    <label class="form-check-label" for="humanSelect"></label></p>
+                </div>
+              </div>
+              <div id="elf" class="item">
+                <div class="carousel-caption testimonial-caption-style">
+                  {{!-- <img src=" " class="img-responsive quote-image"> --}}
+                  <p class="carousel-body">The long-lived elves are children of the natural world, similar in many
+                    superficial ways to fey creatures, yet different as well. Elves value their privacy and traditions,
+                    and while they are often slow to make friends, at both the personal and national levels, once an
+                    outsider is accepted as a comrade, such alliances can last for generations. Elves have a curious
+                    attachment to their surroundings, perhaps as a result of their incredibly long lifespans or some
+                    deeper, more mystical reason.</p>
+                  <p class="testimonial-authors">Elf<br><input type="checkbox" class="form-check-input" id="elfSelect">
+                    <label class="form-check-label" for="elfSelect"></label></p>
+                </div>
+              </div>
+              <div id="halfling" class="item">
+                {{!-- <img src=" " class="img-responsive quote-image"> --}}
+                <div class="carousel-caption testimonial-caption-style">
+                  <p class="carousel-body">Optimistic and cheerful by nature, blessed with uncanny luck and driven by a
+                    powerful wanderlust, halflings make up for their short stature with an abundance of bravado and
+                    curiosity. At once excitable and easy-going, halflings like to keep an even temper and a steady eye
+                    on opportunity, and are not as prone as some of the more volatile races to violent or emotional
+                    outbursts. Even in the jaws of catastrophe, a halfling almost never loses his sense of humor.</p>
+
+                  <p class="testimonial-authors">Halfling<br><input type="checkbox" class="form-check-input"
+                      id="halflingSelect">
+                    <label class="form-check-label" for="halflingSelect"></label></p>
+                </div>
+              </div>
+              <div id="gnome" class="item">
+                {{!-- <img src=" " class="img-responsive quote-image"> --}}
+                <div class="carousel-caption testimonial-caption-style">
+                  <p class="carousel-body">Gnomes trace their lineage back to the mysterious realm of the fey, a place
+                    where colors are brighter, the wildlands wilder, and emotions more primal. Unknown forces drove the
+                    ancient gnomes from that realm long ago, forcing them to seek refuge in this world; despite this,
+                    the gnomes have never completely abandoned their fey roots or adapted to mortal culture. As a
+                    result, gnomes are widely regarded by the other races as alien and strange.</p>
+
+                  <p class="testimonial-authors">Gnome<br><input type="checkbox" class="form-check-input"
+                      id="gnomeSelect">
+                    <label class="form-check-label" for="gnomeSelect"></label></p>
+                </div>
+              </div>
+              <div id="halfElf" class="item">
+                {{!-- <img src=" " class="img-responsive quote-image"> --}}
+                <div class="carousel-caption testimonial-caption-style">
+                  <p class="carousel-body">Elves have long drawn the covetous gazes of other races. Their generous life
+                    spans, magical affinity, and inherent grace each contribute to the admiration or bitter envy of
+                    their neighbors. Of all their traits, however, none so entrance their human associates as their
+                    beauty. Since the two races first came into contact with each other, the humans have held up elves
+                    as models of physical perfection, seeing in the fair folk idealized versions of themselves.</p>
+
+                  <p class="testimonial-authors">Half-Elf<br><input type="checkbox" class="form-check-input"
+                      id="hElfselect">
+                    <label class="form-check-label" for="hElfSelect"></label></p>
+                </div>
+              </div>
+              <div id="halfOrc" class="item">
+                {{!-- <img src=" " class="img-responsive quote-image"> --}}
+                <div class="carousel-caption testimonial-caption-style">
+                  <p class="carousel-body">Half-orcs are monstrosities, their tragic births the result of perversion and
+                    violence&mdash;or at least, that's how other races see them. It's true that half-orcs are rarely the
+                    result of loving unions, and as such are usually forced to grow up hard and fast, constantly
+                    fighting for protection or to make names for themselves. Feared, distrusted, and spat upon,
+                    half-orcs still consistently manage to surprise their detractors with great deeds and unexpected
+                    wisdom&mdash;though sometimes it's easier just to crack a few skulls.</p>
+
+                  <p class="testimonial-authors">Half-Orc<br><input type="checkbox" class="form-check-input"
+                      id="hOrcSelect">
+                    <label class="form-check-label" for="hOrcSelect"></label></p>
+                </div>
+              </div>
+            </div>
+
+            <a class="left carousel-control" href="#carousel1" data-slide="prev"> <span
+                class="glyphicon glyphicon-chevron-left"></span> </a>
+
+            <a class="right carousel-control" href="#carousel1" data-slide="next"> <span
+                class="glyphicon glyphicon-chevron-right"></span> </a>
+
+          </div>
+        </body>
+      </div>
+      <div class="row">
+          <br>
+          <h1>CHOOSE YOUR CLASS</h1>
+
+          <body class="carousel-bg2">
+
+            <!-- Carousel Start below -->
+            <div id="carousel2" class="carousel slide testimonial-style" data-ride="carousel">
+              <!-- Indicators -->
+
+              <ol class="carousel-indicators">
+
+                {{#each classes}}
+                <li data-target="#carousel1" data-slide-to="{{@index}}"></li>
+                {{/each}}
+
+              </ol>
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <div id="wizard" class="item active">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">Beyond the veil of the mundane hide the secrets of absolute power. The works of beings beyond mortals, the legends of realms where gods and spirits tread, the lore of creations both wondrous and terrible&mdash;such mysteries call to those with the ambition and the intellect to rise above the common folk to grasp true might. Such is the path of the wizard.</p>
+                    
+                    <p class="testimonial-authors">Wizard<br><input type="checkbox" class="form-check-input" id="wizardSelect">
+                    <label class="form-check-label" for="wizardSelect"></label></p>
+                  </div>
+                </div>
+                <div id="rouge" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">Life is an endless adventure for those who live by their wits. Ever just one step ahead of danger, rogues bank on their cunning, skill, and charm to bend fate to their favor. Never knowing what to expect, they prepare for everything, becoming masters of a wide variety of skills, training themselves to be adept manipulators, agile acrobats, shadowy stalkers, or masters of any of dozens of other professions or talents.</p>
+                    
+                    <p class="testimonial-authors">Rouge<br><input type="checkbox" class="form-check-input" id="rougeSelect">
+                    <label class="form-check-label" for="rougeSelect"></label></p>
+                  </div>
+                </div>
+                <div id="monk" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">For the truly exemplary, martial skill transcends the battlefield&mdash;it is a lifestyle, a doctrine, a state of mind. These warrior-artists search out methods of battle beyond swords and shields, finding weapons within themselves just as capable of crippling or killing as any blade.</p>
+                    
+                    <p class="testimonial-authors">Monk<br><input type="checkbox" class="form-check-input" id="monkSelect">
+                    <label class="form-check-label" for="monkSelect"></label></p>
+                  </div>
+                </div>
+                <div id="barbarian" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">For some, there is only rage. In the ways of their people, in the fury of their passion, in the howl of battle, conflict is all these brutal souls know. Savages, hired muscle, masters of vicious martial techniques, they are not soldiers or professional warriors&mdash;they are the battle possessed, creatures of slaughter and spirits of war.</p>
+                    
+                    <p class="testimonial-authors">Barbarian<br><input type="checkbox" class="form-check-input" id="barbarianSelect">
+                    <label class="form-check-label" for="barbarianSelect"></label></p>
+                  </div>
+                </div>
+                <div id="bard" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">Untold wonders and secrets exist for those skillful enough to discover them. Through cleverness, talent, and magic, these cunning few unravel the wiles of the world, becoming adept in the arts of persuasion, manipulation, and inspiration. Typically masters of one or many forms of artistry, bards possess an uncanny ability to know more than they should and use what they learn to keep themselves and their allies ever one step ahead of danger.</p>
+                    
+                    <p class="testimonial-authors">Bard<br><input type="checkbox" class="form-check-input" id="bardSelect">
+                    <label class="form-check-label" for="bardSelect"></label></p>
+                  </div>
+                </div>
+                <div id="cleric" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">In faith and the miracles of the divine, many find a greater purpose. Called to serve powers beyond most mortal understanding, all priests preach wonders and provide for the spiritual needs of their people. Clerics are more than mere priests, though; these emissaries of the divine work the will of their deities through strength of arms and the magic of their gods.</p>
+                    
+                    <p class="testimonial-authors">Cleric<br><input type="checkbox" class="form-check-input" id="clericSelect">
+                    <label class="form-check-label" for="clericSelect"></label></p>
+                  </div>
+                </div>
+                <div id="druid" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">Within the purity of the elements and the order of the wilds lingers a power beyond the marvels of civilization. Furtive yet undeniable, these primal magics are guarded over by servants of philosophical balance known as druids. Allies to beasts and manipulators of nature, these often misunderstood protectors of the wild strive to shield their lands from all who would threaten them and prove the might of the wilds to those who lock themselves behind city walls.</p>
+                    
+                    <p class="testimonial-authors">Druid<br><input type="checkbox" class="form-check-input" id="druidSelect">
+                    <label class="form-check-label" for="druidSelect"></label></p>
+                  </div>
+                </div>
+                <div id="fighter" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">Some take up arms for glory, wealth, or revenge. Others do battle to prove themselves, to protect others, or because they know nothing else. Still others learn the ways of weaponcraft to hone their bodies in battle and prove their mettle in the forge of war. Lords of the battlefield, fighters are a disparate lot, training with many weapons or just one, perfecting the uses of armor, learning the fighting techniques of exotic masters, and studying the art of combat, all to shape themselves into living weapons. </p>
+                    
+                    <p class="testimonial-authors">Fighter<br><input type="checkbox" class="form-check-input" id="fighterSelect">
+                    <label class="form-check-label" for="fighterSelect"></label></p>
+                  </div>
+                </div>
+                <div id="paladin" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">Through a select, worthy few shines the power of the divine. Called paladins, these noble souls dedicate their swords and lives to the battle against evil. Knights, crusaders, and law-bringers, paladins seek not just to spread divine justice but to embody the teachings of the virtuous deities they serve.</p>
+                    
+                    <p class="testimonial-authors">Paladin<br><input type="checkbox" class="form-check-input" id="paladinSelect">
+                    <label class="form-check-label" for="paladinSelect"></label></p>
+                  </div>
+                </div>
+                <div id="ranger" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">For those who relish the thrill of the hunt, there are only predators and prey. Be they scouts, trackers, or bounty hunters, rangers share much in common: unique mastery of specialized weapons, skill at stalking even the most elusive game, and the expertise to defeat a wide range of quarries. Knowledgeable, patient, and skilled hunters, these rangers hound man, beast, and monster alike, gaining insight into the way of the predator, skill in varied environments, and ever more lethal martial prowess.</p>
+                    
+                    <p class="testimonial-authors">Ranger<br><input type="checkbox" class="form-check-input" id="rangerSelect">
+                    <label class="form-check-label" for="rangerSelect"></label></p>
+                  </div>
+                </div>
+                <div id="sorcerer" class="item">
+                  <img src=" " class="img-responsive quote-image">
+                  <div class="carousel-caption testimonial-caption-style">
+                    <p class="carousel-body">Scions of innately magical bloodlines, the chosen of deities, the spawn of monsters, pawns of fate and destiny, or simply flukes of fickle magic, sorcerers look within themselves for arcane prowess and draw forth might few mortals can imagine. Emboldened by lives ever threatening to be consumed by their innate powers, these magic-touched souls endlessly indulge in and refine their mysterious abilities, gradually learning how to harness their birthright and coax forth ever greater arcane feats.</p>
+                    
+                    <p class="testimonial-authors">Sorcerer<br><input type="checkbox" class="form-check-input" id="sorcererSelect">
+                    <label class="form-check-label" for="sorcererSelect"></label></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Controls -->
+
+              <a class="left carousel-control" href="#carousel2" data-slide="prev"> <span
+                  class="glyphicon glyphicon-chevron-left"></span> </a>
+              <a class="right carousel-control" href="#carousel2" data-slide="next"> <span
+                  class="glyphicon glyphicon-chevron-right"></span> </a>
+            </div>
+          </body>
+        </div>
+      </div>
+
+    </div>
+    <!-- Carousel #2 -->
+
   </div>
-</div>
-<div id="halfElf" class="item">
-  <img src=" " class="img-responsive quote-image">
-  <div class="carousel-caption testimonial-caption-style">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-      <input type="checkbox" class="form-check-input" id="hElfselect">
-    <label class="form-check-label" for="hElfSelect"></label>
-    <p class="testimonial-authors">Half-Elf</p>
-  </div>
-</div>
-<div id="halfOrc" class="item">
-  <img src=" " class="img-responsive quote-image">
-  <div class="carousel-caption testimonial-caption-style">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-      <input type="checkbox" class="form-check-input" id="hOrcSelect">
-    <label class="form-check-label" for="hOrcSelect"></label>
-    <p class="testimonial-authors">Half-Orc</p>
-  </div>
-</div>
-</div>
-
-<a class="left carousel-control" href="#carousel1" data-slide="prev"> <span
-  class="glyphicon glyphicon-chevron-left"></span> </a>
-
-<a class="right carousel-control" href="#carousel1" data-slide="next"> <span
-    class="glyphicon glyphicon-chevron-right"></span> </a>
-
-</div>
-</body>
-</div>
-</div>
-
-<!-- Carousel #2 -->
-<div class="row">
-<div class="col-sm-6">
   <br>
-  <h1>CHOOSE YOUR CLASS</h1>
 
-<body class="carousel-bg2">
-
-<!-- Carousel Start below -->
-<div id="carousel2" class="carousel slide testimonial-style" data-ride="carousel">
-<!-- Indicators -->
-<ol class="carousel-indicators">
-  <li data-target="#carousel2" data-slide-to="0" class="active"></li>
-  <li data-target="#carousel2" data-slide-to="1"></li>
-  <li data-target="#carousel2" data-slide-to="2"></li>
-  <li data-target="#carousel2" data-slide-to="3"></li>
-  <li data-target="#carousel2" data-slide-to="4"></li>
-  <li data-target="#carousel2" data-slide-to="5"></li>
-  <li data-target="#carousel2" data-slide-to="6"></li>
-  <li data-target="#carousel2" data-slide-to="7"></li>
-  <li data-target="#carousel2" data-slide-to="8"></li>
-  <li data-target="#carousel2" data-slide-to="9"></li>
-  <li data-target="#carousel2" data-slide-to="10"></li>
-</ol>
-<!-- Wrapper for slides -->
-<div class="carousel-inner">
-  <div id="wizard" class="item active">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="wizardSelect">
-    <label class="form-check-label" for="wizardSelect"></label>
-      <p class="testimonial-authors">Wizard</p>
-    </div>
-  </div>
-  <div id="rouge" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="rougeSelect">
-    <label class="form-check-label" for="rougeSelect"></label>
-      <p class="testimonial-authors">Rouge</p>
-    </div>
-  </div>
-  <div id="monk" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="monkSelect">
-    <label class="form-check-label" for="monkSelect"></label>
-      <p class="testimonial-authors">Monk</p>
-    </div>
-  </div>
-  <div id="barbarian" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="barbarianSelect">
-    <label class="form-check-label" for="barbarianSelect"></label>
-      <p class="testimonial-authors">Barbarian</p>
-    </div>
-  </div>
-  <div id="bard" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="bardSelect">
-    <label class="form-check-label" for="bardSelect"></label>
-      <p class="testimonial-authors">bard</p>
-    </div>
-  </div>
-  <div id="cleric" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="clericSelect">
-    <label class="form-check-label" for="clericSelect"></label>
-      <p class="testimonial-authors">Cleric</p>
-    </div>
-  </div>
-  <div id="druid" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="druidSelect">
-    <label class="form-check-label" for="druidSelect"></label>
-      <p class="testimonial-authors">Druid</p>
-    </div>
-  </div>
-  <div id="fighter" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="fighterSelect">
-    <label class="form-check-label" for="fighterSelect"></label>
-      <p class="testimonial-authors">Fighter</p>
-    </div>
-  </div>
-  <div id="paladin" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="paladinSelect">
-    <label class="form-check-label" for="paladinSelect"></label>
-      <p class="testimonial-authors">Paladin</p>
-    </div>
-  </div>
-  <div id="ranger" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="rangerSelect">
-    <label class="form-check-label" for="rangerSelect"></label>
-      <p class="testimonial-authors">Ranger</p>
-    </div>
-  </div>
-  <div id="sorcerer" class="item">
-    <img src=" " class="img-responsive quote-image">
-    <div class="carousel-caption testimonial-caption-style">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Vitae semper quis lectus nulla at volutpat diam.</p>
-        <input type="checkbox" class="form-check-input" id="sorcererSelect">
-    <label class="form-check-label" for="sorcererSelect"></label>
-      <p class="testimonial-authors">Sorcerer</p>
-    </div>
-  </div>
-</div>
-
-<!-- Controls -->
-
-<a class="left carousel-control" href="#carousel2" data-slide="prev"> <span
-    class="glyphicon glyphicon-chevron-left"></span> </a>
-<a class="right carousel-control" href="#carousel2" data-slide="next"> <span
-    class="glyphicon glyphicon-chevron-right"></span> </a>
-</div>
-</body>
-</div>
-</div>
-<br>
-
-<a href="editor">
-<button type="button" class="btn btn-info2" style="margin-bottom: 30px;">CREATE CHARACTER
-</button>
-</a>
+  <a href="editor">
+    <button type="button" class="btn btn-info2" style="margin-bottom: 30px;">CREATE CHARACTER
+    </button>
+  </a>
 
 
-  <script>
-    //  ----------CAROUSELS Script-----------------
-
-    $(document).ready(function () {
-      $("#myCarousel").on("slide.bs.carousel", function (e) {
-        var $e = $(e.relatedTarget);
-        var idx = $e.index();
-        var itemsPerSlide = 3;
-        var totalItems = $(".carousel-item").length;
-
-        if (idx >= totalItems - (itemsPerSlide - 1)) {
-          var it = itemsPerSlide - (totalItems - idx);
-          for (var i = 0; i < it; i++) {
-            // append slides to end
-            if (e.direction == "left") {
-              $(".carousel-item")
-                .eq(i)
-                .appendTo(".carousel-inner");
-            } else {
-              $(".carousel-item")
-                .eq(0)
-                .appendTo($(this).find(".carousel-inner"));
-            }
-          }
-        }
-      });
-    });
-  </script>
+  <script src="../scripts/index.js"></script>
