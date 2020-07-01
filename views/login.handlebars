@@ -9,6 +9,6 @@
 <script>
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
-        $.get(`/create/${profile.getId()}`);
+        window.location.pathname = `/create/${profile.getId()}`;
     }
 </script>
