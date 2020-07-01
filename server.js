@@ -162,11 +162,11 @@ app.get("/create/:id", (req, res) => {
 })
 
 // Character editor
-app.get("/editor/:charId", (req, res) => {
+app.get("/editor/:id", (req, res) => {
     // generateDummy();
     Character.findOne({
         where: {
-            id: req.params.charId.toString()
+            user: req.params.id.toString()
         }
     }).then(char => {
         res.render("stats", {
@@ -182,7 +182,7 @@ app.get("/editor/:charId", (req, res) => {
                 });
                 return spellUsable;
             }),
-            charId: char.id,
+            charId: char.user,
             char: char.data
         })
     }).catch(err => {
@@ -215,7 +215,7 @@ app.get("/api/traits/:traitName", (req, res) => {
 app.get("/api/:charId/:query", (req, res) => {
     Character.findOne({
         where: {
-            id: req.params.charId
+            user: req.params.charId
         }
     }).then(result => {
         return res.json(result.data[req.params.query]);
@@ -227,7 +227,7 @@ app.get("/api/:charId/:query", (req, res) => {
 app.post("/api/:charId/:query", (req, res) => {
     Character.findOne({
         where: {
-            id: req.params.charId
+            user: req.params.charId
         }
     }).then(char => {
         const body = JSON.parse(Object.keys(req.body)[0]);
@@ -235,7 +235,7 @@ app.post("/api/:charId/:query", (req, res) => {
         newData[`${req.params.query}`] = body;
         Character.update(
             { data: newData },
-            { where: { id: req.params.charId } }
+            { where: { user: req.params.charId } }
         )
     })
 })
@@ -245,74 +245,6 @@ app.post("/login", (req, res) => {
     console.log(id);
     res.redirect('/create/' + id);
 })
-
-// Creates a dummy character for testing
-const generateDummy = () => {
-    //Renders Dummy character
-    let racePlural = db.races[0].name;
-    let raceTraitsURL = db.racialTraits[0][0].url;
-    let index = raceTraitsURL.search(racePlural);
-    let race = raceTraitsURL.substring(index + racePlural.length + 1, raceTraitsURL.search(' Racial'));
-
-    //Character export
-    const dummy = {
-        descriptive: {
-            name: "Darkorin",
-            alignment: "CN",
-            height: "5'8",
-            weight: "150lb",
-            hair: "black",
-            eyes: "blue"
-        },
-        level: 1,
-        class: db.classes[0].name,
-        traits: db.racialTraits[0],
-        raceName: race,
-        exp: 1000,
-        scores: {
-            str: { score: "STR", value: 18, temp: 2 },
-            dex: { score: "DEX", value: 7, temp: 1 },
-            con: { score: "CON", value: 5, temp: 2 },
-            int: { score: "INT", value: 9, temp: 3 },
-            wis: { score: "WIS", value: 14, temp: 1 },
-            cha: { score: "CHA", value: 8, temp: -4 }
-        },
-        knownFeats: [
-            { featName: "Acrobatic" }
-        ],
-        hp: 30,
-        initTemp: 3,
-        money: {
-            c: 70,
-            s: 51,
-            g: 31,
-            p: 10
-        },
-        ac: {
-            armor: 7,
-            natural: 2,
-            misc: 1
-        },
-        saves: {
-            will: { base: 1, temp: 0, score: "wis" },
-            fort: { base: 1, temp: 0, score: "con" },
-            ref: { base: 1, temp: 0, score: "dex" }
-        },
-        items: [{
-            title: "Long Sword",
-            body: "Stabs people for 1d6 of damage"
-        }],
-        bab: 1,
-        spRes: "0",
-        languages: ["common", "draconic", "dwarven"],
-        notes: "Nothing really matters, anyone can see, nothing really matters to me"
-    }
-    Character.create({
-        data: dummy
-    }).then(results => {
-        console.log(results);
-    })
-}
 
 // Imports the DB
 importDB();
