@@ -93,6 +93,8 @@ app.get("/", (req, res) => {
 
 // Character Initialization Page Route
 app.get("/create/:id", (req, res) => {
+    console.log("I HIT THE ROUTE");
+    console.log("ID: ", req.params.id);
     Character.findOne({
         where: {
             user: req.params.id
