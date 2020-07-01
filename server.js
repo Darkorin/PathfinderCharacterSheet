@@ -150,8 +150,8 @@ app.get("/create/:id", (req, res) => {
             Character.create({
                 user: id,
                 data: newChar
-            }).then({
-
+            }).then(results => {
+                res.render("index", { index: true, races: db.races, classes: db.classes });
             })
         }
         res.render("index", { index: true, races: db.races, classes: db.classes });
