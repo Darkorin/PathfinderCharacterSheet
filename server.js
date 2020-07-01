@@ -95,7 +95,7 @@ app.get("/", (req, res) => {
 app.get("/create/:id", (req, res) => {
     Character.findOne({
         where: {
-            id: req.params.id
+            user: req.params.id
         }
     }).then(char => {
         if (char === null) {
@@ -148,7 +148,7 @@ app.get("/create/:id", (req, res) => {
                 notes: ""
             }
             Character.create({
-                user: id,
+                user: req.params.id,
                 data: newChar
             }).then(results => {
                 res.render("index", { index: true, races: db.races, classes: db.classes });
