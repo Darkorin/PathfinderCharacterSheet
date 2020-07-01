@@ -153,8 +153,9 @@ app.get("/create/:id", (req, res) => {
             }).then(results => {
                 res.render("index", { index: true, races: db.races, classes: db.classes });
             })
+        } else {
+            res.render("index", { index: true, races: db.races, classes: db.classes });
         }
-        res.render("index", { index: true, races: db.races, classes: db.classes });
     })
 })
 
