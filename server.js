@@ -92,7 +92,8 @@ app.get("/", (req, res) => {
 })
 
 // Character Initialization Page Route
-app.get("/create", (req, res) => {
+app.get("/create?:id", (req, res) => {
+    console.log(req.params.id);
     let id = JSON.parse(Object.keys(req.body)[0]);
     console.log(id);
     Character.findOne({
