@@ -93,8 +93,6 @@ app.get("/", (req, res) => {
 
 // Character Initialization Page Route
 app.get("/create/:id", (req, res) => {
-    console.log("I HIT THE ROUTE");
-    console.log("ID: ", req.params.id);
     Character.findOne({
         where: {
             user: req.params.id.toString()
@@ -123,9 +121,8 @@ app.get("/create/:id", (req, res) => {
                     wis: { score: "WIS", value: 10, temp: 0 },
                     cha: { score: "CHA", value: 10, temp: 0 }
                 },
-                knownFeats: [
-                ],
-                hp: 0,
+                knownFeats: [],
+                hp: 10,
                 initTemp: 0,
                 money: {
                     c: 0,
@@ -202,20 +199,62 @@ app.get("/api/feats/:featName", (req, res) => {
     res.json(featFound);
 })
 
-app.get("/api/traits/:traitName", (req, res) => {
+app.get("/api/traits/:race/:traitName", (req, res) => {
     let traitFound = false;
-    db.racialTraits.forEach(race => {
-        race.forEach(trait => {
-            if (trait.name === req.params.traitName) traitFound = trait;
+
+    const findTraitsURL = (raceName) => {
+        let url;
+        db.racialTraits.forEach(traitRace => {
+            if (traitRace[0].subtype === raceName.toLowerCase()) {
+                url = traitRace[0].url;
+            }
         })
+        return url;
+    }
+
+    let traitsFound = [];
+    
+    db.racialTraits.forEach(race => {
+        const raceTraitsURL = findTraitsURL(race[0].subtype).toLowerCase();
+        const raceName = raceTraitsURL.substr(raceTraitsURL.search(`/${req.params.race.toLowerCase()}` ) + 1, req.params.race.length);
+        if(req.params.race.toLowerCase() === raceName.toLowerCase()) {
+            traitsFound = race;
+        }
+    })
+
+    traitsFound.forEach(trait => {
+        if (trait.name === req.params.traitName) traitFound = trait;
     })
     res.json(traitFound);
+})
+
+app.get("/racialTraits/:race", (req, res) => {
+    const findTraitsURL = (raceName) => {
+        let url;
+        db.racialTraits.forEach(traitRace => {
+            if (traitRace[0].subtype === raceName.toLowerCase()) {
+                url = traitRace[0].url;
+            }
+        })
+        return url;
+    }
+    let traitsFound = [];
+    db.racialTraits.forEach(race => {
+        const raceTraitsURL = findTraitsURL(race[0].subtype).toLowerCase();
+        const raceName = raceTraitsURL.substr(raceTraitsURL.search(`/${req.params.race.toLowerCase()}`) + 1, req.params.race.length);
+        if(req.params.race.toLowerCase() === raceName.toLowerCase()) {
+            race.forEach(trait => {
+                traitsFound.push({name: trait.name});
+            })
+        }
+    })
+    return res.json(traitsFound);
 })
 
 app.get("/api/:charId/:query", (req, res) => {
     Character.findOne({
         where: {
-            user: req.params.charId
+            user: req.params.charId.toString()
         }
     }).then(result => {
         return res.json(result.data[req.params.query]);
@@ -227,22 +266,25 @@ app.get("/api/:charId/:query", (req, res) => {
 app.post("/api/:charId/:query", (req, res) => {
     Character.findOne({
         where: {
-            user: req.params.charId
+            user: req.params.charId.toString()
         }
     }).then(char => {
         const body = JSON.parse(Object.keys(req.body)[0]);
-        const newData = char.data;
+        const newData = char.data;   
         newData[`${req.params.query}`] = body;
+        console.log("UPDATING: ", req.params.query, "TO: ", newData[`${req.params.query}`]);
         Character.update(
             { data: newData },
-            { where: { user: req.params.charId } }
-        )
+            { where: { user: req.params.charId.toString() } }
+        ).then(()=>{
+            res.end();
+        })
+        
     })
 })
 
 app.post("/login", (req, res) => {
     let id = JSON.parse(Object.keys(req.body)[0]);
-    console.log(id);
     res.redirect('/create/' + id);
 })
 

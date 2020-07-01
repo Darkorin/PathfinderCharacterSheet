@@ -65,7 +65,7 @@
                             <br>
                             <select id="traits" multiple>
                                 {{#each char.traits}}
-                                <option value="{{raceName}}">{{name}}</option>
+                                <option data-race="{{../char.raceName}}" value="{{name}}">{{name}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -264,7 +264,7 @@
                         {{> overview/money type="C" amount=char.money.c}}
                         {{> overview/money type="S" amount=char.money.s}}
                         {{> overview/money type="G" amount=char.money.g}}
-                        {{> overview/money type="G" amount=char.money.p}}
+                        {{> overview/money type="P" amount=char.money.p}}
                     </div>
                     <div class="row">
                         <br></br>
@@ -281,7 +281,7 @@
                 <div class="col-sm-3">
                     <div class="row">
                         <h4>Race: {{char.raceName}}</h4>
-                        <h4>Class: {{char.class.name}}</h4>
+                        <h4>Class: {{char.class}}</h4>
                         <h4>Level: <input type="text" id="level" placeholder="1" value={{char.level}}
                                 style="width: 40px;" />
                         </h4>

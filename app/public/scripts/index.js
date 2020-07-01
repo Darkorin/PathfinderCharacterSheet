@@ -35,6 +35,14 @@
 //  ----------CAROUSELS -----------------
 
 $(document).ready(function () {
+    const getCharId = () => {
+        let url = window.location.href;
+        url = url.split('/');
+        return url[url.length - 1];
+      }
+    
+      const charId = getCharId();
+
     $("#myCarousel").on("slide.bs.carousel", function (e) {
         var $e = $(e.relatedTarget);
         var idx = $e.index();
@@ -57,6 +65,21 @@ $(document).ready(function () {
             }
         }
     });
+
+    $(".form-check-input").click(function() {
+        const selection = $(this)[0].parentElement.innerText;
+        let query = this.name
+        if (query === "race") {
+            $.get(`/racialTraits/${selection}`).then(traits => {
+                $.post(`/api/${charId}/traits`, JSON.stringify(traits)).then(() => {
+                    query += "Name";
+                    $.post(`/api/${charId}/${query}`, JSON.stringify(selection));
+                })
+            });
+        } else {
+            $.post(`/api/${charId}/${query}`, JSON.stringify(selection));
+        }
+    })
     
     const rangeSlider = function () {
         const slider = $('.range-slider'),
@@ -79,5 +102,3 @@ $(document).ready(function () {
     rangeSlider();
     
 });
-
-$("#Dwarf").attr("class", "item active");
