@@ -97,7 +97,7 @@ app.get("/create/:id", (req, res) => {
     console.log("ID: ", req.params.id);
     Character.findOne({
         where: {
-            user: req.params.id
+            user: req.params.id.toString()
         }
     }).then(char => {
         if (char === null) {
@@ -166,7 +166,7 @@ app.get("/editor/:charId", (req, res) => {
     // generateDummy();
     Character.findOne({
         where: {
-            id: req.params.charId
+            id: req.params.charId.toString()
         }
     }).then(char => {
         res.render("stats", {
