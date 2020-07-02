@@ -21,7 +21,7 @@
         //        var profile = googleUser.getBasicProfile();
         var id_token = googleUser.getAuthResponse().id_token;
         $.post("/login", id_token).then((res) => {
-            window.location.pathname = `/editor/${res}`
+            window.location.pathname = `/create/${res}`
         });
     }
 </script>
