@@ -222,14 +222,14 @@ app.post("/api/:charId/:query", (req, res) => {
 })
 
 app.post("/login", (req, res) => {
-    const CLIENT_ID = Object.keys(req.body)[0];
+    const token = Object.keys(req.body)[0];
     const { OAuth2Client } = require('google-auth-library');
-    const client = new OAuth2Client(CLIENT_ID);
+    const client = new OAuth2Client(1029747393830-kfqdq1b5d6tsuf1eo0m3jirl6ppeps6o.apps.googleusercontent.com);
     console.log(client)
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: token,
-            audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+            audience: 1029747393830-kfqdq1b5d6tsuf1eo0m3jirl6ppeps6o.apps.googleusercontent.com,  // Specify the CLIENT_ID of the app that accesses the backend
             // Or, if multiple clients access the backend:
             //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
         });
