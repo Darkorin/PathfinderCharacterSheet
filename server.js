@@ -213,7 +213,7 @@ app.post("/api/:charId/:query", (req, res) => {
         console.log("UPDATING: ", req.params.query, "TO: ", newData[`${req.params.query}`]);
         Character.update(
             { data: newData },
-            { where: { user: req.params.charId.toString() } }
+            { where: { id: req.params.charId.toString() } }
         ).then(() => {
             res.end();
         })
