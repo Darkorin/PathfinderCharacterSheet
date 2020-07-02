@@ -221,7 +221,7 @@ app.post("/api/:charId/:query", (req, res) => {
     })
 })
 
-app.post("/login", (req, res) => {
+app.post("/login", (CLIENT_ID, res) => {
     const { OAuth2Client } = require('google-auth-library');
     const client = new OAuth2Client(CLIENT_ID);
     async function verify() {
