@@ -55,7 +55,7 @@ const db = {
 
 // Function to import the db.
 const importDB = () => {
-    fs.readFile("app/data/pfdb.json", "utf8", (err, content) => {  
+    fs.readFile("app/data/pfdb.json", "utf8", (err, content) => {
         if (err) throw err;
         content = JSON.parse(content);
         const index = ["feats", "racialTraits", "races", "skills", "classes", "spells"];
@@ -93,69 +93,7 @@ app.get("/", (req, res) => {
 
 // Character Initialization Page Route
 app.get("/create/:id", (req, res) => {
-    Character.findOne({
-        where: {
-            user: req.params.id.toString()
-        }
-    }).then(char => {
-        if (char === null) {
-            let newChar = {
-                descriptive: {
-                    name: "",
-                    alignment: "",
-                    height: "",
-                    weight: "",
-                    hair: "",
-                    eyes: ""
-                },
-                level: 1,
-                class: "placeholder",
-                traits: [],
-                raceName: "placeholder",
-                exp: 0,
-                scores: {
-                    str: { score: "STR", value: 10, temp: 0 },
-                    dex: { score: "DEX", value: 10, temp: 0 },
-                    con: { score: "CON", value: 10, temp: 0 },
-                    int: { score: "INT", value: 10, temp: 0 },
-                    wis: { score: "WIS", value: 10, temp: 0 },
-                    cha: { score: "CHA", value: 10, temp: 0 }
-                },
-                knownFeats: [],
-                hp: 10,
-                initTemp: 0,
-                money: {
-                    c: 0,
-                    s: 0,
-                    g: 0,
-                    p: 0
-                },
-                ac: {
-                    armor: 0,
-                    natural: 0,
-                    misc: 0
-                },
-                saves: {
-                    will: { base: 0, temp: 0, score: "wis" },
-                    fort: { base: 0, temp: 0, score: "con" },
-                    ref: { base: 0, temp: 0, score: "dex" }
-                },
-                items: [],
-                bab: 0,
-                spRes: "0",
-                languages: [],
-                notes: ""
-            }
-            Character.create({
-                user: req.params.id,
-                data: newChar
-            }).then(results => {
-                res.render("index", { index: true, races: db.races, classes: db.classes });
-            })
-        } else {
-            res.render("index", { index: true, races: db.races, classes: db.classes });
-        }
-    })
+    res.render("index", { index: true, races: db.races, classes: db.classes });
 })
 
 // Character editor
@@ -213,11 +151,11 @@ app.get("/api/traits/:race/:traitName", (req, res) => {
     }
 
     let traitsFound = [];
-    
+
     db.racialTraits.forEach(race => {
         const raceTraitsURL = findTraitsURL(race[0].subtype).toLowerCase();
-        const raceName = raceTraitsURL.substr(raceTraitsURL.search(`/${req.params.race.toLowerCase()}` ) + 1, req.params.race.length);
-        if(req.params.race.toLowerCase() === raceName.toLowerCase()) {
+        const raceName = raceTraitsURL.substr(raceTraitsURL.search(`/${req.params.race.toLowerCase()}`) + 1, req.params.race.length);
+        if (req.params.race.toLowerCase() === raceName.toLowerCase()) {
             traitsFound = race;
         }
     })
@@ -242,9 +180,9 @@ app.get("/racialTraits/:race", (req, res) => {
     db.racialTraits.forEach(race => {
         const raceTraitsURL = findTraitsURL(race[0].subtype).toLowerCase();
         const raceName = raceTraitsURL.substr(raceTraitsURL.search(`/${req.params.race.toLowerCase()}`) + 1, req.params.race.length);
-        if(req.params.race.toLowerCase() === raceName.toLowerCase()) {
+        if (req.params.race.toLowerCase() === raceName.toLowerCase()) {
             race.forEach(trait => {
-                traitsFound.push({name: trait.name});
+                traitsFound.push({ name: trait.name });
             })
         }
     })
@@ -254,7 +192,7 @@ app.get("/racialTraits/:race", (req, res) => {
 app.get("/api/:charId/:query", (req, res) => {
     Character.findOne({
         where: {
-            user: req.params.charId.toString()
+            id: req.params.charId.toString()
         }
     }).then(result => {
         return res.json(result.data[req.params.query]);
@@ -266,26 +204,103 @@ app.get("/api/:charId/:query", (req, res) => {
 app.post("/api/:charId/:query", (req, res) => {
     Character.findOne({
         where: {
-            user: req.params.charId.toString()
+            id: req.params.charId.toString()
         }
     }).then(char => {
         const body = JSON.parse(Object.keys(req.body)[0]);
-        const newData = char.data;   
+        const newData = char.data;
         newData[`${req.params.query}`] = body;
         console.log("UPDATING: ", req.params.query, "TO: ", newData[`${req.params.query}`]);
         Character.update(
             { data: newData },
             { where: { user: req.params.charId.toString() } }
-        ).then(()=>{
+        ).then(() => {
             res.end();
         })
-        
+
     })
 })
 
 app.post("/login", (req, res) => {
-    let id = JSON.parse(Object.keys(req.body)[0]);
-    res.redirect('/create/' + id);
+    const { OAuth2Client } = require('google-auth-library');
+    const client = new OAuth2Client(CLIENT_ID);
+    async function verify() {
+        const ticket = await client.verifyIdToken({
+            idToken: token,
+            audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+            // Or, if multiple clients access the backend:
+            //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+        });
+        const payload = ticket.getPayload();
+        const userid = payload['sub'];
+        Character.findOne({
+            where: {
+                user: userid
+            }
+        }).then(char => {
+            if (char != null) {
+                res.json(char.id);
+            } else {
+                let newChar = {
+                    descriptive: {
+                        name: "",
+                        alignment: "",
+                        height: "",
+                        weight: "",
+                        hair: "",
+                        eyes: ""
+                    },
+                    level: 1,
+                    class: "placeholder",
+                    traits: [],
+                    raceName: "placeholder",
+                    exp: 0,
+                    scores: {
+                        str: { score: "STR", value: 10, temp: 0 },
+                        dex: { score: "DEX", value: 10, temp: 0 },
+                        con: { score: "CON", value: 10, temp: 0 },
+                        int: { score: "INT", value: 10, temp: 0 },
+                        wis: { score: "WIS", value: 10, temp: 0 },
+                        cha: { score: "CHA", value: 10, temp: 0 }
+                    },
+                    knownFeats: [],
+                    hp: 10,
+                    initTemp: 0,
+                    money: {
+                        c: 0,
+                        s: 0,
+                        g: 0,
+                        p: 0
+                    },
+                    ac: {
+                        armor: 0,
+                        natural: 0,
+                        misc: 0
+                    },
+                    saves: {
+                        will: { base: 0, temp: 0, score: "wis" },
+                        fort: { base: 0, temp: 0, score: "con" },
+                        ref: { base: 0, temp: 0, score: "dex" }
+                    },
+                    items: [],
+                    bab: 0,
+                    spRes: "0",
+                    languages: [],
+                    notes: ""
+                }
+                Character.create({
+                    user: userid,
+                    data: newChar
+                }).then((results) => {
+                    res.json(char.id);
+                })
+            }
+        })
+
+        // If request specified a G Suite domain:
+        // const domain = payload['hd'];
+    }
+    verify().catch(console.error);
 })
 
 // Imports the DB
