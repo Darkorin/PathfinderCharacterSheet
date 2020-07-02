@@ -101,7 +101,7 @@ app.get("/editor/:id", (req, res) => {
     // generateDummy();
     Character.findOne({
         where: {
-            user: req.params.id.toString()
+            id: req.params.id.toString()
         }
     }).then(char => {
         res.render("stats", {
