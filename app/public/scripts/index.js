@@ -35,6 +35,8 @@
 //  ----------CAROUSELS -----------------
 
 $(document).ready(function () {
+    let selectedRace;
+    let selectedClass;
     const getCharId = () => {
         let url = window.location.href;
         url = url.split('/');
@@ -70,14 +72,9 @@ $(document).ready(function () {
         const selection = $(this)[0].parentElement.innerText;
         let query = this.name
         if (query === "race") {
-            $.get(`/racialTraits/${selection}`).then(traits => {
-                $.post(`/api/${charId}/traits`, JSON.stringify(traits)).then(() => {
-                    query += "Name";
-                    $.post(`/api/${charId}/${query}`, JSON.stringify(selection));
-                })
-            });
+            selectedRace = selection;
         } else {
-            $.post(`/api/${charId}/${query}`, JSON.stringify(selection));
+            selectedClass = selection;
         }
     })
     
@@ -98,6 +95,29 @@ $(document).ready(function () {
             });
         });
     };
+
+    $("#createButton").click(()=>{
+        let postingDone = 3;
+
+        $.get(`/racialTraits/${selection}`).then(traits => {
+            $.post(`/api/${charId}/traits`, JSON.stringify(traits)).then(() => {
+                postingDone--;
+            })
+        });
+        $.post(`/api/${charId}/raceName`, JSON.stringify(selectedRace)).then(()=>{
+            postingDone--;
+        });
+        $.post(`/api/${charId}/${query}`, JSON.stringify(selectedClass)).then(()=>{
+            postingDone--;
+        });
+        const waitForPosting = setInterval(function() {
+            if(postingDone <= 0) {
+                let url = window.location.href;
+                url = url.split('/');
+                window.location.pathname = `/editor/${charId}`;
+            }
+        }, 100);
+      })
     
     rangeSlider();
     
