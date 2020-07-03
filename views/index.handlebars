@@ -354,10 +354,3 @@
 
 
   <script src="../scripts/index.js"></script>
-  <script type="text/javascript">
-    $("#createButton").click(()=>{
-      let url = window.location.href;
-      url = url.split('/');
-      window.location.pathname = `/editor/${url[url.length - 1]}`;
-    })
-  </script>

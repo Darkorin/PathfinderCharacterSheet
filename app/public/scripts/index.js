@@ -41,9 +41,9 @@ $(document).ready(function () {
         let url = window.location.href;
         url = url.split('/');
         return url[url.length - 1];
-      }
-    
-      const charId = getCharId();
+    }
+
+    const charId = getCharId();
 
     $("#myCarousel").on("slide.bs.carousel", function (e) {
         var $e = $(e.relatedTarget);
@@ -68,7 +68,7 @@ $(document).ready(function () {
         }
     });
 
-    $(".form-check-input").click(function() {
+    $(".form-check-input").click(function () {
         const selection = $(this)[0].parentElement.innerText;
         let query = this.name
         if (query === "race") {
@@ -77,48 +77,41 @@ $(document).ready(function () {
             selectedClass = selection;
         }
     })
-    
+
     const rangeSlider = function () {
         const slider = $('.range-slider'),
             range = $('.range-slider__range'),
             value = $('.range-slider__value');
-    
+
         slider.each(function () {
-    
+
             value.each(function () {
                 const value = $(this).prev().attr('value');
                 $(this).html(value);
             });
-    
+
             range.on('input', function () {
                 $(this).next(value).html(this.value);
             });
         });
     };
 
-    $("#createButton").click(()=>{
-        let postingDone = 3;
-
-        $.get(`/racialTraits/${selection}`).then(traits => {
-            $.post(`/api/${charId}/traits`, JSON.stringify(traits)).then(() => {
-                postingDone--;
-            })
+    $("#createButton").click(() => {
+        let postingDone = false;
+        console.log(selectedRace, selectedClass);
+        $.get(`/racialTraits/${selectedRace}`).then(traits => {
+            $.post(`/api/${charId}`, {raceName: selectedRace, class: selectedClass, traits: JSON.stringify(traits)}).then(() => {
+                postingDone = true;
+            });
         });
-        $.post(`/api/${charId}/raceName`, JSON.stringify(selectedRace)).then(()=>{
-            postingDone--;
-        });
-        $.post(`/api/${charId}/${query}`, JSON.stringify(selectedClass)).then(()=>{
-            postingDone--;
-        });
-        const waitForPosting = setInterval(function() {
-            if(postingDone <= 0) {
-                let url = window.location.href;
-                url = url.split('/');
+        const waitForPosting = setInterval(function () {
+            if (postingDone) {
+                clearInterval(waitForPosting);
                 window.location.pathname = `/editor/${charId}`;
             }
         }, 100);
-      })
-    
+    })
+
     rangeSlider();
-    
+
 });

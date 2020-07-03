@@ -221,6 +221,32 @@ app.post("/api/:charId/:query", (req, res) => {
     })
 })
 
+app.post("/api/:charId", (req,res) => {
+    Character.findOne({
+        where: {
+            id: req.params.charId.toString()
+        }
+    }).then(char => {
+        let keys = Object.keys(req.body);
+        let newData = char.data;
+        keys.forEach(key => {
+            if (key != "traits") {
+                newData[`${key}`] = req.body[`${key}`];
+            } else {
+                newData["traits"] = JSON.parse(req.body.traits);
+            }
+        })
+        Character.update(
+            { data: newData },
+            { where: { id: req.params.charId.toString() } }
+        ).then((result) => {
+            res.end();
+        })
+    }).then(() => {
+        res.end();
+    });
+})
+
 app.post("/login", (req, res) => {
     const token = Object.keys(req.body)[0];
     const { OAuth2Client } = require('google-auth-library');
